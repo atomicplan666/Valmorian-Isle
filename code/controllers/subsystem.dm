@@ -179,6 +179,8 @@
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
 	#ifdef LOCALTEST
 	to_chat(world, span_boldannounce("[msg]"))
+	#else
+	to_chat_immediate(GLOB.admins, span_admin("MC: [msg]"))
 	#endif
 	log_world(msg)
 	return time
