@@ -173,7 +173,7 @@
 
 	if (opacity && isturf(loc))
 		var/turf/T = loc
-		T.opaque_atom_count++
+		T.has_opaque_atom = TRUE // No need to recalculate it in this case, it's guaranteed to be on afterwards anyways.
 
 	if (canSmoothWith)
 		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
