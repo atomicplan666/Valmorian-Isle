@@ -122,7 +122,7 @@
 		reassess_stack()
 
 	if (opacity)
-		opaque_atom_count = 1 // we count ourselves
+		has_opaque_atom = TRUE
 
 	if(smooth & USES_SMOOTHING)
 		QUEUE_SMOOTH(src)
@@ -423,7 +423,7 @@
 		entered_movable.ex_act(explosion_level)
 	// If an opaque movable atom moves around we need to potentially update visibility.
 	if (entered_movable.opacity)
-		opaque_atom_count++ // Make sure to do this before reconsider_lights(), incase we're on instant updates.
+		has_opaque_atom = TRUE // Make sure to do this before reconsider_lights(), incase we're on instant updates. Guaranteed to be on in this case.
 		reconsider_lights()
 	if(isstructure(entered_movable))
 		var/obj/structure/entered_structure = entered_movable
@@ -446,7 +446,7 @@
 		SEND_SIGNAL(src, COMSIG_TURF_EXITED, gone, newloc)
 		SEND_SIGNAL(gone, COMSIG_MOVABLE_TURF_EXITED, src, newloc)
 		if (gone.opacity)
-			opaque_atom_count-- // Make sure to do this before reconsider_lights(), incase we're on instant updates.
+			recalc_atom_opacity() // Make sure to do this before reconsider_lights(), incase we're on instant updates.
 			reconsider_lights()
 		if(isstructure(gone))
 			var/obj/structure/exited_structure = gone
