@@ -320,7 +320,7 @@ GLOBAL_DATUM(recipe_wiki, /datum/recipe_wiki)
 /client/verb/ooc_wiki()
 	set name = "Encyclopedia"
 	set category = "OOC"
-	set desc = "Browse the Encyclopaedia Azurea - all recipe books and guidebook entries."
+	set desc = "Browse the Encyclopaedia Valmoria - all recipe books and guidebook entries."
 
 	var/datum/recipe_wiki/wiki = get_recipe_wiki()
 	wiki.show_library(mob)

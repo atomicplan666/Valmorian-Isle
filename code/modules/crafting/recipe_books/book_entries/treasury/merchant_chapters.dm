@@ -19,8 +19,8 @@
 /datum/book_entry/treasury_merchant/navigator/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>NAVIGATOR:</b> The heart of commerce of Azuria. This ancient machine lifts goods up by balloons to ships at the dock and the ATC's warehouse. The mechanisms are a trade secret of
-		Azurian Trading Company. There's three variants: Public Navigator, Navigator and Smuggler's Navigator</p>
+		<p><b>NAVIGATOR:</b> The heart of commerce of Valmoria. This ancient machine lifts goods up by balloons to ships at the dock and the ATC's warehouse. The mechanisms are a trade secret of
+		Valmorian Trading Company. There's three variants: Public Navigator, Navigator and Smuggler's Navigator</p>
 
 		<h3>How it works</h3>
 		<ul>
@@ -214,7 +214,7 @@
 
 		<h3>How it gets set</h3>
 		<ul>
-			<li>The bonus follows the active Merchant's character origin (Lirvan, Gronnic, Otavan, etc.). Azurian and Elsewhere Merchants confer no Kinship.</li>
+			<li>The bonus follows the active Merchant's character origin (Lirvan, Gronnic, Otavan, etc.). Valmorian and Elsewhere Merchants confer no Kinship.</li>
 			<li>It <b>persists</b> through Merchant death or FT until a new Merchant of a different realm takes the role. If no Merchant has joined yet this round, there is no Kinship.</li>
 			<li>A Merchant of the same realm replacing the previous one does not flip the bonus.</li>
 			<li>When a new kin realm is claimed mid-round, the available ship pool is checked - if no kin ship is already waiting, one is swapped in immediately so the Merchant has a kin vessel to hail without waiting for tomorrow's roll.</li>
@@ -222,7 +222,7 @@
 
 		<h3>Shophand and Agent variant</h3>
 		<ul>
-			<li>A <b>Shophand</b> or holder of the Azurian Trading Company's Writ of Charter gets a personal <b>-[round((1 - KINSHIP_BUY_MULT) * 100)]% on Goldface buys</b> from ships of <b>their own</b> origin.</li>
+			<li>A <b>Shophand</b> or holder of the Valmorian Trading Company's Writ of Charter gets a personal <b>-[round((1 - KINSHIP_BUY_MULT) * 100)]% on Goldface buys</b> from ships of <b>their own</b> origin.</li>
 			<li>This does <b>not stack</b> with the global Kinship. If the global Kinship already covers the same ship, the agent's personal discount does not add - the buy is -[round((1 - KINSHIP_BUY_MULT) * 100)]%, never -[round((1 - (KINSHIP_BUY_MULT * KINSHIP_BUY_MULT)) * 100)]%.</li>
 			<li>It only fires on Goldface purchase actions; the Shophand doesn't extend the +[round((KINSHIP_SELL_MULT - 1) * 100)]% sell side.</li>
 		</ul>
@@ -253,7 +253,7 @@
 /datum/book_entry/treasury_merchant/avisa_market/inner_book_html(mob/user)
 	return {"
 		<div>
-		<p><b>AVISA:</b>The Avisa, Azuria's longest running newspaper, for the discerning and intellectual!</p>
+		<p><b>AVISA:</b>The Avisa, Valmoria's longest running newspaper, for the discerning and intellectual!</p>
 
 		<h3>What it shows</h3>
 		<p>

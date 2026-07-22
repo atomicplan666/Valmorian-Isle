@@ -449,7 +449,7 @@
 	sort_category = "Triumphs"
 
 /datum/loadout_item/triumph_weaponkit_estoc
-	name = "Triumph Kit - Azurian Estoc"
+	name = "Triumph Kit - Valmorian Estoc"
 	path = /obj/item/enchantingkit/triumph_weaponkit_estoc
 	triumph_cost = 3
 	sort_category = "Triumphs"

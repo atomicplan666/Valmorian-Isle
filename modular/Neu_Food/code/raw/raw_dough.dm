@@ -479,7 +479,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/eggdoughsheetnoodles_pesto
 	name = "uncooked pesto lasagna"
-	desc = "Flat sheets of sheet noodles spread with pesto, Azurian style, ready to be cooked in the oven."
+	desc = "Flat sheets of sheet noodles spread with pesto, Valmorian style, ready to be cooked in the oven."
 	icon = 'modular/Neu_Food/icons/raw/raw_dough.dmi'
 	icon_state = "eggdoughsheetnoodle_pesto"
 	color = "#feffc1"

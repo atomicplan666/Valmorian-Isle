@@ -257,7 +257,7 @@ export const CityAssembly = () => {
         <div style={pageStyle}>
           <div style={titleStyle}>The City Assembly</div>
           <div style={subtitleStyle}>
-            Voice of the respectable citizenry of Azuria
+            Voice of the respectable citizenry of Valmoria
           </div>
           <hr style={rulerStyle} />
 

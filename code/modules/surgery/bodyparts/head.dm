@@ -63,7 +63,7 @@
 /obj/item/bodypart/head/examine()
 	. = ..()
 	if(sellprice && !no_head_bounty)
-		. += span_notice("This head seems to be wanted by the Judiciary of Azuria. It can be turned in at a HEADEATER.")
+		. += span_notice("This head seems to be wanted by the Judiciary of Valmoria. It can be turned in at a HEADEATER.")
 
 /obj/item/bodypart/head/grabbedintents(mob/living/user, precise)
 	var/used_limb = precise

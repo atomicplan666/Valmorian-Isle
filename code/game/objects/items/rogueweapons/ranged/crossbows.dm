@@ -333,7 +333,7 @@
 	desc = "A heavier weight crossbow - the basis of a mounted ballista, made fit for handheld usage. Integrated just \
 	beneath the stock is a windlass mechanism, necessary to surmount the siegebow's titanic draw-strength. It loads \
 	heavier, full-length bolts; purpose-made to pulverize. </br>Assembled in Grenzelhoft, championed by Valoria, and \
-	unfamiliar to the highlands of Azure Peak."
+	unfamiliar to the highlands of Valmoria."
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "heavybow0"
 	item_state = "heavybow"

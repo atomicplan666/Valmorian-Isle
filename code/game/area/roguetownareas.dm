@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	deathsight_message = "a twisted tangle of soaring peaks"
 
 /area/rogue/outdoors/rtfield
-	name = "Azure Basin"
+	name = "Valmorian Basin"
 	icon_state = "rtfield"
 	soundenv = 19
 	ambush_times = list("night")
@@ -179,7 +179,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
 				/mob/living/simple_animal/hostile/retaliate/rogue/fox = 30,
 				/mob/living/carbon/human/species/skeleton/npc/supereasy = 30)
-	first_time_text = "AZURE BASIN"
+	first_time_text = "VALMORIAN BASIN"
 	droning_sound = 'sound/music/area/field.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
@@ -294,7 +294,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(list(/area/rogue/indoors
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/indoors/shelter/town
-	first_time_text = "THE CITY OF AZURE PEAK"
+	first_time_text = "THE CITY OF VALMORIA"
 	town_area = TRUE
 	fog_protected = TRUE
 

@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	"Courtiers & Nobility" = (COURTIERS | NOBLEMEN | COUNCILLOR),
 	"Inquisition" = INQUISITION,
 	"Burghers" = BURGHERS,
-	"Azurian Trading Company" = ATC,
+	"Valmorian Trading Company" = ATC,
 	"Retinue" = RETINUE,
 	"Garrison" = GARRISON,
 	"Churchmen" = CHURCHMEN,
@@ -746,7 +746,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 				var/height = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_HEIGHT), "%DESC1%")
 				var/body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
 				var/voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
-				add_bounty(H.real_name, H.dna.species, H.gender, height, body, voice, rand(100, 200), FALSE, "Failure to pay outstanding debts.", "The Justiciary of Azuria")
+				add_bounty(H.real_name, H.dna.species, H.gender, height, body, voice, rand(100, 200), FALSE, "Failure to pay outstanding debts.", "The Justiciary of Valmoria")
 			bounty_added = TRUE
 
 /datum/charflaw/averse

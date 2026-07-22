@@ -14,7 +14,7 @@
 	Most commonly, Aasimar are similar to Humens, albeit taller, and commonly possess an uncanny beauty. \
 	When compared to the average Humen, they have strangely colored skin and are more physically frail. \
 	Because of their upbringing, they make for natural conduits for godly powers. \
-	Azure Peak's populace holds them with a mixture of uneasy mixture of fear and respect. \
+	Valmoria's populace holds them with a mixture of uneasy mixture of fear and respect. \
 	Due to their celestial nature, it is widely believed that an Aasimar's death is a bad omen..."
 
 	max_age = "???"

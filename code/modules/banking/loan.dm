@@ -202,9 +202,9 @@
 	var/target_label = indenture_faction_label(target)
 	var/msg
 	if(istype(source, /datum/fund/church))
-		msg = "The Church of Azuria has called its loan to [target_label] and finds the coffers wanting. The faithful's alms has been squandered by the faithless. Astrata's generosity has been squandered. [seized]m forfeit, [still_owed]m unsettled."
+		msg = "The Church of Valmoria has called its loan to [target_label] and finds the coffers wanting. The faithful's alms has been squandered by the faithless. Astrata's generosity has been squandered. [seized]m forfeit, [still_owed]m unsettled."
 	else if(istype(source, /datum/fund/merchant))
-		msg = "The Azurian Trading Company has called its loan to [target_label] and finds the coffers wanting. The Burghers are outraged. There is no wealth without trust, and no realm without wealth. [seized]m forfeit, [still_owed]m unsettled."
+		msg = "The Valmorian Trading Company has called its loan to [target_label] and finds the coffers wanting. The Burghers are outraged. There is no wealth without trust, and no realm without wealth. [seized]m forfeit, [still_owed]m unsettled."
 	else if(istype(source, /datum/fund/bathhouse))
 		msg = "The Bathhouse has called its loan to [target_label] and finds the coffers wanting. Her generosity abused! Her love disgraced! To lend from the bathhouse is one shame, to not pay back, a greater one. [seized]m forfeit, [still_owed]m unsettled."
 	else
@@ -213,9 +213,9 @@
 
 /datum/controller/subsystem/treasury/proc/indenture_faction_label(datum/fund/F)
 	if(istype(F, /datum/fund/church))
-		return "the Church of Azuria"
+		return "the Church of Valmoria"
 	if(istype(F, /datum/fund/merchant))
-		return "the Azurian Trading Company"
+		return "the Valmorian Trading Company"
 	if(istype(F, /datum/fund/bathhouse))
 		return "the Bathhouse"
 	if(istype(F, /datum/fund/innkeeper))

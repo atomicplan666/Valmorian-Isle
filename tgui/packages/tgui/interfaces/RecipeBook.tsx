@@ -139,7 +139,7 @@ const LibraryPage = () => {
   return (
     <Section fill scrollable>
       <Box style={{ padding: '20px 36px 28px 36px' }}>
-        <Box style={titleStyle}>Encyclop&aelig;dia Azurea</Box>
+        <Box style={titleStyle}>Encyclop&aelig;dia Valmoria</Box>
         <hr style={rulerStyle} />
         {guides.length > 0 && (
           <>

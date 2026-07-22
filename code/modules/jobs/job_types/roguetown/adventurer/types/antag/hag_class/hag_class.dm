@@ -38,7 +38,7 @@
 		/datum/skill/craft/cooking = SKILL_LEVEL_MASTER,
 	)
 	subclass_languages = list(
-		/datum/language/oldazurian, // (gerson voice) you're old!
+		/datum/language/oldvalmorian, // (gerson voice) you're old!
 		/datum/language/beast, // fucked up nature spirit gaming
 		/datum/language/celestial, // old enough to know the OG celestial, probably
 		/datum/language/abyssal // you can send people to the dream you can presumably communicate with its denizens

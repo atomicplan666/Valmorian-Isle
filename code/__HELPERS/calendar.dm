@@ -1,6 +1,6 @@
 /*
 	Helper for the CALENDAR System. This will be where I document the design decisions.
-	Azure Peak's canonical calendar system, known as the Azurian Calendar ICly, is a solar calendar. It is based on the "Grenzelhoftian Calendar", a tennite calendar system. 
+	Valmoria's canonical calendar system, known as the Valmorian Calendar ICly, is a solar calendar. It is based on the "Grenzelhoftian Calendar", a tennite calendar system. 
 	But actually, because we're in a fictional video game, it is a perfect calendar with no leap years or irregularities.
 	It consists of 12 months, each with exactly 28 days dividing into 4 weeks. And it starts from Monday and ends on Sunday with a 7 days week.
 	Each week = 1 round IC (regardless of how much time actually passed in game)

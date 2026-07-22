@@ -755,7 +755,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer/donator_gothic
 	name = "gothic cuirass"
-	desc = "A magnificent steel cuirass, assembled by an Azurian mastersmith. The intricate fluting and interlocked plates are clear \
+	desc = "A magnificent steel cuirass, assembled by an Valmorian mastersmith. The intricate fluting and interlocked plates are clear \
 	signs of its Grenzelhoftian heritage; expensive, but second-to-none when it comes to what truly matters in life."
 	icon = 'icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'icons/clothing/onmob/donor_clothes.dmi'
@@ -933,7 +933,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/marshal
 	name = "coat of the commander"
-	desc = "A coat of plates concealed beneath a heavy leather surcoat. Only the most battle-hardened of Azuria's commanders can \
+	desc = "A coat of plates concealed beneath a heavy leather surcoat. Only the most battle-hardened of Valmoria's commanders can \
 	hope to bear its burden, both metaphorically and quite literally."
 	icon_state = "leathercoat"
 	item_state = "leathercoat"

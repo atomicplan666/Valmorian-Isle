@@ -119,7 +119,7 @@
 	path = /obj/item/enchantingkit/heroicleathercuirass
 
 /datum/loadout_item/donator/universal/armor_triheartfelt
-	name = "Gift - Kit, Azurian Plate Armor"
+	name = "Gift - Kit, Valmorian Plate Armor"
 	path = /obj/item/enchantingkit/triheartfelt
 
 /datum/loadout_item/donator/universal/headpiece_decoration

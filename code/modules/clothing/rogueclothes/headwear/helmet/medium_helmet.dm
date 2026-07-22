@@ -594,7 +594,7 @@
 // Warden Helmets
 /obj/item/clothing/head/roguetown/helmet/bascinet/antler
 	name = "warden's helmet"
-	desc = "A beastly snouted armet with the large horns of an elder saiga protruding from it. Residents of Azure Peak know not to fear such a sight in the wilds, for they are exclusively associated with the Azurian wardens."
+	desc = "A beastly snouted armet with the large horns of an elder saiga protruding from it. Residents of Valmoria know not to fear such a sight in the wilds, for they are exclusively associated with the Valmorian wardens."
 	icon = 'icons/roguetown/clothing/special/warden.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden64.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
@@ -637,7 +637,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat
 	name = "warden's ramskull helm"
-	desc = "The large, intimidating horned skull of an elusive Azurian great ram, plated with steel on its inner side and given padding - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long foresters and their descendants."
+	desc = "The large, intimidating horned skull of an elusive Valmorian great ram, plated with steel on its inner side and given padding - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long foresters and their descendants."
 	icon = 'icons/roguetown/clothing/special/warden.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden.dmi'
 	icon_state = "skullmet_goat"

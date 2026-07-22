@@ -144,7 +144,7 @@
 		/datum/language/otavan,
 		/datum/language/aavnic,
 		/datum/language/undercommon,
-		/datum/language/oldazurian,
+		/datum/language/oldvalmorian,
 		/datum/language/abyssal,
 		/datum/language/beast,
 		/datum/language/undead,

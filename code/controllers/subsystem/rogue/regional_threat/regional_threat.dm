@@ -75,7 +75,7 @@ SUBSYSTEM_DEF(regionthreat)
 		),
 		// Coast & Decap stay somewhat dangerous no matter what
 		new /datum/threat_region(
-			_region_name = THREAT_REGION_AZUREAN_COAST,
+			_region_name = THREAT_REGION_VALMORIAN_COAST,
 			_latent_ambush = 500,
 			_min_ambush = 225,
 			_max_ambush = 800,

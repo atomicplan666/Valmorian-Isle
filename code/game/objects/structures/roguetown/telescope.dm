@@ -167,7 +167,7 @@
 	name = "globe"
 	desc = "A wooden globe representing the world. Key landmarks are indicated by adjacent \
 	annotations; at a glance you can pick out 'Otava', 'Grenzelhoft', 'Kazengun', 'Naledi', \
-	and on the northern half of the western continent, a modest peninsula marked as 'Azuria'."
+	and on the northern half of the western continent, a modest peninsula marked as 'Valmoria'."
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "globe"
 	density = TRUE
@@ -178,7 +178,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/random_message = pick("You spin the globe!", "You land on Azuria!", "You land on Raneshen!", "You land on Grenzelhoft!", "You land on Otava!", "You land on Naledi!", "You land on Kazengun!", "You land on Valoria!", "You land on Gronn!", "You land on the Fjalls!", "You land on Lirvas!", "You land on Lingyue!", "You land on Hammerhold!", "You land on Etruscea!", "You land on Aavnr!", "You land on Port Izekyube!", "You land on Port Thornvale!", "You land on Syon's Rest!", "You land on Mount Decapitation!", "You land on Rockhill!", "You land on an unmarked squiggle of land - perhaps another spin?", "You land on an unmarked patch of sea - perhaps another spin?")
+	var/random_message = pick("You spin the globe!", "You land on Valmoria!", "You land on Raneshen!", "You land on Grenzelhoft!", "You land on Otava!", "You land on Naledi!", "You land on Kazengun!", "You land on Valoria!", "You land on Gronn!", "You land on the Fjalls!", "You land on Lirvas!", "You land on Lingyue!", "You land on Hammerhold!", "You land on Etruscea!", "You land on Aavnr!", "You land on Port Izekyube!", "You land on Port Thornvale!", "You land on Syon's Rest!", "You land on Mount Decapitation!", "You land on Rockhill!", "You land on an unmarked squiggle of land - perhaps another spin?", "You land on an unmarked patch of sea - perhaps another spin?")
 	to_chat(H, span_notice("[random_message]"))
 
 /obj/structure/globe/get_mechanics_examine(mob/user)

@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/desert_rider_almah
 	name = "Desert Rider Almah"
-	tutorial = "You're an Almah - a blade dancer, trained in the arts of spellbladery, an art originating from Azurea in ancient time. Your people have refined spellbladery into an artform. They call you a bladedancer - for the beautiful, bloody tapestry of magycks and blade you weave out of your foes in battle."
+	tutorial = "You're an Almah - a blade dancer, trained in the arts of spellbladery, an art originating from Valmoria in ancient time. Your people have refined spellbladery into an artform. They call you a bladedancer - for the beautiful, bloody tapestry of magycks and blade you weave out of your foes in battle."
 	allowed_sexes = list(MALE, FEMALE)
 	
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider_almah
@@ -96,8 +96,8 @@
 				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/blade_storm)
 			if("phalangite")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/azurean_phalanx)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/azurean_pilum)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/valmorian_phalanx)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/valmorian_pilum)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/advance)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/gate_of_reckoning)
 			if("macebearer")

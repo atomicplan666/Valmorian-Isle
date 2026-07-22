@@ -217,7 +217,7 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
         {harbor.favor.gnome_unlocked ? (
           <>
             <div style={{ ...noteStyle, marginBottom: '4px' }}>
-              By writ of the Azurean Guild of Gnomes Porters, the public stalls
+              By writ of the Valmorian Guild of Gnomes Porters, the public stalls
               now run under their hand. They take their cost in labour and remit
               the margin of <b>+{ledger.silverface_margin_percent}%</b> on every
               sale unto the Merchant Fund. Adjust the rate from the Management
@@ -236,7 +236,7 @@ export const LedgerTab = (props: { harbor?: HarborData }) => {
           </>
         ) : (
           <div style={noteStyle}>
-            By standing pact, the Azurean Guild of Porters and Stevedores hold
+            By standing pact, the Valmorian Guild of Porters and Stevedores hold
             the margin upon a fixed measure of trade each week. Should you push
             enough goods through the Company&apos;s books, your standing shall
             earn the right to call in their Gnomes - who will take their wage in

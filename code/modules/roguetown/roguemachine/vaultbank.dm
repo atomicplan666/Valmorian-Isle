@@ -2,7 +2,7 @@
 
 /obj/structure/roguemachine/vaultbank
 	name = "\improper JAWBANK"
-	desc = "A biomechanical obselisk that collects and secures the treasury of the Grand Duchy of Azuria. Throttle it with a strike to spill that which is rightfully yours."
+	desc = "A biomechanical obselisk that collects and secures the treasury of the Grand Duchy of Valmoria. Throttle it with a strike to spill that which is rightfully yours."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "jawbank"
 	density = TRUE
@@ -660,7 +660,7 @@
 	return "church"
 
 /obj/structure/roguemachine/vaultbank/church/get_faction_label()
-	return "the Church of Azuria"
+	return "the Church of Valmoria"
 
 /obj/structure/roguemachine/vaultbank/church/can_issue_loan(mob/user)
 	if(!user)
@@ -680,7 +680,7 @@
 	return SStreasury?.church_agents
 
 /obj/structure/roguemachine/vaultbank/church/get_patron_label()
-	return "the Church of Azuria"
+	return "the Church of Valmoria"
 
 /obj/structure/roguemachine/vaultbank/church/get_patron_cap()
 	return PATRON_CAP_CHURCH
@@ -705,7 +705,7 @@
 
 /obj/structure/roguemachine/vaultbank/merchant
 	name = "\improper MERCHANT JAWBANK"
-	desc = "A biomechanical obselisk that secures the coffers of the Azurian Trading Company. Throttle it with a strike to spill that which is rightfully yours."
+	desc = "A biomechanical obselisk that secures the coffers of the Valmorian Trading Company. Throttle it with a strike to spill that which is rightfully yours."
 	alert_jobs = list("Merchant", "Shophand")
 	alert_location = "the Merchant's quarter"
 	bash_floor = 500
@@ -715,7 +715,7 @@
 	return "merchant"
 
 /obj/structure/roguemachine/vaultbank/merchant/get_faction_label()
-	return "the Azurian Trading Company"
+	return "the Valmorian Trading Company"
 
 /obj/structure/roguemachine/vaultbank/merchant/can_issue_loan(mob/user)
 	if(!user)
@@ -732,20 +732,20 @@
 	return SStreasury?.merchant_agents
 
 /obj/structure/roguemachine/vaultbank/merchant/get_patron_label()
-	return "the Azurian Trading Company"
+	return "the Valmorian Trading Company"
 
 /obj/structure/roguemachine/vaultbank/merchant/get_patron_cap()
 	return PATRON_CAP_MERCHANT
 
 /obj/structure/roguemachine/vaultbank/merchant/get_patron_explanation()
-	return "Granting a person the status of Agent of the Azurian Trading Company confers Burgher standing upon them, lowering their tax class and shielding them from the worst abuses of the Crown's taxmen. They may also read the names of those who owe debt to the Company. It enables them to call upon their kins from their realms for benefits, and hail ships and manage purchase on your behalf. Go forth, in Malum's name, and let them collect what is rightfully owed. - Ser Yohan d'Azur"
+	return "Granting a person the status of Agent of the Valmorian Trading Company confers Burgher standing upon them, lowering their tax class and shielding them from the worst abuses of the Crown's taxmen. They may also read the names of those who owe debt to the Company. It enables them to call upon their kins from their realms for benefits, and hail ships and manage purchase on your behalf. Go forth, in Malum's name, and let them collect what is rightfully owed. - Ser Yohan d'Azur"
 
 /obj/structure/roguemachine/vaultbank/merchant/enforce_placement()
 	return
 
 /obj/structure/roguemachine/vaultbank/bathhouse
 	name = "\improper BATHHOUSE JAWBANK"
-	desc = "A biomechanical obselisk that secures the takings of the Azurian Bathhouse. Throttle it with a strike to spill that which is rightfully yours."
+	desc = "A biomechanical obselisk that secures the takings of the Valmorian Bathhouse. Throttle it with a strike to spill that which is rightfully yours."
 	alert_jobs = list("Bathmaster", "Bathhouse Attendant")
 	alert_location = "the Bathhouse"
 	bash_floor = 500

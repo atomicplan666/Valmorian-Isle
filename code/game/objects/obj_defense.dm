@@ -109,7 +109,7 @@
 	visible_message(span_danger("[src] is hit by \a [P]!"), null, null, COMBAT_MESSAGE_RANGE)
 	if(!QDELETED(src)) //Bullet on_hit effect might have already destroyed this object
 		take_damage(P.damage, P.damage_type, P.flag, 0, turn(P.dir, 180), P.armor_penetration, P.object_damage_multiplier)
-	P.handle_drop() //AZURE PEAK: Make sure reusable projectiles don't disappear on hit
+	P.handle_drop() //VALMORIA: Make sure reusable projectiles don't disappear on hit
 
 /obj/proc/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, armor_penetration = 0) //used by attack_alien, attack_animal, and attack_slime
 	user.do_attack_animation(src)

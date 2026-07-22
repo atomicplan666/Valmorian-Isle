@@ -61,7 +61,7 @@
 	choice_tooltips = list(
 		NOTABLE_BEAUTY = "Just looking at me relieves some of the hardships of the world, and I'm quite good in bed.",
 		NOTABLE_STASH = "I've a hidden coinpurse for a particularly dark dae.",
-		NOTABLE_RESIDENCY = "I am a Resident of Azure Peak, with access to one of its buildings all to myself.",
+		NOTABLE_RESIDENCY = "I am a Resident of Valmoria, with access to one of its buildings all to myself.",
 		NOTABLE_SHREWD = "Grants Secular Appraise -- a spell that allows you to tell how much wealth someone has on them, and in their Meister."
 	)
 
@@ -113,7 +113,7 @@
 							var/obj/structure/chair/chosen_chair = pick(possible_chairs)
 							recipient.forceMove(get_turf(chosen_chair))
 							chosen_chair.buckle_mob(recipient)
-							to_chat(recipient, span_notice("As a resident of Azure Peak, you find yourself seated at a chair in the local tavern."))
+							to_chat(recipient, span_notice("As a resident of Valmoria, you find yourself seated at a chair in the local tavern."))
 						else
 							var/list/possible_spawns = list()
 							for(var/turf/T in spawn_area)
@@ -123,7 +123,7 @@
 							if(length(possible_spawns))
 								var/turf/spawn_loc = pick(possible_spawns)
 								recipient.forceMove(spawn_loc)
-								to_chat(recipient, span_notice("As a resident of Azure Peak, you find yourself in the local tavern."))
+								to_chat(recipient, span_notice("As a resident of Valmoria, you find yourself in the local tavern."))
 
 #undef NOTABLE_BEAUTY
 #undef NOTABLE_STASH

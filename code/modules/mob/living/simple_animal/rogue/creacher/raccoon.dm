@@ -2,7 +2,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/raccoon
 	icon = 'icons/roguetown/mob/monster/raccoon.dmi'
 	name = "rakun"
-	desc = "An adorable albiet dangerous creacher of Azuria's northern coast, known to steal food from bins or eat small game."
+	desc = "An adorable albiet dangerous creacher of Valmoria's northern coast, known to steal food from bins or eat small game."
 	icon_state = "raccoon"
 	icon_living = "raccoon"
 	icon_dead = "raccoon_dead"

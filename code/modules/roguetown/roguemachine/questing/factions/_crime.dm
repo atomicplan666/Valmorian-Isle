@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_ROAD_ROBBERY
 	tier = CRIME_TIER_COMMON
 	phrasings = list(
-		"the robbery of merchants under the peace of Azuria",
+		"the robbery of merchants under the peace of Valmoria",
 		"the despoiling of caravans bound lawfully for market",
 	)
 
@@ -343,7 +343,7 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_FOREIGN_PAY
 	tier = CRIME_TIER_OATH
 	phrasings = list(
-		"the taking of pay from a foreign captain while bound to Azuria",
+		"the taking of pay from a foreign captain while bound to Valmoria",
 		"selling of their arm to strange banners, their oath yet warm",
 	)
 
@@ -369,7 +369,7 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	tier = CRIME_TIER_OATH
 	phrasings = list(
 		"adhering to the Duke's enemies, and giving them aid and counsel",
-		"the bearing of word and bread to those who war upon Azuria",
+		"the bearing of word and bread to those who war upon Valmoria",
 	)
 
 /datum/quest_crime/oath_betrayal

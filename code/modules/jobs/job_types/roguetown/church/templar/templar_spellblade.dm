@@ -1,6 +1,6 @@
 /datum/advclass/templar/noc_spellblade
 	name = "Noccite Azurcaephan"
-	tutorial = "You are a Noccite Azurcaephan - A devotee of the Azurean Church\
+	tutorial = "You are a Noccite Azurcaephan - A devotee of the Valmorian Church\
 	Other templars clad themselves in heavy armor and relies on their miracles and their cone\
 	But you know Noc's true teaching - he granted knowledge so we, humen, may seize upon it and uses magyck\
 	to seize our own destiny. With steel in one hand, sorcery in the other, and Noc's blessing in your heart\
@@ -94,8 +94,8 @@
 				H.mind.AddSpell(new /datum/action/cooldown/spell/leyline_anchor)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/blade_storm)
 			if("phalangite")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/azurean_phalanx)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/azurean_pilum)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/valmorian_phalanx)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/valmorian_pilum)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/advance)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/gate_of_reckoning)
 			if("macebearer")

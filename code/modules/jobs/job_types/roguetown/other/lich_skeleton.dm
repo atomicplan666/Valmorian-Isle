@@ -598,7 +598,7 @@ LICH SKELETONS
 // Medium armor, high INT, same chant/spells as regular spellblade. No miracles.
 /datum/advclass/greater_skeleton/lich/spellblade
 	name = "Venerated Azurcaephan"
-	tutorial = "Swerve, parry, cast. Your bones have dried, and your flesh have withered. But your wits, and the flow of the arcyne remains untamed. Fuse gilbranze and sorcery, let the legends of the Azurcaephan be known again. Azurea, reborn in arcyne fyre! No! Tarichea! Tarichea! Tarichea! Long may she live! Long may she reign! Tarichea forevermore! My blade undulled, my chant unbroken, my wits untarnished!"
+	tutorial = "Swerve, parry, cast. Your bones have dried, and your flesh have withered. But your wits, and the flow of the arcyne remains untamed. Fuse gilbranze and sorcery, let the legends of the Azurcaephan be known again. Valmoria, reborn in arcyne fyre! No! Tarichea! Tarichea! Tarichea! Long may she live! Long may she reign! Tarichea forevermore! My blade undulled, my chant unbroken, my wits untarnished!"
 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/spellblade
 	maximum_possible_slots = 1
 	category_tags = list(CTAG_LSKELETON)
@@ -685,8 +685,8 @@ LICH SKELETONS
 				H.mind.AddSpell(new /datum/action/cooldown/spell/leyline_anchor)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/blade_storm)
 			if("phalangite")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/azurean_phalanx)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/azurean_pilum)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/valmorian_phalanx)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/valmorian_pilum)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/advance)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/gate_of_reckoning)
 			if("macebearer")

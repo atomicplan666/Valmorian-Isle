@@ -26,7 +26,7 @@ Outlaws and undead are shunned by Astrata outside of her order. They may not inv
 	explanation = {"<p>A noble may claim the throne through the assent of their peers. An ancient tradition upheld by the order ordained by Astrata.</p>\
 <p><b>Who may invoke:</b> Any noble.</p>\
 <p><b>How it works:</b> Nobles of the realm must then gather near the throne and speak the words 'I assent' to support your claim.</p>\
-<p><b>Completion condition:</b> Members of the ducal family (Consort, Prince), Insiders (Hand, Steward, Councillor) and those with Heartfelt ties need only <b>3</b> noble voices — a palace coup. All other nobles require a quorum of <b>5</b> voices. Resident nobles of Azure Peak count as a full voice; foreign (wanderer) nobles count as only half. Once the threshold is reached, the realm is alerted and a contestation period begins — survive it and stay conscious while remaining near the throne, and it is yours.</p>\
+<p><b>Completion condition:</b> Members of the ducal family (Consort, Prince), Insiders (Hand, Steward, Councillor) and those with Heartfelt ties need only <b>3</b> noble voices — a palace coup. All other nobles require a quorum of <b>5</b> voices. Resident nobles of Valmoria count as a full voice; foreign (wanderer) nobles count as only half. Once the threshold is reached, the realm is alerted and a contestation period begins — survive it and stay conscious while remaining near the throne, and it is yours.</p>\
 <p><b>Restrictions:</b> Outlaws and those touched by the stench of undead may not invoke or assent.</p>\
 <p><b>Realm type if successful:</b> Grand Duchy, ruled by a Grand Duke / Grand Duchess.</p>"}
 

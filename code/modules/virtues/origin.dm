@@ -2,21 +2,21 @@
 /datum/virtue/origin/unknown
 	name = "Nowhere"
 	origin_name = "Elsewhere"
-	desc = "I originate from one of the many lesser settlements dotted around Psydonia, oft-too demure or distant for the Azurian layman to recall. Since I hail from nowhere in particular, I know no regional tongue in particular. <br>"
+	desc = "I originate from one of the many lesser settlements dotted around Psydonia, oft-too demure or distant for the Valmorian layman to recall. Since I hail from nowhere in particular, I know no regional tongue in particular. <br>"
 	origin_desc = "For every greater kingdom that crests Psydonia, there lies a hundred lesser settlements; villages and fiefdoms, cursed to bare a legacy that will \
 	only be carried by the few who travel abroad. More distressingly, such a fate is strongly associated with the many souls who've been left to wander this bygone \
 	world, bereft of an identity to call their own - peasants, refugees, orphans, erranteers and more."
 
-/datum/virtue/origin/azuria
-	name = "Azurian"
-	origin_name = "Azuria"
-	desc = "I originate from the settled lands of Azuria, an independent kingdom sandwiched between Otava and Grenzelhoft. Famed for its delicious waffles and ancient ruins, the Duchy is uniquely situated at the forefront of many worldly affairs - both past and present.<br>"
+/datum/virtue/origin/valmoria
+	name = "Valmorian"
+	origin_name = "Valmoria"
+	desc = "I originate from the settled lands of Valmoria, an independent kingdom sandwiched between Otava and Grenzelhoft. Famed for its delicious waffles and ancient ruins, the Duchy is uniquely situated at the forefront of many worldly affairs - both past and present.<br>"
 	restricted = FALSE
-	added_languages = list(/datum/language/oldazurian)
-	origin_desc = "Originally unsettled, Azuria's forested plateaus bore witness to the greatest miracle in history; the Comet Syon, which saved the world from complete \
-	destruction. The missile's resting place - just off Azuria's coast - established the locale as a holy site for worshippers of both Psydon and the Pantheon, which \
+	added_languages = list(/datum/language/oldvalmorian)
+	origin_desc = "Originally unsettled, Valmoria's forested plateaus bore witness to the greatest miracle in history; the Comet Syon, which saved the world from complete \
+	destruction. The missile's resting place - just off Valmoria's coast - established the locale as a holy site for worshippers of both Psydon and the Pantheon, which \
 	eventually led to a Celestian-funded displacement of its ancestral elven inhabitants. The recent surge of villainous monsters and misfortune is said to be attributed \
-	to such injustices; a belated curse from Dendor's scornful hand. </br> Azuria houses a uniquely diverse culture, born from generations-upon-generations of pilgrims \
+	to such injustices; a belated curse from Dendor's scornful hand. </br> Valmoria houses a uniquely diverse culture, born from generations-upon-generations of pilgrims \
 	from all over Psydonia. Likewise, the lesser kingdom's proximity to the Comet Syon has spawned a deluge of anomalous quirks in both the land and its people; a facet \
 	that has drawn the attention of both opportunistic villains and desperate heroes."
 
@@ -242,12 +242,12 @@
 	The Underdark itself is a gigantic system of different caves, caverns tunnels and hollowed out underground regions that span leagues upon \
 	leagues both across and deep into Psydonia's soil. Not all of these systems are inherenty connected, paved or make logical sense,  but the \
 	Underdwellers always have  knack for traversing them. Underdark as a whole, is split into Western and Eastern, Western being the one that \
-	resides beneath Azuria and its continent, and the Eastern that is located deep within Raneshen and Kazengun's soil, noticeably less populated \
+	resides beneath Valmoria and its continent, and the Eastern that is located deep within Raneshen and Kazengun's soil, noticeably less populated \
 	than the western counterpart, shrouded in mystery; more so than the other. Most important fact remains, Western and Eastern Underdark are NOT \
 	connected directly, only point where one could pass from one into the other, in theory being a marvel of artifice, constructed by the deep \
 	dwarves, known as Duergar. Their hostile and isolationist nature prevents any who seek passage through their fortress of artifice that sits \
 	above the vast molten sea in the deepest of depths, from obtaining it in this lyfe. This makes Eastern Underdwellers somewhat more rare in \
-	places lyke Azuria due to the sheer difficulty and amount of hoops one'd need to jump through to reach its forests.\n<br><br>\
+	places lyke Valmoria due to the sheer difficulty and amount of hoops one'd need to jump through to reach its forests.\n<br><br>\
 	\
 	Underdwellers live a harsh lyfe, filled with hard toil, sweat and blood, and thusly they are no strangers to violence and darker things one \
 	could experience in mortal lyfe. Most settlements in these depths practice some sort of violent cultural tradition, engage in bloodsports, or \

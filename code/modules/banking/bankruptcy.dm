@@ -19,9 +19,9 @@
 	record_round_statistic(STATS_ARREARS_DECLARED, 1)
 	// Direct credit so the loan itself isn't immediately skimmed against the debt we just registered.
 	discretionary_fund.balance += loan_amount
-	log_fund_entry(new /datum/treasury_entry("mint", null, discretionary_fund, loan_amount, "Arrears advance from the Azurian Trading Company"))
+	log_fund_entry(new /datum/treasury_entry("mint", null, discretionary_fund, loan_amount, "Arrears advance from the Valmorian Trading Company"))
 	priority_announce(
-		"The Crown's coffers ran dry at payroll. The Burghers of Azuria, by their standing pledge, advance [loan_amount]m at no interest to cover the day's wages. Should the Crown fail again on the morrow, the realm enters sequestration.",
+		"The Crown's coffers ran dry at payroll. The Burghers of Valmoria, by their standing pledge, advance [loan_amount]m at no interest to cover the day's wages. Should the Crown fail again on the morrow, the realm enters sequestration.",
 		"THE BURGHERS LEND",
 		'sound/misc/royal_decree2.ogg',
 		"Captain",
@@ -43,7 +43,7 @@
 	else if(discretionary_fund.balance < BANKRUPTCY_OPERATING_FLOOR)
 		var/topup = BANKRUPTCY_OPERATING_FLOOR - discretionary_fund.balance
 		discretionary_fund.balance = BANKRUPTCY_OPERATING_FLOOR
-		log_fund_entry(new /datum/treasury_entry("mint", null, discretionary_fund, topup, "Sequestration: operating reserve from the Azurian Trading Company"))
+		log_fund_entry(new /datum/treasury_entry("mint", null, discretionary_fund, topup, "Sequestration: operating reserve from the Valmorian Trading Company"))
 
 	// Existing arrears debt is rolled into the new sequestration debt rather than dropped,
 	// so the Crown doesn't escape the smaller obligation by failing harder.
@@ -57,7 +57,7 @@
 	suspend_wages_for_bankruptcy()
 
 	priority_announce(
-		"Following seizure of [atc_seizure_blurb()] against the Crown's outstanding obligations, the Azurian Trading Company - most blessed, most devout servant of Malum the Worker and Abyssor the Dreamer - has graciously advanced an interest-free reserve of [BANKRUPTCY_OPERATING_FLOOR]m in exchange for a debt of [new_debt]m to the Company. Until the debt is repaid in full, the Company holds the sequestered revenues of the realm and farms the customs and salt tolls in perpetuity; the stockpile and trade-engine pass to its hand, that the orderly operation of commerce may be assured for the common weal. Salaries stand suspended; all Charters but the Golden Bull are dissolved.",
+		"Following seizure of [atc_seizure_blurb()] against the Crown's outstanding obligations, the Valmorian Trading Company - most blessed, most devout servant of Malum the Worker and Abyssor the Dreamer - has graciously advanced an interest-free reserve of [BANKRUPTCY_OPERATING_FLOOR]m in exchange for a debt of [new_debt]m to the Company. Until the debt is repaid in full, the Company holds the sequestered revenues of the realm and farms the customs and salt tolls in perpetuity; the stockpile and trade-engine pass to its hand, that the orderly operation of commerce may be assured for the common weal. Salaries stand suspended; all Charters but the Golden Bull are dissolved.",
 		"SEQUESTRATION DECLARED",
 		'sound/misc/royal_decree.ogg',
 		"Captain",
@@ -95,7 +95,7 @@
 			if(atc_loan_arrears_consumed)
 				atc_loan_arrears_consumed = FALSE
 				priority_announce(
-					"The Crown's debt to the Azurian Trading Company is settled. The Burghers' grace stands restored.",
+					"The Crown's debt to the Valmorian Trading Company is settled. The Burghers' grace stands restored.",
 					"ATC LOAN SETTLED",
 					'sound/misc/royal_decree2.ogg',
 					"Captain",
@@ -136,7 +136,7 @@
 	GLOB.azure_round_stats[STATS_TREASURY_DEBT_OUTSTANDING] = 0
 
 	priority_announce(
-		"The Azurian Trading Company releases the Crown's commerce. Wages resume on the morrow. The Lord may, by ancient prerogative, restore up to [BANKRUPTCY_CONCESSION_PICKS] of the suspended Charters at once; all others must wait the customary span between proclamations.",
+		"The Valmorian Trading Company releases the Crown's commerce. Wages resume on the morrow. The Lord may, by ancient prerogative, restore up to [BANKRUPTCY_CONCESSION_PICKS] of the suspended Charters at once; all others must wait the customary span between proclamations.",
 		"SEQUESTRATION LIFTED",
 		'sound/misc/royal_decree.ogg',
 		"Captain",
@@ -213,7 +213,7 @@
 			return "Sequestered"
 	return "Unknown"
 
-/// Properties the Azurian Trading Company "seizes" against the Crown's debts on bankruptcy entry.
+/// Properties the Valmorian Trading Company "seizes" against the Crown's debts on bankruptcy entry.
 /// Two or three are picked at random for the sequestration announcement. 
 GLOBAL_LIST_INIT(atc_seizure_inventory, list(
 	"the Lord's gilded bathing-tub",
@@ -305,10 +305,10 @@ GLOBAL_LIST_INIT(atc_seizure_inventory, list(
 	discretionary_fund.balance += amount
 	log_fund_entry(new /datum/treasury_entry("mint", null, discretionary_fund, amount, "ATC emergency loan (principal)"))
 	priority_announce(
-		"The Crown takes an advance of [amount]m from the Azurian Trading Company at the customary one-quarter interest, registering a debt of [debt_owed]m. The arrears grace stands forfeit; should the Crown miss its next payroll, the realm enters sequestration without warning.",
+		"The Crown takes an advance of [amount]m from the Valmorian Trading Company at the customary one-quarter interest, registering a debt of [debt_owed]m. The arrears grace stands forfeit; should the Crown miss its next payroll, the realm enters sequestration without warning.",
 		"THE CROWN BORROWS",
 		'sound/misc/royal_decree.ogg',
 		"Captain",
 	)
-	log_game("ATC LOAN: [applicant ? key_name(applicant) : "system"] drew [amount]m principal from the Azurian Trading Company; debt of [debt_owed]m registered")
+	log_game("ATC LOAN: [applicant ? key_name(applicant) : "system"] drew [amount]m principal from the Valmorian Trading Company; debt of [debt_owed]m registered")
 	return TRUE

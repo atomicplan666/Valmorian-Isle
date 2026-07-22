@@ -1,6 +1,6 @@
 /obj/structure/roguemachine/ship_fulfillment
 	name = "ship fulfillment crate"
-	desc = "A wide crate stamped with the seal of the Azurian Trading Company. Goods deposited here are accepted against the demands of foreign vessels in port - the depositor is paid in mammon to their account, less the Crown's export duty and the Merchant's middleman cut."
+	desc = "A wide crate stamped with the seal of the Valmorian Trading Company. Goods deposited here are accepted against the demands of foreign vessels in port - the depositor is paid in mammon to their account, less the Crown's export duty and the Merchant's middleman cut."
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -230,7 +230,7 @@
 		return
 	if(I.atc_sealed)
 		if(message)
-			to_chat(user, span_warning("[I] bears an Azurian Trading Company seal - foreign captains will not buy Company stock back."))
+			to_chat(user, span_warning("[I] bears an Valmorian Trading Company seal - foreign captains will not buy Company stock back."))
 		return
 	if(istype(I, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/food/snacks/F = I

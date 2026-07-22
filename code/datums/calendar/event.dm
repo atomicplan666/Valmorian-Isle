@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(calendar_events)
 
 /datum/calendar_event
 	var/id
-	var/calendar_system = CALENDAR_SYSTEM_AZURIAN
+	var/calendar_system = CALENDAR_SYSTEM_VALMORIAN
 	var/recur_month
 	var/recur_day
 	var/duration_days = 1

@@ -1,12 +1,12 @@
 #define PHALANX_FILTER "phalanx_glow"
 
-/datum/action/cooldown/spell/azurean_phalanx
-	name = "Azurean Phalanx"
+/datum/action/cooldown/spell/valmorian_phalanx
+	name = "Valmorian Phalanx"
 	desc = "Prime your next melee strike with arcyne force. On hit, the blow pierces through, \
 		striking enemies in a line behind the target. Builds 1 momentum on hit. \
 		At 3+ momentum: consumes 3 for a deeper, more damaging pierce."
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
-	button_icon_state = "azurean_phalanx"
+	button_icon_state = "valmorian_phalanx"
 	sound = 'sound/magic/antimagic.ogg'
 	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
@@ -17,7 +17,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_SB_POKE
 
-	invocations = list("Phalanx Azurea!")
+	invocations = list("Phalanx Valmoria!")
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = FALSE
@@ -35,7 +35,7 @@
 	var/empowered_pierce_damage = 50
 	var/momentum_cost = 3
 
-/datum/action/cooldown/spell/azurean_phalanx/cast(atom/cast_on)
+/datum/action/cooldown/spell/valmorian_phalanx/cast(atom/cast_on)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	if(!istype(H))
@@ -67,7 +67,7 @@
 	playsound(get_turf(H), 'sound/magic/antimagic.ogg', 60, TRUE)
 	return TRUE
 
-/datum/action/cooldown/spell/azurean_phalanx/proc/do_pierce(mob/living/carbon/human/user, mob/living/struck, empowered)
+/datum/action/cooldown/spell/valmorian_phalanx/proc/do_pierce(mob/living/carbon/human/user, mob/living/struck, empowered)
 	if(QDELETED(user) || user.stat == DEAD)
 		return
 
@@ -120,7 +120,7 @@
 		if(spell_guard_check(struck, FALSE, user))
 			deflected = TRUE
 		else
-			arcyne_strike(user, struck, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Azurean Phalanx", skip_animation = TRUE)
+			arcyne_strike(user, struck, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Valmorian Phalanx", skip_animation = TRUE)
 			hit_count++
 			already_hit += struck
 
@@ -131,7 +131,7 @@
 			if(spell_guard_check(victim, FALSE, deflected ? null : user))
 				deflected = TRUE
 				continue
-			arcyne_strike(user, victim, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Azurean Phalanx", skip_animation = TRUE)
+			arcyne_strike(user, victim, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Valmorian Phalanx", skip_animation = TRUE)
 			hit_count++
 			already_hit += victim
 
@@ -179,13 +179,13 @@
 	var/obj/item/bound = arcyne_get_weapon(owner)
 	if(!bound || bound != weapon)
 		return
-	var/datum/action/cooldown/spell/azurean_phalanx/spell = spell_ref?.resolve()
+	var/datum/action/cooldown/spell/valmorian_phalanx/spell = spell_ref?.resolve()
 	if(!spell)
 		owner.remove_status_effect(/datum/status_effect/buff/phalanx_ready)
 		return
 	var/was_empowered = empowered
 	owner.remove_status_effect(/datum/status_effect/buff/phalanx_ready)
-	INVOKE_ASYNC(spell, TYPE_PROC_REF(/datum/action/cooldown/spell/azurean_phalanx, do_pierce), source, target, was_empowered)
+	INVOKE_ASYNC(spell, TYPE_PROC_REF(/datum/action/cooldown/spell/valmorian_phalanx, do_pierce), source, target, was_empowered)
 
 /obj/effect/temp_visual/blade_stab
 	icon = 'icons/effects/effects.dmi'

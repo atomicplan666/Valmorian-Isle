@@ -43,7 +43,7 @@
         "Sewing Kit" =  /obj/item/repair_kit,
     )
 /datum/outfit/job/roguetown/wretch/munitioneer/pre_equip(mob/living/carbon/human/H)
-	to_chat(H, span_warning("You are a passable warrior- though weak- but your true strength lies in your ability to bend the resources of Azuria to your will."))
+	to_chat(H, span_warning("You are a passable warrior- though weak- but your true strength lies in your ability to bend the resources of Valmoria to your will."))
 	has_loadout = TRUE
 	head = /obj/item/clothing/head/roguetown/roguehood/warden/munitioneer
 	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy

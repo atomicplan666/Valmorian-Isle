@@ -1228,7 +1228,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth
 	name = "froggemund helmet"
-	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Azure Peak. It covers not only the \
+	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Valmoria. It covers not only the \
 	entire head and face, but the neck as well. Add some cloth to show the colors of your family or allegiance, or a nurse's \
 	veil to ward off the chilliness of a winterborn tournament."
 	icon_state = "frogmouth"
@@ -1283,7 +1283,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/greatplume
 	name = "froggemund helmet with greatplume"
-	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Azure Peak. It covers not only the \
+	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Valmoria. It covers not only the \
 	entire head and face, but the neck as well. Mounted on the back is a larger couplet, capable of mounting a feathered greatplume; a \
 	blessing for the flamboyant-hearted."
 	icon_state = "frogmouthgreatplume"
@@ -1598,7 +1598,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard/bogman/iron
 	name = "bogman's helmet"
-	desc = "An iron helmet featuring the face of a snarling goblin. Once worn by the Bogmen, now a relic of old Azuria."
+	desc = "An iron helmet featuring the face of a snarling goblin. Once worn by the Bogmen, now a relic of old Valmoria."
 	icon_state = "iguardhelm"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON

@@ -1,17 +1,17 @@
-/datum/action/cooldown/spell/projectile/azurean_pilum
-	name = "Azurean Pilum"
-	desc = "A borrowed art - spellblades of the Azurean tradition learned to imbue their throw with ice essence, \
+/datum/action/cooldown/spell/projectile/valmorian_pilum
+	name = "Valmorian Pilum"
+	desc = "A borrowed art - spellblades of the Valmorian tradition learned to imbue their throw with ice essence, \
 		flash-chilling the target on impact. Applies 2 frost stacks on hit. \
 		At 3+ momentum: consumes 3 for a heavier throw that applies 3 stacks, guaranteeing a freeze on any frosted target. \
 		Toggle arc mode (Shift+G) to arc over allies."
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
-	button_icon_state = "azurean_javelin"
+	button_icon_state = "valmorian_javelin"
 	sound = 'sound/combat/wooshes/bladed/wooshsmall (1).ogg'
 	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
 
-	projectile_type = /obj/projectile/energy/azurean_pilum
-	projectile_type_arc = /obj/projectile/energy/azurean_pilum/arc
+	projectile_type = /obj/projectile/energy/valmorian_pilum
+	projectile_type_arc = /obj/projectile/energy/valmorian_pilum/arc
 	cast_range = 15
 
 	primary_resource_type = SPELL_COST_STAMINA
@@ -39,7 +39,7 @@
 	var/cached_damage = 0
 	var/cached_empowered = FALSE
 
-/datum/action/cooldown/spell/projectile/azurean_pilum/cast(atom/cast_on)
+/datum/action/cooldown/spell/projectile/valmorian_pilum/cast(atom/cast_on)
 	var/mob/living/carbon/human/H = owner
 	if(!istype(H))
 		return FALSE
@@ -58,20 +58,20 @@
 	cached_damage = cached_empowered ? empowered_damage : base_damage
 
 	if(cached_empowered)
-		projectile_type = /obj/projectile/energy/azurean_pilum/empowered
-		projectile_type_arc = /obj/projectile/energy/azurean_pilum/empowered/arc
+		projectile_type = /obj/projectile/energy/valmorian_pilum/empowered
+		projectile_type_arc = /obj/projectile/energy/valmorian_pilum/empowered/arc
 	else
-		projectile_type = /obj/projectile/energy/azurean_pilum
-		projectile_type_arc = /obj/projectile/energy/azurean_pilum/arc
+		projectile_type = /obj/projectile/energy/valmorian_pilum
+		projectile_type_arc = /obj/projectile/energy/valmorian_pilum/arc
 
 	. = ..()
 
-/datum/action/cooldown/spell/projectile/azurean_pilum/ready_projectile(obj/projectile/to_fire, atom/target, mob/user, iteration)
+/datum/action/cooldown/spell/projectile/valmorian_pilum/ready_projectile(obj/projectile/to_fire, atom/target, mob/user, iteration)
 	..()
 	to_fire.damage = cached_damage
 
-/obj/projectile/energy/azurean_pilum
-	name = "Azurean Pilum"
+/obj/projectile/energy/valmorian_pilum
+	name = "Valmorian Pilum"
 	icon = 'icons/obj/magic_projectiles.dmi'
 	icon_state = "air_blade_stab"
 	color = "#88BFFF"
@@ -84,7 +84,7 @@
 	/// How many frost stacks to apply on hit
 	var/frost_stacks = 1
 
-/obj/projectile/energy/azurean_pilum/on_hit(target)
+/obj/projectile/energy/valmorian_pilum/on_hit(target)
 	. = ..()
 	if(isliving(target))
 		var/mob/living/L = target
@@ -99,18 +99,18 @@
 		if(firer)
 			log_combat(firer, L, "pilum-struck")
 
-/obj/projectile/energy/azurean_pilum/empowered
-	name = "Empowered Azurean Pilum"
+/obj/projectile/energy/valmorian_pilum/empowered
+	name = "Empowered Valmorian Pilum"
 	icon_state = "youreyesonly"
 	color = "#4CADEE"
 	frost_stacks = 3
 
-/obj/projectile/energy/azurean_pilum/arc
-	name = "Arced Azurean Pilum"
+/obj/projectile/energy/valmorian_pilum/arc
+	name = "Arced Valmorian Pilum"
 	damage = 26
 	arcshot = TRUE
 
-/obj/projectile/energy/azurean_pilum/empowered/arc
-	name = "Empowered Arced Azurean Pilum"
+/obj/projectile/energy/valmorian_pilum/empowered/arc
+	name = "Empowered Arced Valmorian Pilum"
 	damage = 26
 	arcshot = TRUE

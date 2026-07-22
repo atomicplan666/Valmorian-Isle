@@ -1,7 +1,7 @@
-// Azure Grove - the areas to the south of the map
+// Valmorian Grove - the areas to the south of the map
 
 /area/rogue/outdoors/woods
-	name = "The Azure Grove"
+	name = "The Valmorian Grove"
 	icon_state = "woods"
 	ambientsounds = AMB_FORESTDAY
 	ambientnight = AMB_FORESTNIGHT
@@ -23,14 +23,14 @@
 				/mob/living/carbon/human/species/human/northern/militia/deserter = 20,
 				/mob/living/carbon/human/species/hobgoblin/npc/ambush = 15,
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 10)
-	first_time_text = "THE AZURE GROVE"
+	first_time_text = "THE VALMORIAN GROVE"
 	converted_type = /area/rogue/indoors/shelter/woods
 	deathsight_message = "somewhere in the wilds"
 	threat_region = THREAT_REGION_AZURE_GROVE
 	detail_text = DETAIL_TEXT_AZURE_GROVE
 
 /area/rogue/indoors/shelter/woods
-	name = "Azure Grove"
+	name = "Valmorian Grove"
 	icon_state = "woods"
 	droning_sound = 'sound/music/area/forest.ogg'
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
@@ -40,7 +40,7 @@
 
 
 /area/rogue/outdoors/woods/north
-	name = "Azure Grove - North"
+	name = "Valmorian Grove - North"
 	ambush_mobs = list(
 		/mob/living/simple_animal/hostile/retaliate/rogue/badger = 10,
 		/mob/living/simple_animal/hostile/retaliate/rogue/raccoon = 30,
@@ -53,7 +53,7 @@
 	threat_region = THREAT_REGION_AZURE_GROVE
 
 /area/rogue/outdoors/woods/northeast
-	name = "Azure Grove - Northeast"
+	name = "Valmorian Grove - Northeast"
 	ambush_mobs = list(
 			/mob/living/simple_animal/hostile/retaliate/rogue/badger = 10,
 			/mob/living/simple_animal/hostile/retaliate/rogue/raccoon = 30,
@@ -68,7 +68,7 @@
 	threat_region = THREAT_REGION_AZURE_GROVE
 
 /area/rogue/outdoors/woods/southeast
-	name = "Azure Grove - Southeast"
+	name = "Valmorian Grove - Southeast"
 	ambush_mobs = list(
 		/mob/living/simple_animal/hostile/retaliate/rogue/badger = 10,
 		/mob/living/simple_animal/hostile/retaliate/rogue/raccoon = 30,
@@ -82,7 +82,7 @@
 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30)
 
 /area/rogue/outdoors/woods/south
-	name = "Azure Grove - South"
+	name = "Valmorian Grove - South"
 	ambush_mobs = list(
 		/mob/living/simple_animal/hostile/retaliate/rogue/badger = 10,
 		/mob/living/simple_animal/hostile/retaliate/rogue/raccoon = 30,
@@ -95,7 +95,7 @@
 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20)
 
 /area/rogue/outdoors/woods/southwest
-	name = "Azure Grove - Southwest"
+	name = "Valmorian Grove - Southwest"
 	ambush_mobs = list(
 		/mob/living/simple_animal/hostile/retaliate/rogue/badger = 10,
 		/mob/living/simple_animal/hostile/retaliate/rogue/raccoon = 30,
@@ -108,7 +108,7 @@
 		/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20)
 
 /area/rogue/outdoors/woods/northwest
-	name = "Azure Grove - Northwest"
+	name = "Valmorian Grove - Northwest"
 	ambush_mobs = list(
 		/mob/living/simple_animal/hostile/retaliate/rogue/badger = 10,
 		/mob/living/simple_animal/hostile/retaliate/rogue/raccoon = 30,

@@ -5,9 +5,9 @@
 #define DANGER_LEVEL_DANGEROUS "Dangerous"
 #define DANGER_LEVEL_BLEAK "Bleak"
 
-#define THREAT_REGION_AZURE_BASIN "Azure Basin"
-#define THREAT_REGION_AZURE_GROVE "Azure Grove"
-#define THREAT_REGION_AZUREAN_COAST "Azurean Coast"
+#define THREAT_REGION_AZURE_BASIN "Valmorian Basin"
+#define THREAT_REGION_AZURE_GROVE "Valmorian Grove"
+#define THREAT_REGION_VALMORIAN_COAST "Valmorian Coast"
 #define THREAT_REGION_MOUNT_DECAP "Mount Decapitation"
 #define THREAT_REGION_TERRORBOG "Terrorbog"
 #define THREAT_REGION_UNDERDARK "Underdark"

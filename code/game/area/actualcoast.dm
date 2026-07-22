@@ -39,7 +39,7 @@
 		/mob/living/simple_animal/hostile/retaliate/rogue/mossback = 40
 	)
 	first_time_text = "NORTHERN COAST"
-	threat_region = THREAT_REGION_AZUREAN_COAST
+	threat_region = THREAT_REGION_VALMORIAN_COAST
 
 /area/rogue/outdoors/beach/south
 	name = "Southern Coast"

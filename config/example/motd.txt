@@ -1,3 +1,3 @@
 <!-- Most valid html will work in here, excluding images. -->
-Azure Peak Discord Server: <a href="https://discord.gg/NCFXUAgCPT">https://discord.gg/NCFXUAgCPT</a>
-Azure Peak Patreon: <a href="https:ko-fi.com/azurepeak">https:ko-fi.com/azurepeak</a>
+Valmoria Discord Server: <a href="https://discord.gg/NCFXUAgCPT">https://discord.gg/NCFXUAgCPT</a>
+Valmoria Patreon: <a href="https:ko-fi.com/azurepeak">https:ko-fi.com/azurepeak</a>

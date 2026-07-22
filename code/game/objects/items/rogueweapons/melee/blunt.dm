@@ -789,7 +789,7 @@
 	possible_item_intents = list(/datum/intent/mace/strike, /datum/intent/mace/smash/lesser, /datum/intent/mace/warhammer/pick, /datum/intent/mace/warhammer/stab/lesser)
 	gripped_intents = null //Warhammers are purpose-made to kill. Smaller maceheads lock them out from the 'Dislocate' intent and 'Smash' intent's full knockback. Still, their boon comes from being a 'jack of all trades'.
 	name = "warhammer"
-	desc = "A one-handed derivative of the mace, purpose-made to defeat armored opponents in battle. Paired nicely with a mug of Azuria's finest zenny-liqour and a heater shield."
+	desc = "A one-handed derivative of the mace, purpose-made to defeat armored opponents in battle. Paired nicely with a mug of Valmoria's finest zenny-liqour and a heater shield."
 	icon_state = "iwarhammer"
 	wbalance = WBALANCE_HEAVY
 	smeltresult = /obj/item/ingot/iron

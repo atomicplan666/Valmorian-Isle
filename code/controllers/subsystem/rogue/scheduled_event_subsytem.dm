@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(event_scheduler)
 	- The fog is lethal, do not venture forth without a fog-repelling lamptern. These relics protect those in their light.\n\
 	- Necran clergy may ward off the fog or perform rituals to safeguard entire areas.\n\
 	- Lampterns are not eternal, they must be refilled with blessed, golden-colored oils.", 
-	"Azure Peak Weather")
+	"Valmoria Weather")
 	addtimer(CALLBACK(src, .proc/delayed_tech_unlock), 1 MINUTES)
 	fog_timer_id = addtimer(CALLBACK(src, .proc/trigger_fog_event), fogtime, TIMER_STOPPABLE)
 
@@ -40,7 +40,7 @@ SUBSYSTEM_DEF(event_scheduler)
 	- The fog is lethal; do not venture forth without a fog-repelling lamptern. These relics protect those in their light.\n\
 	- Necran clergy may ward off the fog or perform rituals to safeguard entire areas.\n\
 	- Lampterns are not eternal; they must be refilled with blessed, golden-colored oils.", 
-	"Azure Peak Weather")
+	"Valmoria Weather")
 
 /proc/show_current_datetime()
 	var/dd = text2num(time2text(world.timeofday, "DD"))
@@ -95,7 +95,7 @@ SUBSYSTEM_DEF(event_scheduler)
 	fog_active = FALSE
 	SSParticleWeather.stopWeather()
 	SEND_SIGNAL(src, COMSIG_FOG_END)
-	priority_announce("The fog dissipates as quickly as it arrived. The sun returns.", "Azure Peak Weather")
+	priority_announce("The fog dissipates as quickly as it arrived. The sun returns.", "Valmoria Weather")
 
 /datum/controller/subsystem/event_scheduler/ui_interact(mob/user)
 	var/dat = "<html><head><style>"

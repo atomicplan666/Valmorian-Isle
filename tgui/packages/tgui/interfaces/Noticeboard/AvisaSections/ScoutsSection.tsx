@@ -197,7 +197,7 @@ const HelpPanel = () => (
     </p>
     <p style={{ margin: '0 0 6px 0' }}>
       A safe region is unlikely to spawn ambushes from common creechurs and
-      brigands. A low-threat region may yield lone foes. Only Azure Basin, Azure
+      brigands. A low-threat region may yield lone foes. Only Valmorian Basin, Valmorian
       Grove, and the Terrorbog can be rendered fully safe; regions not listed
       are beyond the wardens' charge and remain dangerous.
     </p>

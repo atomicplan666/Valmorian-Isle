@@ -517,7 +517,7 @@ const FavorCard = (props: {
       />
       <SinkButton
         label="Call in the Company Gnomes"
-        flavor="Invoke the contract with the Azurean Guild of Gnomes Porters, letting them handle Silverface sales and recovering the margins for yourself. For some odd reasons no one have ever spotted these gnomes. Do not let this deter you, you shall profit greatly without lifting a finger for the rest of the week."
+        flavor="Invoke the contract with the Valmorian Guild of Gnomes Porters, letting them handle Silverface sales and recovering the margins for yourself. For some odd reasons no one have ever spotted these gnomes. Do not let this deter you, you shall profit greatly without lifting a finger for the rest of the week."
         cost={favor.gnome_cost}
         current={favor.current}
         done={!!favor.gnome_unlocked}

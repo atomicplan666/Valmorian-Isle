@@ -105,7 +105,7 @@
 	var/list/sev_data = GLOB.vagabond_bounty_severities[bounty_severity_key]
 	var/bounty_total = rand(sev_data["min"], sev_data["max"])
 	if(bounty_severity_key == "HEFTY")
-		if(bounty_poster_key == "AZURIA")
+		if(bounty_poster_key == "VALMORIA")
 			GLOB.outlawed_players += H.real_name
 		else
 			GLOB.excommunicated_players += H.real_name

@@ -471,7 +471,7 @@
 	name = "Thespian-Errant"
 	tutorial = "Gladiators from the arenas of Raneshen and Lirvas, reenactors from the curtain-dazzled courts of Otava and Grenzelhoft, and \
 	shieldbearers from the outermost reaches of Psydonia itself; all are unified in their subconscious pursuit of entertaining something greater \
-	than themselves. You are a skilled combatant from beyond Azuria, who - for one reason or another - is intimately familiar with fighting in ancient equipment."
+	than themselves. You are a skilled combatant from beyond Valmoria, who - for one reason or another - is intimately familiar with fighting in ancient equipment."
 	
 	outfit = /datum/outfit/job/roguetown/adventurer/bronzeclad
 	cmode_music = 'sound/music/combat_thespian.ogg'
@@ -693,20 +693,20 @@
 			id = /obj/item/clothing/ring/bronze
 
 /datum/advclass/foreigner/lesserblackoak
-	name = "Azurian Grovewalker"
+	name = "Valmorian Grovewalker"
 	tutorial = "Autumn's grace trails you as a guardian-errant of the Black Oaks; an irregular militia that \
-	fights for the ancestral elven homelands of Azuria. Nature's call manifests along your blossoming bark, \
+	fights for the ancestral elven homelands of Valmoria. Nature's call manifests along your blossoming bark, \
 	and you shall answer. Whether through blade or bow, you shall ensure that those who dare to disrespect \
-	Azuria's supple forests will learn to regret it."
+	Valmoria's supple forests will learn to regret it."
 	extra_context = "This class is restricted to the Elf, Half-Elf, and Dark Elf species."
 	class_select_category = CLASS_CAT_RACIAL
 	allowed_sexes = list(MALE, FEMALE)
 	forbidden_races = list(RACES_BLACKOAK)
 	traits_applied = list(TRAIT_OUTDOORSMAN, TRAIT_BLACKOAK, TRAIT_DODGEEXPERT, TRAIT_WOODWALKER)
 	outfit = /datum/outfit/job/roguetown/adventurer/lesserblackoak
-	subclass_languages = list(/datum/language/oldazurian)
+	subclass_languages = list(/datum/language/oldvalmorian)
 	cmode_music = 'sound/music/combat_blackoak.ogg'
-	maximum_possible_slots = 3 //A little stronger than a traditional Nomad or Adventurer. The slot limit is more-so intended to keep them a limited presence within Azuria, and to account for their potentially antagonistic nature.
+	maximum_possible_slots = 3 //A little stronger than a traditional Nomad or Adventurer. The slot limit is more-so intended to keep them a limited presence within Valmoria, and to account for their potentially antagonistic nature.
 	subclass_stats = list(
 		STATKEY_PER = 2,
 		STATKEY_SPD = 2,
@@ -731,7 +731,7 @@
 
 /datum/outfit/job/roguetown/adventurer/lesserblackoak/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Whether through merit or heritage, you've earned the right of tutelage under the Black Oaks; an irregular militia that fights for the ancestral elven homelands of Azuria. Jaunt through the underbrush and oppress the oppressors with both blade-and-bow."))
+	to_chat(H, span_warning("Whether through merit or heritage, you've earned the right of tutelage under the Black Oaks; an irregular militia that fights for the ancestral elven homelands of Valmoria. Jaunt through the underbrush and oppress the oppressors with both blade-and-bow."))
 	H.set_blindness(0)
 	if(H.mind)
 		var/weapons = list("Autumned Longsword","Autumned Glaive","Autumned Bow")
@@ -771,7 +771,7 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/autumn
 	name = "autumnwoad recurve bow"
 	desc = "A medium length composite bow of glued horn, wood, and sinew with good shooting \
-	characteristics. Hewn from an Azurian elk tree branch, it still feels as if it is one \
+	characteristics. Hewn from an Valmorian elk tree branch, it still feels as if it is one \
 	with nature; unsullied by the cruder butcherments of Man. </br>'The summer sun is fading \
 	as the year grows old, and darker days are drawing near..'"
 	icon = 'icons/roguetown/weapons/64.dmi'
@@ -779,7 +779,7 @@
 
 /obj/item/rogueweapon/sword/long/elvish/autumn
 	name = "autumned elvish longsword"
-	desc = "A curved longsword, hewn from a melody of faeiron and the living bark of an Azurian \
+	desc = "A curved longsword, hewn from a melody of faeiron and the living bark of an Valmorian \
 	elk tree. Unlike traditional alloys, faeiron is refined purely through the mystical arcyne \
 	techniques of the Black Oaks; nature's stones, hewn to catch and cleave like steel."
 	icon = 'icons/roguetown/weapons/swords64.dmi'
@@ -792,7 +792,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/elvish/autumn
 	name = "autumned elvish dagger"
-	desc = "A wave-bladed dagger of faeiron, fitted from the branch of an Azurian elk \
+	desc = "A wave-bladed dagger of faeiron, fitted from the branch of an Valmorian elk \
 	tree. Just like its elegant creators, so too does it glide through the gaps in maille \
 	like an elf effortlessly bounding across the Groves."
 	icon_state = "aelfdagger"
@@ -806,7 +806,7 @@
 	possible_item_intents = list(/datum/intent/spear/thrust/oneh, SPEAR_BASH)
 	gripped_intents = list(/datum/intent/spear/thrust, /datum/intent/spear/cut, /datum/intent/spear/cut/bardiche/cleave, /datum/intent/spear/cut/glaive/sweep)
 	name = "autumned elvish bardiche"
-	desc = "A cleaving polearm, hewn from the branch of an Azurian elk tree and tipped with a wide blade of faeiron. The \
+	desc = "A cleaving polearm, hewn from the branch of an Valmorian elk tree and tipped with a wide blade of faeiron. The \
 	tapered edge can thrust through an oppressor's armor at the right range, while its wide sweeps can dispell even the \
 	rowdiest of lumberfoots."
 	icon_state = "aebardiche"
@@ -885,7 +885,7 @@
 
 /obj/item/clothing/gloves/roguetown/elven_gloves/autumn
 	name = "autumnwoad elven gloves"
-	desc = "Barkgloves that've been freshly weened off the trunk of a sturdy Azurian elk tree, and \
+	desc = "Barkgloves that've been freshly weened off the trunk of a sturdy Valmorian elk tree, and \
 	mystically preserved in a state of perpetual autumnage. Crimson vines and leaves poke out from \
 	its living joints, wicking away sweat like a sponge to water. </br>'Through autumn's golden gown \
 	we used to kick our way, you always loved this time of year..'"

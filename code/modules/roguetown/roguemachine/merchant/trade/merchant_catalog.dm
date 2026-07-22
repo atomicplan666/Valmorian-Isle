@@ -11,11 +11,11 @@
 /datum/merchant_catalog/rosawood
 	id = "rosawood"
 	name = "Rosawood Arsenal"
-	desc = "The private arsenal of the Count of Rosawood, producing the finest elven arms in Azuria - fine steel weapons, bows and the bounty of Eveswood." //TODO: flavor
+	desc = "The private arsenal of the Count of Rosawood, producing the finest elven arms in Valmoria - fine steel weapons, bows and the bounty of Eveswood." //TODO: flavor
 	favor_cost = ROSAWOOD_ARSENAL_FAVOR
-	home_origin_name = "Azuria"
-	home_realm_id = REALM_AZURIA
-	home_label = "Azurian origin"
+	home_origin_name = "Valmoria"
+	home_realm_id = REALM_VALMORIA
+	home_label = "Valmorian origin"
 	stock = list(
 		/datum/supply_pack/rogue/rosawood/elvish_longsword = 2,
 		/datum/supply_pack/rogue/rosawood/elvish_shortsword = 2,

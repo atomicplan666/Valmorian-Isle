@@ -9,7 +9,7 @@
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/combat_blackoak.ogg'
 	extra_context = "This class is restricted to the Elf, Half-Elf, and Dark Elf species."
-	subclass_languages = list(/datum/language/oldazurian)
+	subclass_languages = list(/datum/language/oldvalmorian)
 	traits_applied = list(TRAIT_AZURENATIVE, TRAIT_OUTDOORSMAN, TRAIT_BLACKOAK, TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
 		STATKEY_STR = 3,
@@ -171,7 +171,7 @@
 
 /datum/advclass/mercenary/blackoak_adept
 	name = "Black Oaken Adept"
-	tutorial = "A spellblade of the Black Oaks. Half mercenary band, half irregular militia fighting for control of their ancestral elven homeland of the Peaks. You have honed the ancient Azurean art of spellbladery - an art that is yours and your people's alone. Thankfully, you are not here today to shed the blood of the Duke's men - unless someone pays you to..."
+	tutorial = "A spellblade of the Black Oaks. Half mercenary band, half irregular militia fighting for control of their ancestral elven homeland of the Peaks. You have honed the ancient Valmorian art of spellbladery - an art that is yours and your people's alone. Thankfully, you are not here today to shed the blood of the Duke's men - unless someone pays you to..."
 	allowed_sexes = list(MALE, FEMALE)
 	forbidden_races = list(RACES_BLACKOAK)
 	outfit = /datum/outfit/job/roguetown/mercenary/blackoak_adept
@@ -269,8 +269,8 @@
 				H.mind.AddSpell(new /datum/action/cooldown/spell/leyline_anchor)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/blade_storm)
 			if("phalangite")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/azurean_phalanx)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/azurean_pilum)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/valmorian_phalanx)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/valmorian_pilum)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/advance)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/gate_of_reckoning)
 			if("macebearer")

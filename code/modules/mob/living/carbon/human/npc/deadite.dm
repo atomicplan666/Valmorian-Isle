@@ -5,7 +5,7 @@
 
 /mob/living/carbon/human/species/npc/deadite/Initialize()
 	. = ..()
-	//picked from a list because 1: Races that look better w/deaditing here 2: We need deadite infectable races for immersion's sake I.E not sun elves 3: we can bias towards common azurian races
+	//picked from a list because 1: Races that look better w/deaditing here 2: We need deadite infectable races for immersion's sake I.E not sun elves 3: we can bias towards common valmorian races
 	//Yes it requires spamming the list with several entries to weight it, if you can do better. please do so. this sucks.
 	var/species = list(
 		/datum/species/human/northern,

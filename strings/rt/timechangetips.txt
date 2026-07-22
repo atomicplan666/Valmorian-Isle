@@ -35,7 +35,7 @@ Coins are often buried with the dead to pay for the Carriageman's services.
 Zardmen tails are said to bring good luck if burned and scattered as powder.
 Lux from a tiefling is thought to be toxic. It is often purified with silver before transplantation.
 Pestrans oft suffer bad relations with the rest of the Church, as their fixation on rot and decay is looked on increasingly with distrust in the new era of necromancy. Sects of physickers keep increasingly to themselves.
-Malum used to carry a divine hammer that gave life to all material things Azure Peak was built upon. It is now lost to history.
+Malum used to carry a divine hammer that gave life to all material things Valmoria was built upon. It is now lost to history.
 Carrion-beasts, cheeles, and nagas are sacred to Pestra. Those who slay them are often punished with terrible plagues.
 Eora stands for far more than familial love, but frowns upon those who break matrimony.
 What better trick than stealing fire from Astrata herself?
@@ -45,7 +45,7 @@ Black cats are symbols of death, and sacred to Necra. They stare at souls only t
 Trolls are thought to have once guarded Dendor's realm. Druids often seek them out. Few return.
 Drow mushroom wines are said to be delicious as long as they are paired with the right antidote.
 Servants of Xylix are often capricious and untrustworthy, but all share in their god's hatred for slave-taking.
-Azure Peak used to belong to the once-great Celestial Empire, which was fractured by ZIZO's ambition and cunning. It is a shadow of its former self.
+Valmoria used to belong to the once-great Celestial Empire, which was fractured by ZIZO's ambition and cunning. It is a shadow of its former self.
 Graggar was given power as Ravox's champion; and with it, he clawed a hole through the crumbling firmament to divinity.
 The Gods are listening. To utter the name of ZIZO is to attract her attention, and your damnation.
 The Inhumen have many names. In the frozen, forsaken north, they are revered as sacred animals- the Moose, the Leopard, the Bear, and the Volf.
@@ -60,7 +60,7 @@ When Dendor first clawed free of Abyssor's skull, he shed parts of himself like 
 ZIZO stole the souls of all snow elves in Her ascension. They serve eternally in her undead armies, forever freed from Necra's grasp.
 In the past, the Warscholars of Naledi were systematically prosecuted by the Holy See for Psydon-worship and heresy. Even under threat of death and torture, many refused to bow. Blessed Lamb; die for your beliefs. Die, die, die.
 Most citizens of Grenzelhoft cannot remember a time the empire was not at war. Many turn to mercenary work to escape the crushing poverty of the lower class. Others turn to banditry.
-The firmament is at its thinnest in Azurea, where the COMET SYON landed, and the dark-star Graggar thrashes, entombed underneath the earth. More gods have bled here than anywhere else in the mortal world.
+The firmament is at its thinnest in Valmoria, where the COMET SYON landed, and the dark-star Graggar thrashes, entombed underneath the earth. More gods have bled here than anywhere else in the mortal world.
 It is said that Astrata once took the form of a mortal, having fallen in love with a prince named Antero, and ultimately sacrificed Her mortal form to protect her child from Necra's clutches. It did not work.
 The sprawling tundra of Aavnr is the homeland of the Orc race. Few travel there willingly.
 Vampyres are sun-cursed creechers spawned from Astrata's ill-fated attempt at a family. She has forgiven none of the Pantheon for this. Not Noc, not Xylix, and not Necra.
@@ -68,7 +68,7 @@ A comet capable of rending all the enemies of humanity apart; oh, how graceful H
 Dragons are holy symbols of Matthios—incarnations of greed and stolen sunfyre. To slay one is a holy, and often suicidal, task.
 Merchants and the rich are often viewed with suspicion of Matthiosite heresy by the Inquisition. Except, of course, for nobility, who have divine right to wealth.
 The Ten will have you think He is powerless, and the Four that he is dead; but all He asks of you is for your faith to ENDURE.
-The powerful nation of Otava is home to a radical denomination that venerates PSYDON above all, seeing the TEN as mere fragments of True Divinity. Azure Peak is home to a small enclave of this Psydonian Order.
+The powerful nation of Otava is home to a radical denomination that venerates PSYDON above all, seeing the TEN as mere fragments of True Divinity. Valmoria is home to a small enclave of this Psydonian Order.
 The Naledi captal of Veralun is a prosperous metropolis built around an oasis. Gleaming gold filigree marks white-marble buildings. Grand mosques stretch their minarets to the sky in praise of PSYDON.
 I AM OLDER THAN AEON. I AM SIN, FATHER OF LIES. I HAVE GONE BY MANY NAMES. SAY THEM AND WEEP, FOR I AM ALL THAT THEY ARE.
 Working yourself to death is considered an act worthy of veneration for Malumites—so long as you finish your creation.
@@ -193,12 +193,12 @@ Blacksmith can I have fluted cuirass and steel chausses and plate gauntlets and 
 Grenzelhoft recently abolished the purchase and trade of slaves, sparking mass outrage from both Raneshi slave-trading guilds.
 Cultists of Noc often take on a new name, called a Nocturne, and shed their past identity. Traditionally, this is to protect one's True Name from a summoned demon, though in more modern times, it serves the secondary benefit of hiding one's identity from a vengeful landlord wondering why their house is on magefire.
 Cultists of Noc pursue wisdom, study, scripture and divination. Many of Psydonia's greatest discoveries have come from a Noccite sect. Many of Psydonia's greatest fires have also come from a Noccite sect.
-The ruins of Azuria are dotted with ancient, crumbling statues and fixtures. It is thought that the most ancient of these are Aasimar, who one day stopped moving, and never started again.
+The ruins of Valmoria are dotted with ancient, crumbling statues and fixtures. It is thought that the most ancient of these are Aasimar, who one day stopped moving, and never started again.
 Aasimar cannot die of old age. Sometimes, however, they simply give up, and turn fully to stone. It is considered bad luck to deface a statue, as a result.
 Everything these tips tell you is made up.
 Everything these tips tell you is completely true.
 You should move to Kingsfield. It's better there.
-Every yil, Heartfelt hosts a grand banquet for the nobility of Azuria, Rockhill, and Zyndvhartia to attend. The Holy Psydonic Inquisition is credited with thwarting an attempted bombing of its palace, during the previous yil's feast.
+Every yil, Heartfelt hosts a grand banquet for the nobility of Valmoria, Rockhill, and Zyndvhartia to attend. The Holy Psydonic Inquisition is credited with thwarting an attempted bombing of its palace, during the previous yil's feast.
 They say that Heartfelt has fallen to a horde of the living dead, or-.. no, wait, wasn't that the Rudmarsch?
 Adonai, my God, why hath you forsaken me?!
 BEFORE THE FINAL BLOW WAS STRUCK, I TORE OPEN A PORTAL IN TYME AND FLUNG PSYDON INTO THE DAES-TO-COME; WHERE MY SIN IS LAW! NOW.. THE LOWLY FOOL SEEKS TO RETURN TO THE PAST, AND UNDO THE EVIL THAT IS VHESLYN!
@@ -220,7 +220,7 @@ The body is a fickle instrument, equally resillient and fragile. Water is the be
 Shift-clicking allows you to EXAMINE items, and EXAMINING items allows you to further understand all the MECHANICS tethered to them. Check a bed to figure out how to sleep, check a tree to figure out how to climb, check a steak to figure out how to eat, and much more!
 Within the Town are many posters, banners, and signs. By shift-clicking them, you can further EXAMINE them to get a crash course on many basic MECHANICS. Check the Church's banner to learn about Psydonia's religions, check the Clinic's posters to learn about how to save a lyfe, check the Guild's signs to learn about how weapons-and-armor work, and much more!
 In lieu of a blacksmith's hammer, one can use a repair kit to patch up their damaged equipment 'on the go'. Three pieces of scrapped iron can be assembled into a kit, and sliding three more pieces into the kit'll ready it for use. As for where the scrap comes from? Just hack an iron weapon to pieces!
-Almost everyone has a tendancy to pack a copy of "Tips, Tricks, & Triumphs: The Novice's Handbook To Azuria" inside their satchel, at the start of each week. Shift-clicking this Azurian booklet will show you its description, which contains the link to Azure Peak's official wikipedia!
+Almost everyone has a tendancy to pack a copy of "Tips, Tricks, & Triumphs: The Novice's Handbook To Valmoria" inside their satchel, at the start of each week. Shift-clicking this Valmorian booklet will show you its description, which contains the link to Valmoria's official wikipedia!
 Time heals all wounds. Sleeping heals them quicker. Sleeping in a decent bed with a crackling campfire within spitting range heals them even quicker.
 Joapstone, Petriamber, Rosellusk, and Aoetal are not real stones. Do not listen to the rambling of gem-crafting madmen.
 Gemerald skulls are a sign of calamity. Folk-tales mention their service to the darker impulses of the Trickster God.
@@ -252,10 +252,10 @@ Zaelarion, Adonai, Vheslyn. You will know these names, in due tyme.
 Acid is an unnatural ichor that is rarely found elsewhere, beyond the Underdark's most deepest pits. It needs only a moment to turn even the hardiest vessels into naught-but-ash.
 Mount Golgatha once hosted the final battle between the mortal vessels of Ravox and Graggar. When His blow cleaved Graggar's neck asunder, Ravox sought to bury the decapitated remains within its magmatic depths.
 Mount Decapitation is always blanketed in a thick layer of snow, owing to its elevation. It cradles many secrets and riches beneath the snow, yet plenty of perils as well.
-The Tomb of Alotheos is a massive dungeon, found in the thickets of Mount Decaptation's northern treelines. It is the cause for Azuria's unusually high amount of visiting Adventurers; after all, a seemingly untouched catacomb with hundreds of treasure-stuffed rooms almost sounds too good to be true.
+The Tomb of Alotheos is a massive dungeon, found in the thickets of Mount Decaptation's northern treelines. It is the cause for Valmoria's unusually high amount of visiting Adventurers; after all, a seemingly untouched catacomb with hundreds of treasure-stuffed rooms almost sounds too good to be true.
 No one is actually quite sure as to who Alotheos was, though there are plenty of rumors to pick from. Some say it was an ancient king, others purport it to've been a long-forgotten architect, while a few even dare to say that it was the true name of Matthios - before His ascension, of course.
-Strange dreams seem to trail all who inhabit Azuria. To hear someone remarking about a 'week' with unusual and unfortunate fates isn't uncommon, but one should be wary to discern whatever facts might've been laced into such fiction.
-Azuria cradles the remains of the Comet - and with it, the power to alter the very fate of Psydonia itself.
+Strange dreams seem to trail all who inhabit Valmoria. To hear someone remarking about a 'week' with unusual and unfortunate fates isn't uncommon, but one should be wary to discern whatever facts might've been laced into such fiction.
+Valmoria cradles the remains of the Comet - and with it, the power to alter the very fate of Psydonia itself.
 Some say that the Psydonites of the future have created TYME-MACHINES, in order to prevent the eternal darkness from coming to pass.
 If you are staying in a wayside inn and two men force entry to your room? Kill them with your crossbow.
 The evil ZYDON sent down his COMET to destroy the GREAT WORM, and for thousands of yils you will pay the price.
@@ -292,7 +292,7 @@ Dwarves.
 Dwarves like to blow stuff up!
 You are a knave!
 It's a tough fight ahead, but happiness has to be fought for.
-The Duchy of Azuria beat back the Hammerholdian Border Reivers in 1430 at a great cost. Some still lurk in the forests, biding their tyme.
+The Duchy of Valmoria beat back the Hammerholdian Border Reivers in 1430 at a great cost. Some still lurk in the forests, biding their tyme.
 You now face divine judgement. May it extend eternally.
 BAITING is a suboptimal combat strategy. Never use it. Instead, stab your foe in the chest until they perish.
 FEINT attack the SKELETONS!

@@ -15,7 +15,7 @@ $include resources.txt
 # There are various options which are hard-locked for security reasons.
 
 ## Server name: This appears at the top of the screen in-game and in the BYOND hub. Uncomment and replace 'tgstation' with the name of your choice.
-SERVERNAME AZURE PEAK
+SERVERNAME VALMORIA
 
 ## Server tagline: This will appear right below the server's title.
 # SERVERTAGLINE 18+ HRP Fantasy Server.
@@ -24,7 +24,7 @@ SERVERNAME AZURE PEAK
 # SERVERSQLNAME tgstation
 
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
-STATIONNAME AZURE PEAK
+STATIONNAME VALMORIA
 
 ## Put on byond hub: Uncomment this to put your server on the byond hub.
 #HUB

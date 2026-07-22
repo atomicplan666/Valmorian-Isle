@@ -109,7 +109,7 @@
 		"Naledi-Born" = SKIN_COLOR_NALEDI_BORN,
 		"Naledi-Southerner" = SKIN_COLOR_NALEDI_LIGHT,
 		"Kaze-Lotus" = SKIN_COLOR_KAZE_LOTUS,
-		"Grenzel-Azuria" = SKIN_COLOR_GRENZEL_WOODS,
+		"Grenzel-Valmoria" = SKIN_COLOR_GRENZEL_WOODS,
 		"Etrusca-Lirvas" = SKIN_COLOR_ETRUSCA_LIRVAS,
 		"Free Roamers" = SKIN_COLOR_FREE_FOLK,
 		"Avar Borne"	= SKIN_COLOR_AVAR_BORNE,

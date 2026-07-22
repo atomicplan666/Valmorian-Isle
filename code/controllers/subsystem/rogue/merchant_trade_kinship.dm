@@ -24,8 +24,8 @@
 			return REALM_LINGYUE
 		if("Naledi")
 			return REALM_NALEDI
-		if("Azuria")
-			return REALM_AZURIA
+		if("Valmoria")
+			return REALM_VALMORIA
 		if("the Underdark")
 			return REALM_UNDERDARK
 	return null

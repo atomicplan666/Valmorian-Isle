@@ -8,7 +8,7 @@
 
 /obj/item/reagent_containers/glass/bottle/alchemical/tripot
 	name = "vial of distilled triumphance"
-	desc = "The fruits of your labor, distilled into a sparkling pittance that shimmers with Azurian light. Sipping this \
+	desc = "The fruits of your labor, distilled into a sparkling pittance that shimmers with Valmorian light. Sipping this \
 	tincture will lightly amplify all of your characteristics for a week's tyme, as long as you down it all in one gulp."
 	list_reagents = list(/datum/reagent/buff/tri = 10)
 
@@ -31,7 +31,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/alch/tripot
 	name = "Triumphance"
-	desc = "My latest triumph has empowered me! I am a true champion of Azuria!"
+	desc = "My latest triumph has empowered me! I am a true champion of Valmoria!"
 	icon_state = "triumph"
 
 //

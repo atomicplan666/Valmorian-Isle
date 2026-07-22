@@ -1589,7 +1589,7 @@
 
 /obj/item/clothing/cloak/wardencloak
 	name = "warden's cloak"
-	desc = "A cloak of dense, thick wool worn by the Wardens of Azuria's Forests. Incredibly warm, \
+	desc = "A cloak of dense, thick wool worn by the Wardens of Valmoria's Forests. Incredibly warm, \
 	and doubles as a blanket in a pinch."
 	icon_state = "wardencloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
@@ -1628,7 +1628,7 @@
 
 /obj/item/clothing/cloak/forrestercloak
 	name = "forrester cloak"
-	desc = "A cloak worn by the Black Oaks of Azuria."
+	desc = "A cloak worn by the Black Oaks of Valmoria."
 	icon_state = "forestcloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
@@ -1640,7 +1640,7 @@
 
 /obj/item/clothing/cloak/forrestercloak/snow
 	name = "snow cloak"
-	desc = "A cloak meant to keep one's body warm in the cold of the mountains as well as the dampness of Azuria."
+	desc = "A cloak meant to keep one's body warm in the cold of the mountains as well as the dampness of Valmoria."
 	icon_state = "snowcloak"
 	cold_protection = 15
 
@@ -1839,7 +1839,7 @@
 
 /obj/item/clothing/cloak/kazengun
 	name = "jinbaori"
-	desc = "A simple kind of Kazengunite surcoat, worn here in the distant battlefields of Azuria to differentiate friend from foe."
+	desc = "A simple kind of Kazengunite surcoat, worn here in the distant battlefields of Valmoria to differentiate friend from foe."
 	icon_state = "kazenguncoat"
 	item_state = "kazenguncoat"
 	detail_tag = "_detail"

@@ -41,7 +41,7 @@ export const SequestrationBanner = (props: {
         SEQUESTRATION DECLARED
       </div>
       <div style={{ fontVariant: 'normal' }}>
-        Following the Crown&apos;s default, the Azurian Trading Company holds
+        Following the Crown&apos;s default, the Valmorian Trading Company holds
         the sequestered revenues of the realm and farms the customs and salt
         tolls in perpetuity until the {sequestration.debt}m debt is repaid.
         Trade controls and stockpile pricing stand locked. Petitions, taxation,

@@ -379,7 +379,7 @@
 	"Midyear Melancholy" = 'sound/music/instruments/psyaltery (3).ogg',
 	"Santa Psydonia" = 'sound/music/instruments/psyaltery (4).ogg',
 	"Le Venardine" = 'sound/music/instruments/psyaltery (5).ogg',
-	"Azurea Fair" = 'sound/music/instruments/psyaltery (6).ogg',
+	"Valmoria Fair" = 'sound/music/instruments/psyaltery (6).ogg',
 	"Amoroso" = 'sound/music/instruments/psyaltery (7).ogg',
 	"Lupian's Lullaby" = 'sound/music/instruments/psyaltery (8).ogg',
 	"White Wine Before Breakfast" = 'sound/music/instruments/psyaltery (9).ogg',

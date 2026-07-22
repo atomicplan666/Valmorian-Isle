@@ -883,10 +883,10 @@
 					. += span_notice("A noble!")
 
 		if(HAS_TRAIT(src, TRAIT_RESIDENT))
-			. += span_notice("A chartered resident of Azuria.")
+			. += span_notice("A chartered resident of Valmoria.")
 
 		if(HAS_TRAIT(src, TRAIT_AGENT_MERCHANT))
-			. += span_notice("An agent of the Azurian Trading Company.")
+			. += span_notice("An agent of the Valmorian Trading Company.")
 		if(HAS_TRAIT(src, TRAIT_AGENT_BATHHOUSE))
 			. += span_notice("An agent of the Bathhouse.")
 		if(HAS_TRAIT(src, TRAIT_ARMOR_BREAK))
@@ -919,9 +919,9 @@
 					. += span_smallred("Destitute..")
 
 		if(src.job in GLOB.church_positions)
-			. += span_notice("A member of the Church of Azuria.")
+			. += span_notice("A member of the Church of Valmoria.")
 		else if(HAS_TRAIT(src, TRAIT_AGENT_CHURCH))
-			. += span_notice("A benefactor of the Church of Azuria.")
+			. += span_notice("A benefactor of the Church of Valmoria.")
 
 		if(src.job in GLOB.inquisition_positions)
 			. += span_notice("An adherent of the Holy Otavan Inquisition.")
@@ -1255,13 +1255,13 @@
 	if(!HAS_TRAIT(examiner, TRAIT_CLERGY)) //If the person doing the examining doesn't have the trait, we don't need to do the other four ifs
 		return null
 	if(HAS_TRAIT(src, TRAIT_CLERGY) && HAS_TRAIT(examiner, TRAIT_CLERGY))
-		clergy_text = "A fellow member of the Azurian Church of the Ten."
+		clergy_text = "A fellow member of the Valmorian Church of the Ten."
 	if(HAS_TRAIT(src, TRAIT_CHOSEN) && HAS_TRAIT(examiner, TRAIT_CLERGY))
 		clergy_text = "The Bishop, the leader of my Church and Chosen of the Ten."
 	if(HAS_TRAIT(src, TRAIT_CLERGY) && HAS_TRAIT(examiner, TRAIT_CHOSEN))
 		clergy_text = "A member of the clergy under my leadership, as willed by the Ten."
 	if(HAS_TRAIT(src, TRAIT_CHOSEN) && HAS_TRAIT(examiner, TRAIT_CHOSEN))
-		clergy_text = "Myself. I am the Bishop of Azuria, voice of the Ten in these lands."
+		clergy_text = "Myself. I am the Bishop of Valmoria, voice of the Ten in these lands."
 
 	return clergy_text
 

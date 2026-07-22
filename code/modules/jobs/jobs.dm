@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(burgher_positions, list( //Artisans, store owners what have you
 	"Magicians Associate",
 ))
 
-GLOBAL_LIST_INIT(atc_positions, list( //Azurian Trading Company - Merchant's chapter and their help.
+GLOBAL_LIST_INIT(atc_positions, list( //Valmorian Trading Company - Merchant's chapter and their help.
 	"Merchant",
 	"Shophand",
 ))

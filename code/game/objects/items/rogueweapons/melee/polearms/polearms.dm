@@ -462,8 +462,8 @@
 	icon_state = "short_spear"
 	wlength = WLENGTH_LONG
 
-// ---- Azurean Shortspear intents ----
-/datum/intent/spear/thrust/azurean
+// ---- Valmorian Shortspear intents ----
+/datum/intent/spear/thrust/valmorian
 	name = "thrust"
 	desc = "A quick, nimble two-handed thrust. Keeps reach but lacks the power to pierce armor."
 	reach = 2
@@ -473,7 +473,7 @@
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
 
-/datum/intent/spear/thrust/azurean/oneh
+/datum/intent/spear/thrust/valmorian/oneh
 	name = "one-handed thrust"
 	desc = "A rapid jab from one hand. Fast with long range, but unable to penetrate armor."
 	reach = 2
@@ -483,7 +483,7 @@
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
 
-/datum/intent/spear/thrust/azurean/pick
+/datum/intent/spear/thrust/valmorian/pick
 	name = "pick"
 	icon_state = "inpick"
 	desc = "A shortspear is nimble enough to handle when two-handed and gripped toward the blade. Grasps it near the end and drive it into the weak point of your opponent's armor - hard to pull off but can be devastating if successful."
@@ -503,15 +503,15 @@
 /obj/item/rogueweapon/spear/spellblade
 	name = "dory"
 	icon_state = "short_spear"
-	desc = "A shortened spear, six feet long and balanced. Favored by Azurean Spellblades \
+	desc = "A shortened spear, six feet long and balanced. Favored by Valmorian Spellblades \
 		who found the traditional long spear ill-suited for their flashy, individualistic fighting style. \
 		Designed to thrust quickly from one hand but maneuver nimbly in two.<BR><BR> \
 		'From this dae on, we shall name ourselves naught spearman, but phalangite, and our spear, the dory, not a shortspear. \
-		And with this measure we shall gain great respect henceforth.' - Unknown Grandmaster of the Azurean Spellblade Order, 900 AP."
+		And with this measure we shall gain great respect henceforth.' - Unknown Grandmaster of the Valmorian Spellblade Order, 900 AP."
 	force = 20
 	force_wielded = 25
-	possible_item_intents = list(/datum/intent/spear/thrust/azurean/oneh)
-	gripped_intents = list(/datum/intent/spear/thrust/azurean, /datum/intent/spear/thrust/azurean/pick, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/spear/thrust/valmorian/oneh)
+	gripped_intents = list(/datum/intent/spear/thrust/valmorian, /datum/intent/spear/thrust/valmorian/pick, SPEAR_BASH)
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	minstr = 7

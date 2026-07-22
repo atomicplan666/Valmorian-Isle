@@ -278,8 +278,8 @@
 
 /obj/item/rogueweapon/sword/long/ap
 	name = "stecher"
-	desc = "A unique longsword from the highest plateaus of the Azure Peak, sacrificing its cutting edge for a piercing tip that can easily penetrate maille. Tracing its roots to the \
-	late fourteenth century, this noble sidearm - born from Grenzelhoftian imitations of the Otavan estoc - is proudly displayed on Azuria's official coat-of-arms."
+	desc = "A unique longsword from the highest plateaus of the Valmoria, sacrificing its cutting edge for a piercing tip that can easily penetrate maille. Tracing its roots to the \
+	late fourteenth century, this noble sidearm - born from Grenzelhoftian imitations of the Otavan estoc - is proudly displayed on Valmoria's official coat-of-arms."
 	icon_state = "aplongsword"
 	sheathe_icon = "aplongsword"
 	force = 20
@@ -565,7 +565,7 @@
 
 /obj/item/rogueweapon/sword/long/judgement
 	name = "\"Judgement\""
-	desc = "A noble longsword, and the cherished heirloom of Azuria's royal bloodline. Its blade is made from Aavnr's finest Vyšvou steel - held \
+	desc = "A noble longsword, and the cherished heirloom of Valmoria's royal bloodline. Its blade is made from Aavnr's finest Vyšvou steel - held \
 	from an ornate carved ivory grip from the region's \"Mamük\" megafauna, and decorated with heraldric engravings of silver. ‎</br>‎‎ </br>'When \
 	you stand before thine lord, you cannot say, '..but I was told by others to do thus..', or that, '..virtue was not convenient at the time.' This \
 	will not suffice. Remember that.'"

@@ -1,6 +1,6 @@
 GLOBAL_LIST_INIT(towner_smith_caravan_regions, list(
 	THREAT_REGION_AZURE_GROVE,
-	THREAT_REGION_AZUREAN_COAST,
+	THREAT_REGION_VALMORIAN_COAST,
 ))
 
 GLOBAL_LIST_INIT(towner_smith_caravan_factions, list(

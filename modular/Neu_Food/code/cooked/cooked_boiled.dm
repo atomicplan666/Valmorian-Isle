@@ -42,7 +42,7 @@
 
 /obj/item/reagent_containers/food/snacks/rogue/spaghetti_pesto
 	name = "pesto spaghetti"
-	desc = "Noodles mixed with a spiced refined sauce made from smoky rocknut and garlick. A cultural blend of Azurian improvisation and Navarno ingenuity."
+	desc = "Noodles mixed with a spiced refined sauce made from smoky rocknut and garlick. A cultural blend of Valmorian improvisation and Navarno ingenuity."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_pasta.dmi'
 	icon_state = "spaghetti_pesto"
 	list_reagents = list(/datum/reagent/consumable/nutriment = NUTRITION_FULL_MEAL, /datum/reagent/consumable/acorn_powder = 4, /datum/reagent/drug/nicotine = 1)

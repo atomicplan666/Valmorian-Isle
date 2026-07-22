@@ -19,7 +19,7 @@
 	Oddly, the trees here seem to bloom year-round."
 #define DETAIL_TEXT_ABANDONED_HOT_SPRINGS "A pit of silken webs, nestled deep within the bog. The love that once bloomed here has curdled into venom, and stranger things now bud and scuttle through the water."
 
-// Azure Grove
+// Valmorian Grove
 #define DETAIL_TEXT_AZURE_GROVE ""
 
 // Undergrove Caves
@@ -49,7 +49,7 @@ Abyssor rests offshore. Even his quietest exhale is enough to send waves from th
 #define DETAIL_TEXT_NORTH_COAST_HAMLET "Empty houses, and rotting fields. A half-hundred homesteaders broke ground here, before the touch of Zizo swept the north. Some of their bones still yet remain, clustered around their once-chapel in a twisted pantomime of lyfe. Above the altar, a promise has been scratched into stained glass: This too shall stand."
 #define DETAIL_TEXT_MAD_DUKE_COURT ""
 
-// Actual Azure Coast
+// Actual Valmorian Coast
 #define DETAIL_TEXT_ACTUAL_COAST ""
 #define DETAIL_TEXT_CITY_COAST "Close enough to the city that I can see its torchlight. It is easy to imagine why they say the Comet Syon landed here. The bay yawns like a giant concave lens; the hinted epicenter of ego-death. \n\\n\ The salted ocean air carries a bitter taste, here."
 
@@ -62,7 +62,7 @@ Abyssor rests offshore. Even his quietest exhale is enough to send waves from th
 #define DETAIL_TEXT_DECAP_NECRAN_LABYRINTH ""
 #define DETAIL_TEXT_DECAP_MINOTAUR_FORTRESS ""
 
-// Azure Basin & Nearby
+// Valmorian Basin & Nearby
 #define DETAIL_TEXT_AZURE_BASIN ""
 #define DETAIL_TEXT_DRUIDS_GROVE ""
 
@@ -83,10 +83,10 @@ Rusted metals distantly grind in anoxic pus-condensate in-tune with the Signal. 
 #define DETAIL_TEXT_AZURE_PEAK ""
 #define DETAIL_TEXT_KEEP ""
 #define DETAIL_TEXT_MANOR ""
-#define DETAIL_TEXT_UNIVERSITY_OF_AZURIA ""
+#define DETAIL_TEXT_UNIVERSITY_OF_VALMORIA ""
 #define DETAIL_TEXT_CHAPEL "Narthex of faith, roosting the Flock."
 #define DETAIL_TEXT_INQUISITION_HQ ""
-#define DETAIL_TEXT_AZUREAN_GUILD_OF_CRAFT "\"We had a name fer it, eh? Called it the Dwarven Quarter. Forges an' 'ammers, underground an' wrapped in stone. Joos' like 'ome! Bu' then tha bloody bluebloods started complainin' aboot tha' dirt whenever they visited. Bloody brash-polishers! Well, we 'ad to move tha shop topside. \n\ \n\ Not as charmin, no moor.\""
+#define DETAIL_TEXT_VALMORIAN_GUILD_OF_CRAFT "\"We had a name fer it, eh? Called it the Dwarven Quarter. Forges an' 'ammers, underground an' wrapped in stone. Joos' like 'ome! Bu' then tha bloody bluebloods started complainin' aboot tha' dirt whenever they visited. Bloody brash-polishers! Well, we 'ad to move tha shop topside. \n\ \n\ Not as charmin, no moor.\""
 
 
 // Tomb of Alotheos

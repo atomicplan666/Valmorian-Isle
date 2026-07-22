@@ -226,7 +226,7 @@
 			to_chat(invoker, span_notice("The crown materializes at your feet."))
 		crown.forceMove(get_turf(invoker))
 
-	var/realm = SSticker.realm_name || "Azure Peak"
+	var/realm = SSticker.realm_name || "Valmoria"
 	// Imitate the text whenever a new Duke joins the game
 	to_chat(world, "<b><span class='notice'><span class='big'>[invoker.real_name] is [SSticker.rulertype] of [realm].</span></span></b>")
 

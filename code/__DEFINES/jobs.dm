@@ -176,7 +176,7 @@
 #define JDO_ACOLYTE 5.4
 #define JDO_SEXTON 5.5
 
-// Azurian Trading Company
+// Valmorian Trading Company
 #define JDO_MERCHANT 6
 #define JDO_SHOPHAND 6.05
 

@@ -1,7 +1,7 @@
 
 /datum/job/roguetown/heartfelt/lord
 	title = "Lord of Heartfelt"
-	tutorial = "You are the Lord of Heartfelt, ruler of a prosperous borderlands now in Azuria. \
+	tutorial = "You are the Lord of Heartfelt, ruler of a prosperous borderlands now in Valmoria. \
 	However, with the increase in banditry, necromancy, deadite risings, and increasing sea raider raids, there are rumors abound that Heartfelt is not what it used to be. \
 	Travellers often warn of Heartfelt having fallen already, and words of secretive cultists isn't unheard of."
 	allowed_sexes = list(MALE, FEMALE)
@@ -22,7 +22,7 @@
 
 /datum/advclass/heartfelt/lord/lord
 	name = "Lord of Heartfelt"
-	tutorial = "You are the Lord of Heartfelt, ruler of a prosperous borderlands now in Azuria. \
+	tutorial = "You are the Lord of Heartfelt, ruler of a prosperous borderlands now in Valmoria. \
 	However, with the increase in banditry, necromancy, deadite risings, and increasing sea raider raids, there are rumors abound that Heartfelt is not what it used to be. \
 	Travellers often warn of Heartfelt having fallen already, and words of secretive cultists isn't unheard of."
 	category_tags = list(CTAG_HFT_LORD)
@@ -93,7 +93,7 @@
 
 /datum/advclass/heartfelt/lord/archmage
 	name = "Archmagos of Heartfelt"
-	tutorial = "You are the Archmagos of Heartfelt, ruler of a acryne-borderlands in Azuria. \
+	tutorial = "You are the Archmagos of Heartfelt, ruler of a acryne-borderlands in Valmoria. \
 	However, with the increase in banditry, necromancy, deadite risings, and increasing sea raider raids, there are rumors abound that Heartfelt is not what it used to be. \
 	Travellers often warn of Heartfelt having fallen already, and words of secretive cultists isn't unheard of."
 	category_tags = list(CTAG_HFT_LORD)
@@ -174,7 +174,7 @@
 
 /datum/advclass/heartfelt/lord/chief
 	name = "Chieftain of Heartfelt"
-	tutorial = "You are the Chieftain of Heartfelt, Chieftain of a once tribal lands over Azuria. Now, you rule it under the watchful gaze of the Grand Duchy. \
+	tutorial = "You are the Chieftain of Heartfelt, Chieftain of a once tribal lands over Valmoria. Now, you rule it under the watchful gaze of the Grand Duchy. \
 	However, with the increase in banditry, necromancy, deadite risings, and increasing sea raider raids, there are rumors abound that Heartfelt is not what it used to be. \
 	Travellers often warn of Heartfelt having fallen already, and words of secretive cultists isn't unheard of."
 	category_tags = list(CTAG_HFT_LORD)

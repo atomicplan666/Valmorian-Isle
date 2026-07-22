@@ -511,7 +511,7 @@
 /obj/item/rogueweapon/huntingknife/combat/messser //Just as Grenzelhoft intended
 	name = "kampfmesser"
 	desc = "An undersized steel messer that barely fits into a conventional dagger sheath, the saving grace of any hunter. It lacks a tip for stabbing - yet the edge alone is sharp enough to hack most issues right away. \
-	While it was brought over by Grenzelhoftian migrants, it is considered an Azurean staple these daes - the right tool for the right job."
+	While it was brought over by Grenzelhoftian migrants, it is considered an Valmorian staple these daes - the right tool for the right job."
 	possible_item_intents = list(/datum/intent/dagger/cut/heavy, /datum/intent/dagger/chop/cleaver, /datum/intent/dagger/cut/rend, /datum/intent/dagger/sucker_punch)
 	icon_state = "minimesser"
 	sheathe_icon = "minimesser"
@@ -984,7 +984,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/psydagger/heavy
 	name = "psydonic misericorde"
-	desc = "A sanctified misericorde, purposemade for piercing the perverted plate of pestilent paladins. Rarely seen in Azuria, beyond the tasseted \
+	desc = "A sanctified misericorde, purposemade for piercing the perverted plate of pestilent paladins. Rarely seen in Valmoria, beyond the tasseted \
 	sheaths of Otava's most knightly delegates."
 	icon_state = "psydaggerheavy"
 	sheathe_icon = "psydagger"
@@ -1051,7 +1051,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/elvish/poopknife
 	name = "thine majesty's nitesoil-cleaver"
-	desc = "A heraldric accompaniment to the chamberpot, and the most closely-guarded secret in all of Azuria. It is said that this once belonged to the Duke's eldest ancestor, who - in a fit of constipatory labor - had unwittingly realized another use for their wave-bladed trophy. Clinging to its silvered edge is a thin layer of otherworldly ash, refusing to yield to neither soap-nor-rag."
+	desc = "A heraldric accompaniment to the chamberpot, and the most closely-guarded secret in all of Valmoria. It is said that this once belonged to the Duke's eldest ancestor, who - in a fit of constipatory labor - had unwittingly realized another use for their wave-bladed trophy. Clinging to its silvered edge is a thin layer of otherworldly ash, refusing to yield to neither soap-nor-rag."
 	force = 15 //On the FIRST ROUND this was added, someone managed to kill the Vampire Lord with the Poop Knife. Reducing the force 
 	max_integrity = 50 //Should render to ~100, at most. More fragile than alloyed knives. You know why.
 	max_blade_int = 333 //Exceedingly sharp. Ditto.

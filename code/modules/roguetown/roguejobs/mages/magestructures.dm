@@ -1,10 +1,10 @@
 /obj/structure/fluff/walldeco/mageguild
-	name = "University of Azuria"
+	name = "University of Valmoria"
 	desc = "A white flame upon a blue backdrop. Widely used across many regions by institutions of magical learning."
 	icon_state = "mageguild"
 
 /obj/structure/fluff/walldeco/mageguild2
-	name = "University of Azuria"
+	name = "University of Valmoria"
 	desc = "A white flame upon a black backdrop. Widely used across many regions by institutions of magical learning."
 	icon_state = "mageguild2"
 

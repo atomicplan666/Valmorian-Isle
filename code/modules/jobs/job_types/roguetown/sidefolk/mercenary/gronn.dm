@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/gronn
 	name = "Gronnic Privateer"
-	tutorial = "You are one of many upstarts from Gronn, who sailed from the coastal capital of Danheim to the southern beaches of Azuria in search of a more... honest means of profit than the Sea Raiders of infamy."
+	tutorial = "You are one of many upstarts from Gronn, who sailed from the coastal capital of Danheim to the southern beaches of Valmoria in search of a more... honest means of profit than the Sea Raiders of infamy."
 	allowed_sexes = list(MALE, FEMALE)
 	
 	outfit = /datum/outfit/job/roguetown/mercenary/gronn

@@ -235,7 +235,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 /mob/dead/new_player/verb/do_rp_prompt()
 	set name = "Lore Primer"
 	set category = "IC.Memory"
-	var/datum/browser/popup = new(src, "Primer", "AZURE PEAK", 460, 550)
+	var/datum/browser/popup = new(src, "Primer", "VALMORIA", 460, 550)
 	popup.set_content(build_lore_primer_content())
 	popup.open()
 
@@ -550,7 +550,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 				if (BURGHERS)
 					cat_name = "Burghers"
 				if (ATC)
-					cat_name = "Azurian Trading Company"
+					cat_name = "Valmorian Trading Company"
 				if (PEASANTS)
 					cat_name = "Peasants"
 				if (SIDEFOLK)

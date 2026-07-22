@@ -42,7 +42,7 @@
 	The power to dictate how the future generations will look back on these coming days."
 	outfit = /datum/outfit/job/roguetown/archivist/basic
 	subclass_languages = list(
-		/datum/language/oldazurian,//YOU LIVE HERE
+		/datum/language/oldvalmorian,//YOU LIVE HERE
 		/datum/language/elvish,
 		/datum/language/dwarvish,
 		/datum/language/celestial,

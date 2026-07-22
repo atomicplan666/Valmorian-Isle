@@ -414,7 +414,7 @@ export const CulturalStockTab = (props: Props) => {
             Chartered Agent
           </span>
           <span style={{ color: INK_SOFT }}>
-            As an agent of the Azurian Trading Company, you are allowed to
+            As an agent of the Valmorian Trading Company, you are allowed to
             access, view, and purchase the Cultural Stock of any docked ships,
             and view and hail ships on behalf of the Factor.
           </span>

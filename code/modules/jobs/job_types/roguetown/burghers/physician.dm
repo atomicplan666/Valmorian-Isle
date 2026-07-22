@@ -9,9 +9,9 @@
 	forbidden_races = list(RACES_DESPISED)
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_PHYSICIAN
-	tutorial = "You are the Head Physician, master of the city clinic of Azure Peak \
+	tutorial = "You are the Head Physician, master of the city clinic of Valmoria \
 		and overseer of all medical practice and learning within the University of \
-		Azuria. You share authority within the University with the Court Magician - \
+		Valmoria. You share authority within the University with the Court Magician - \
 		your authority over mundane and medical matters is supreme, whereas they \
 		have total authority over all matters of magic and arcane practice. \
 		You have also an arrangement with the Keepers of Pestra beneath the University \
@@ -38,9 +38,9 @@
 
 /datum/advclass/physician
 	name = "Head Physician"
-	tutorial = "You are the Head Physician, master of the city clinic of Azure Peak \
+	tutorial = "You are the Head Physician, master of the city clinic of Valmoria \
 		and overseer of all medical practice and learning within the University of \
-		Azuria. You share authority within the University with the Court Magician - \
+		Valmoria. You share authority within the University with the Court Magician - \
 		your authority over mundane and medical matters is supreme, whereas they \
 		have total authority over all matters of magic and arcane practice. \
 		You have also an arrangement with the Keepers of Pestra beneath the University \

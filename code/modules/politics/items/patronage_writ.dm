@@ -62,9 +62,9 @@
 
 /obj/item/patronage_writ/charter
 	name = "Writ of Charter"
-	desc = "A writ of the Azurian Trading Company. Claim it for chartered agency."
+	desc = "A writ of the Valmorian Trading Company. Claim it for chartered agency."
 	granted_trait = TRAIT_AGENT_MERCHANT
-	faction_label = "the Azurian Trading Company"
+	faction_label = "the Valmorian Trading Company"
 
 /obj/item/patronage_writ/charter/get_roster()
 	return SStreasury?.merchant_agents
@@ -83,9 +83,9 @@
 
 /obj/item/patronage_writ/benefactor
 	name = "Letter of Benefaction"
-	desc = "A sealed letter of the Church of Azuria, conferring the rank of Benefactor upon its bearer."
+	desc = "A sealed letter of the Church of Valmoria, conferring the rank of Benefactor upon its bearer."
 	granted_trait = TRAIT_AGENT_CHURCH
-	faction_label = "the Church of Azuria"
+	faction_label = "the Church of Valmoria"
 	roster_cap = PATRON_CAP_CHURCH
 
 /obj/item/patronage_writ/benefactor/get_roster()

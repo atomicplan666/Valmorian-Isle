@@ -15,7 +15,7 @@
 	. = ..()
 	var/signature = issuer_name || "the Nerve Master"
 	var/year = issuer_year || CALENDAR_EPOCH_YEAR
-	. += span_info("The letter reads: <i>\"Be it known to all who read this writ, that the bearer, upon claiming this letter, is enrolled as a Citizen of Azuria and raised to the station of Burgher, bearing the protections and obligations attending that rank under the Golden Bull of Kingsfield.\"</i>")
+	. += span_info("The letter reads: <i>\"Be it known to all who read this writ, that the bearer, upon claiming this letter, is enrolled as a Citizen of Valmoria and raised to the station of Burgher, bearing the protections and obligations attending that rank under the Golden Bull of Kingsfield.\"</i>")
 	. += span_info("<i>Signed in the year [year], [signature].</i>")
 	. += span_notice("Left-click in hand to claim its rights.")
 
@@ -23,7 +23,7 @@
 	if(!istype(user))
 		return ..()
 	if(HAS_TRAIT(user, TRAIT_RESIDENT))
-		to_chat(user, span_warning("I am already a Citizen of Azuria."))
+		to_chat(user, span_warning("I am already a Citizen of Valmoria."))
 		return
 	if(user.job == "Steward" || user.job == "Grand Duke")
 		to_chat(user, span_warning("This letter is meant for another. I must hand it over."))

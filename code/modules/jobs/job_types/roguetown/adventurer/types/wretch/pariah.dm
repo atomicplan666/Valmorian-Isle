@@ -19,7 +19,7 @@
 		STATKEY_WIL = 1,
 	)
 	subclass_mage_aspects = list("mastery" = FALSE, "major" = 0, "minor" = 0, "utilities" = 4)
-	subclass_languages = list(/datum/language/oldazurian)
+	subclass_languages = list(/datum/language/oldvalmorian)
 	subclass_skills = list(
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
@@ -107,8 +107,8 @@
 				H.mind.AddSpell(new /datum/action/cooldown/spell/leyline_anchor)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/blade_storm)
 			if("phalangite")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/azurean_phalanx)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/azurean_pilum)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/valmorian_phalanx)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/valmorian_pilum)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/advance)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/gate_of_reckoning)
 			if("macebearer")

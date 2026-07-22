@@ -265,7 +265,7 @@
 	result_item = /obj/item/storage/belt/rogue/leather/donator_steel
 
 /obj/item/enchantingkit/triheartfelt
-	name = "'Azurian Plate Armor' morphing elixir"
+	name = "'Valmorian Plate Armor' morphing elixir"
 	desc = "A small container of special morphing dust, perfect to make a specific item. It can be used to alter the appearance of either a set of Steel Plate Armor, or a set of Fluted Plate Armor."
 	target_items = list(
 		/obj/item/clothing/suit/roguetown/armor/plate/full/fluted/legacy				= /obj/item/clothing/suit/roguetown/armor/plate/full/donator_triheartfelt,

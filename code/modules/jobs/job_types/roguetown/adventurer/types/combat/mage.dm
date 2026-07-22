@@ -61,7 +61,7 @@
 
 /datum/advclass/mage/spellblade
 	name = "Azurcaephan"
-	tutorial = "You are an Azurcaephan — in common parlance, a Spellblade of the Azurean tradition. A hybrid melee warrior who channels arcyne momentum through combat. Build power with your weapon, then unleash it. Choose between three traditions: Blade (mobile swordsman with dashes and AoE), Phalangite (spear and shield — hold the line with thrusts and pushback), or Macebearer (blunt weapons — ground slams, charges, and shockwaves)."
+	tutorial = "You are an Azurcaephan — in common parlance, a Spellblade of the Valmorian tradition. A hybrid melee warrior who channels arcyne momentum through combat. Build power with your weapon, then unleash it. Choose between three traditions: Blade (mobile swordsman with dashes and AoE), Phalangite (spear and shield — hold the line with thrusts and pushback), or Macebearer (blunt weapons — ground slams, charges, and shockwaves)."
 	outfit = /datum/outfit/job/roguetown/adventurer/spellblade
 	traits_applied = list(TRAIT_ARCYNE)
 	subclass_stats = list(
@@ -134,8 +134,8 @@
 				H.mind.AddSpell(new /datum/action/cooldown/spell/leyline_anchor)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/blade_storm)
 			if("phalangite")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/azurean_phalanx)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/azurean_pilum)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/valmorian_phalanx)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/valmorian_pilum)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/advance)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/gate_of_reckoning)
 			if("macebearer")

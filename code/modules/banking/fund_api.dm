@@ -89,9 +89,9 @@
 	record_round_statistic(STATS_TREASURY_DEBT_REPAID, skim)
 	var/reason
 	if(treasury_state == TREASURY_BANKRUPTCY)
-		reason = "Sequestration debt - Azurian Trading Company"
+		reason = "Sequestration debt - Valmorian Trading Company"
 	else if(treasury_state == TREASURY_IN_ARREARS)
-		reason = "Arrears repayment - Burghers of Azuria"
+		reason = "Arrears repayment - Burghers of Valmoria"
 	else
 		reason = "ATC loan repayment"
 	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, reason))
