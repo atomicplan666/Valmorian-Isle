@@ -36,3 +36,9 @@
 	icon_state = "brownkey"
 	lockid = "inquisition"
 
+/obj/item/roguekey/councillor
+	name = "councillor's key"
+	desc = "The key to the councillor's private drawer."
+	icon_state = "brownkey"
+	lockid = "councillor"
+

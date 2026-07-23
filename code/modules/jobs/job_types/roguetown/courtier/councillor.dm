@@ -157,6 +157,7 @@
 	cloak = /obj/item/clothing/cloak/half/red
 	backpack_contents = list(
 		/obj/item/storage/keyring = 1,
+		/obj/item/roguekey/councillor = 1,
 	)
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_UPPER_MIDDLE_CLASS, H) // bumped from lower-middle so the lowest councillor rung still feels like nobility
@@ -175,6 +176,9 @@
 	beltl = /obj/item/storage/keyring/steward
 	beltr = /obj/item/rogueweapon/huntingknife/idagger/steel
 	cloak = /obj/item/clothing/cloak/half/red
+	backpack_contents = list(
+		/obj/item/roguekey/councillor = 1,
+	)
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_RICH, H) // wealth beyond measure
 	// give them the good see prices trait
@@ -198,6 +202,7 @@
 		/obj/item/hunting_map/white_stag = 1,
 		/obj/item/hunting_map/boars = 1,
 		/obj/item/storage/keyring = 1,
+		/obj/item/roguekey/councillor = 1,
 		/obj/item/rogueweapon/huntingknife/idagger/steel = 1,
 	)
 	if(H.mind)
@@ -222,6 +227,7 @@
 	cloak = /obj/item/clothing/cloak/half/red
 	backpack_contents = list(
 		/obj/item/storage/keyring = 1,
+		/obj/item/roguekey/councillor = 1,
 	)
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_UPPER_MIDDLE_CLASS, H) // bumped from lower-middle to match councillor floor

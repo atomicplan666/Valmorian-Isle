@@ -346,7 +346,8 @@
 	keys = list(/obj/item/roguekey/bathmaster, /obj/item/roguekey/bathworker)
 
 /obj/item/storage/keyring/apothecary
-	keys = list(/obj/item/roguekey/apothecary, /obj/item/roguekey/keeper, /obj/item/roguekey/university)
+	// The physician key is included because dun_world_2 has no separate apothecary building - they work out of the physician's.
+	keys = list(/obj/item/roguekey/apothecary, /obj/item/roguekey/physician, /obj/item/roguekey/keeper, /obj/item/roguekey/university)
 
 /obj/item/storage/keyring/physician
 	keys = list(/obj/item/roguekey/physician, /obj/item/roguekey/apothecary, /obj/item/roguekey/keeper, /obj/item/roguekey/university, /obj/item/roguekey/university_secure)
