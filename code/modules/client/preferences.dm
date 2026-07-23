@@ -45,6 +45,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/tgui_fancy = TRUE
 	var/tgui_lock = TRUE
+	/// TRUE if the player opted out of the tgui character sheet back to the legacy preferences window.
+	var/legacy_prefs_menu = FALSE
 	var/tgui_theme = "azure_default"
 	var/parchment_skin = "leatherbound"
 	var/statbrowser_theme = "light"
@@ -365,6 +367,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		// The tgui character sheet is open; legacy code paths that try to redraw
 		// the old browser window become tgui refreshes instead.
 		charsheet_refresh(user)
+		return
+	if(!legacy_prefs_menu && !user.client?.is_new_player())
+		// The tgui character sheet is the default; the legacy window only opens
+		// for players who opted out via its Legacy button.
+		open_charsheet(user)
 		return
 	if(slot_randomized)
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
@@ -3092,6 +3099,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					if (href_list["tab"])
 						current_tab = text2num(href_list["tab"])
 				if("open_tgui")
+					legacy_prefs_menu = FALSE
+					save_preferences()
 					winshow(user, "preferencess_window", FALSE)
 					user << browse(null, "window=preferences_browser")
 					open_charsheet(user)

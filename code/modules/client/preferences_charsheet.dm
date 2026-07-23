@@ -13,7 +13,7 @@
 /client/verb/character_sheet_tgui()
 	set name = "Character Sheet (TGUI)"
 	set category = "OOC"
-	set desc = "Open the experimental tgui character setup window."
+	set desc = "Open the tgui character setup window."
 	if(!prefs)
 		return
 	prefs.open_charsheet(mob)
@@ -458,9 +458,11 @@
 			update_preview_icon()
 			return TRUE
 
-		// Swap back to the legacy browser preferences window.
+		// Swap back to the legacy browser preferences window (persists as an opt-out).
 		if("open_legacy")
 			charsheet_tgui_active = FALSE
+			legacy_prefs_menu = TRUE
+			save_preferences()
 			ui.close()
 			ShowChoices(user)
 			return TRUE
