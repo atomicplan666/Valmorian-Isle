@@ -361,6 +361,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 /datum/preferences/proc/ShowChoices(mob/user, tabchoice)
 	if(!user || !user.client)
 		return
+	if(charsheet_tgui_active)
+		// The tgui character sheet is open; legacy code paths that try to redraw
+		// the old browser window become tgui refreshes instead.
+		charsheet_refresh(user)
+		return
 	if(slot_randomized)
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
 		slot_randomized = FALSE
@@ -950,6 +955,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 /datum/preferences/proc/SetChoices(mob/user, limit = 14, list/splitJobs = list("Court Magician", "Bishop", "Merchant", "Guildmaster", "Archivist", "Towner", "Grenzelhoft Mercenary", "Beggar", "Prisoner", "Goblin King"), widthPerColumn = 295, height = 620) //295 620
 	if(!SSjob)
 		return
+	if(charsheet_tgui_active)
+		charsheet_refresh(user)
+		return
 
 	//limit - The amount of jobs allowed per column. Defaults to 17 to make it look nice.
 	//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
@@ -1253,6 +1261,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 			user.client.prefs.save_preferences()
 
 /datum/preferences/proc/SetKeybinds(mob/user)
+	if(charsheet_tgui_active)
+		charsheet_refresh(user)
+		return
 	var/list/dat = list()
 	// Create an inverted list of keybindings -> key
 	var/list/user_binds = list()
@@ -1298,6 +1309,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	popup.open(FALSE)
 
 /datum/preferences/proc/SetAntag(mob/user)
+	if(charsheet_tgui_active)
+		charsheet_refresh(user)
+		return
 	var/list/dat = list()
 
 	dat += "<style>label { display: inline-block; width: 200px; }</style><body>"

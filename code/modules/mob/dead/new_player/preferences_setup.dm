@@ -46,7 +46,7 @@
 	copy_to(mannequin, 1, TRUE, TRUE)
 
 	mannequin.rebuild_obscured_flags()
-	parent.show_character_previews(new /mutable_appearance(mannequin))
+	parent.show_character_previews(new /mutable_appearance(mannequin), charsheet_tgui_active ? "charsheet_preview_map" : "character_preview_map")
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 
 /datum/preferences/proc/spec_check(mob/user)

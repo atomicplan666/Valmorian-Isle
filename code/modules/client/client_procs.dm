@@ -1168,7 +1168,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(prefs && prefs.chat_toggles & CHAT_PULLR)
 		to_chat(src, announcement)
 
-/client/proc/show_character_previews(mutable_appearance/MA)
+/client/proc/show_character_previews(mutable_appearance/MA, map_name = "character_preview_map")
 	var/pos = 0
 
 	var/atom/movable/screen/char_preview/background = LAZYACCESS(char_render_holders, "bg")
@@ -1179,7 +1179,10 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	background = new()
 	LAZYSET(char_render_holders, "bg", background)
 	screen += background
-	background.screen_loc = "character_preview_map:0,0 to 3,3"
+	// Centered mode (tgui charsheet map only): pin a wide square canvas and center
+	// the doll grid on it, pairing with the `zoom` param on the tgui control.
+	var/centered = (map_name == "charsheet_preview_map")
+	background.screen_loc = centered ? "[map_name]:1,1 to 15,15" : "[map_name]:0,0 to 3,3"
 
 	// not cardinal anymore, makes taurs more clear
 	for(var/D in GLOB.cardinals)
@@ -1194,15 +1197,18 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		screen += O
 		O.appearance = MA
 		O.dir = D
+		// Centered mode: the 2x2 doll grid is pixel-centered on the 15x15 canvas
+		// (center = 240,240; grid spans 208-272 via the +16px offsets), because the
+		// tgui control's `zoom` viewport is centered on the canvas center.
 		switch(pos)
 			if(1)
-				O.screen_loc = "character_preview_map:2,2"
+				O.screen_loc = centered ? "[map_name]:8:16,8:16" : "[map_name]:2,2"
 			if(2)
-				O.screen_loc = "character_preview_map:1,2"
+				O.screen_loc = centered ? "[map_name]:7:16,8:16" : "[map_name]:1,2"
 			if(3)
-				O.screen_loc = "character_preview_map:1,1"
+				O.screen_loc = centered ? "[map_name]:7:16,7:16" : "[map_name]:1,1"
 			if(4)
-				O.screen_loc = "character_preview_map:2,1"
+				O.screen_loc = centered ? "[map_name]:8:16,7:16" : "[map_name]:2,1"
 
 /client/proc/clear_character_previews()
 	for(var/atom/movable/screen/S in char_render_holders)

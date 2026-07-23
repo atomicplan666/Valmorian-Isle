@@ -1747,6 +1747,7 @@
 #include "code\modules\client\player_details.dm"
 #include "code\modules\client\preferences.dm"
 #include "code\modules\client\preferences_body_markings.dm"
+#include "code\modules\client\preferences_charsheet.dm"
 #include "code\modules\client\preferences_culinary.dm"
 #include "code\modules\client\preferences_customizers.dm"
 #include "code\modules\client\preferences_descriptors.dm"
