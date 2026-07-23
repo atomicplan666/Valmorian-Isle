@@ -377,8 +377,6 @@
 		"tgui_theme" = get_tgui_theme_display_name(),
 		"parchment_skin" = get_parchment_skin_display_name(),
 		"statbrowser_theme" = get_statbrowser_theme_display_name(),
-		"ui_mode" = tgui_pref ? "TGUI" : "Legacy",
-		"tgui_lock" = tgui_lock ? "Primary" : "All",
 		"ambientocclusion" = !!ambientocclusion,
 		"windowflashing" = !!windowflashing,
 		"clientfps" = clientfps,
@@ -460,6 +458,13 @@
 			update_preview_icon()
 			return TRUE
 
+		// Swap back to the legacy browser preferences window.
+		if("open_legacy")
+			charsheet_tgui_active = FALSE
+			ui.close()
+			ShowChoices(user)
+			return TRUE
+
 		// Lobby footer - mirrors /mob/dead/new_player/Topic() ready/late_join handling.
 		if("ready")
 			var/mob/dead/new_player/N = user
@@ -470,6 +475,9 @@
 				return TRUE
 			if(SSticker.current_state <= GAME_STATE_PREGAME)
 				if(tready == PLAYER_READY_TO_PLAY)
+					if(!length(job_preferences) && joblessrole != BERANDOMJOB)
+						to_chat(N, span_boldwarning("You need to select a class before readying up."))
+						return TRUE
 					if(length(flavortext) < MINIMUM_FLAVOR_TEXT)
 						to_chat(N, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
 						return TRUE
@@ -502,7 +510,8 @@
 		if("job_info")
 			var/datum/job/job = SSjob?.GetJob(params["title"])
 			if(job?.class_setup_examine)
-				job.Topic("", list("explainjob" = 1))
+				var/datum/class_info_menu/menu = new(job)
+				menu.ui_interact(user)
 			return TRUE
 
 /// Refresh open character sheet UIs; called from ShowChoices() when the tgui sheet is active.

@@ -5,6 +5,7 @@ import {
   ByondUi,
   Divider,
   Input,
+  Modal,
   Section,
   Stack,
 } from 'tgui-core/components';
@@ -82,8 +83,6 @@ type SettingsData = {
   tgui_theme: string;
   parchment_skin: string;
   statbrowser_theme: string;
-  ui_mode: string;
-  tgui_lock: string;
   ambientocclusion: BooleanLike;
   windowflashing: BooleanLike;
   clientfps: number;
@@ -422,7 +421,9 @@ const ClassesTab = (props) => {
                     )
                   ) : (
                     <Button
-                      color={job.level_color}
+                      color="transparent"
+                      textColor={job.level_color}
+                      bold
                       disabled={!!jobs.job_change_locked}
                       onClick={() =>
                         act('link', {
@@ -700,7 +701,7 @@ const VillainsTab = (props) => {
 };
 
 const SettingsTab = (props) => {
-  const { data } = useBackend<Data>();
+  const { act, data } = useBackend<Data>();
   const s = data.settings;
   return (
     <Stack fill>
@@ -719,8 +720,6 @@ const SettingsTab = (props) => {
             pref="statbrowser_theme"
             task=""
           />
-          <PrefRow label="UI Mode" value={s.ui_mode} pref="tgui_ui_prefs" task="menu" />
-          <PrefRow label="tgui Monitors" value={s.tgui_lock} pref="tgui_lock" task="" />
           <PrefRow
             label="Ambient Occl."
             value={s.ambientocclusion ? 'Enabled' : 'Disabled'}
@@ -936,10 +935,47 @@ const OocTab = (props) => {
   );
 };
 
+type CaptureTarget = {
+  name: string;
+  full_name: string;
+  old_key: string;
+};
+
 const KeybindsTab = (props) => {
   const { act, data } = useBackend<Data>();
   const [search, setSearch] = useState('');
+  const [capturing, setCapturing] = useState<CaptureTarget | null>(null);
   const query = search.toLowerCase();
+
+  // In-window replacement for the legacy "capturekeypress" browser popup:
+  // grab the next keyup and feed it to the same keybindings_set handler.
+  useEffect(() => {
+    if (!capturing) {
+      return;
+    }
+    const handler = (e: KeyboardEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const keyCode = e.keyCode;
+      act('link', {
+        preference: 'keybinds',
+        task: 'keybindings_set',
+        keybinding: capturing.name,
+        old_key: capturing.old_key,
+        clear_key: keyCode === 27 ? 1 : 0,
+        key: e.key,
+        alt: e.altKey ? 1 : 0,
+        ctrl: e.ctrlKey ? 1 : 0,
+        shift: e.shiftKey ? 1 : 0,
+        numpad: keyCode > 95 && keyCode < 112 ? 1 : 0,
+        key_code: keyCode,
+      });
+      setCapturing(null);
+    };
+    document.addEventListener('keyup', handler);
+    return () => document.removeEventListener('keyup', handler);
+  }, [capturing]);
+
   return (
     <Section
       fill
@@ -981,10 +1017,9 @@ const KeybindsTab = (props) => {
                     <Button
                       color="transparent"
                       onClick={() =>
-                        act('link', {
-                          preference: 'keybinds',
-                          task: 'keybindings_capture',
-                          keybinding: kb.name,
+                        setCapturing({
+                          name: kb.name,
+                          full_name: kb.full_name,
                           old_key: 'Unbound',
                         })
                       }
@@ -996,10 +1031,9 @@ const KeybindsTab = (props) => {
                     <Button
                       key={key}
                       onClick={() =>
-                        act('link', {
-                          preference: 'keybinds',
-                          task: 'keybindings_capture',
-                          keybinding: kb.name,
+                        setCapturing({
+                          name: kb.name,
+                          full_name: kb.full_name,
                           old_key: key,
                         })
                       }
@@ -1011,10 +1045,10 @@ const KeybindsTab = (props) => {
                     <Button
                       color="transparent"
                       onClick={() =>
-                        act('link', {
-                          preference: 'keybinds',
-                          task: 'keybindings_capture',
-                          keybinding: kb.name,
+                        setCapturing({
+                          name: kb.name,
+                          full_name: kb.full_name,
+                          old_key: '',
                         })
                       }
                     >
@@ -1032,6 +1066,21 @@ const KeybindsTab = (props) => {
           </Box>
         );
       })}
+      {capturing && (
+        <Modal textAlign="center">
+          <Box bold mb={1}>
+            Keybinding: {capturing.full_name}
+          </Box>
+          <Box>
+            Press any key to change
+            <br />
+            Press ESC to clear
+          </Box>
+          <Button mt={1} onClick={() => setCapturing(null)}>
+            Cancel
+          </Button>
+        </Modal>
+      )}
     </Section>
   );
 };
@@ -1054,7 +1103,7 @@ export const CharacterSheet = (props) => {
   }, []);
 
   return (
-    <Window width={1000} height={780} theme="parchment" title="Character Sheet">
+    <Window width={1280} height={720} theme="parchment" title="Character Sheet">
       <Window.Content>
         <Stack fill vertical>
           {/* Tab bar + header badges */}
@@ -1085,9 +1134,11 @@ export const CharacterSheet = (props) => {
                 >
                   Game Settings
                 </Button>
-                <Button selected={tab === 'ooc'} onClick={() => setTab('ooc')}>
-                  OOC
-                </Button>
+                {(!!data.ooc.can_change_color || !!data.ooc.is_admin) && (
+                  <Button selected={tab === 'ooc'} onClick={() => setTab('ooc')}>
+                    OOC
+                  </Button>
+                )}
                 <Button
                   selected={tab === 'keybinds'}
                   onClick={() => setTab('keybinds')}
@@ -1123,6 +1174,14 @@ export const CharacterSheet = (props) => {
                   onClick={() => act('link', { preference: 'agevet' })}
                 >
                   VERIFIED: {data.age_verified ? 'YAE!' : 'NAE?'}
+                </Button>
+                <Button
+                  color="transparent"
+                  icon="window-restore"
+                  tooltip="Switch back to the legacy preferences window"
+                  onClick={() => act('open_legacy')}
+                >
+                  Legacy
                 </Button>
               </Stack.Item>
             </Stack>

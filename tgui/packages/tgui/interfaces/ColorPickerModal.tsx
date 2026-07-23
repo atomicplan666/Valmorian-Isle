@@ -80,7 +80,7 @@ export const ColorPickerModal: React.FC<ColorPickerModalProps> = () => {
   }
 
   return (
-    <Window height={windowHeight} title={title} width={600} theme="generic">
+    <Window height={windowHeight} title={title} width={600} theme="parchment">
       {!!timeout && <Loader value={timeout} />}
       <Window.Content>
         <Stack fill vertical>

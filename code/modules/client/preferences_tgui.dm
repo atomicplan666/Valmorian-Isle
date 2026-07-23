@@ -50,7 +50,7 @@
 /proc/sanitize_statbrowser_theme(value)
 	if(value in get_statbrowser_themes())
 		return value
-	return "dark"
+	return "light"
 
 /datum/preferences/proc/get_statbrowser_theme_display_name()
 	var/list/themes = get_statbrowser_themes()

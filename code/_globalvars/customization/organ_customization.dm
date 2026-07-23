@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(customizers, build_customizers())
 	return .
 
 /proc/color_pick_sanitized(mob/user, description, title, default_value)
-	var/color = input(user, description, title, default_value) as color|null
+	var/color = tgui_color_picker(user, description, title, default_value)
 	if(!color)
 		return
 	color = sanitize_hexcolor(color)

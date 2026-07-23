@@ -93,10 +93,14 @@
 	set name = "Changelog"
 	set category = "OOC"
 
-	if(!GLOB.changelog_tgui)
-		GLOB.changelog_tgui = new /datum/changelog()
-
-	GLOB.changelog_tgui.ui_interact(mob)
+	// The in-game changelog archive is inherited from upstream; our history lives on GitHub.
+	var/githuburl = CONFIG_GET(string/githuburl)
+	if(!githuburl)
+		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
+		return
+	if(tgui_alert(mob, "This will open the commit history in your browser. Are you sure?", "Changelog", list("Yes", "No")) != "Yes")
+		return
+	src << link("[githuburl]/commits/main")
 	if(prefs.lastchangelog != GLOB.changelog_hash)
 		prefs.lastchangelog = GLOB.changelog_hash
 		prefs.save_preferences()

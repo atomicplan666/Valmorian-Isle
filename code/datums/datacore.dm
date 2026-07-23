@@ -262,6 +262,40 @@ GLOBAL_LIST_EMPTY(fake_ckeys)
 	return dat
 
 
+/// Structured manifest for tgui: a list of departments, each with a crew list of name/rank pairs.
+/datum/datacore/proc/get_manifest_list()
+	var/static/list/department_positions = list(
+		"Heads" = GLOB.command_positions,
+		"Security" = GLOB.security_positions,
+		"Engineering" = GLOB.engineering_positions,
+		"Medical" = GLOB.medical_positions,
+		"Science" = GLOB.science_positions,
+		"Supply" = GLOB.supply_positions,
+		"Civilian" = GLOB.civilian_positions,
+		"Silicon" = GLOB.nonhuman_positions,
+	)
+	var/list/crew_by_department = list()
+	for(var/department in department_positions)
+		crew_by_department[department] = list()
+	var/list/misc = list()
+	for(var/datum/data/record/t in general)
+		var/name = t.fields["name"]
+		var/rank = t.fields["rank"]
+		var/found = FALSE
+		for(var/department in department_positions)
+			if(rank in department_positions[department])
+				crew_by_department[department] += list(list("name" = name, "rank" = rank))
+				found = TRUE
+		if(!found)
+			misc += list(list("name" = name, "rank" = rank))
+	var/list/result = list()
+	for(var/department in crew_by_department)
+		if(length(crew_by_department[department]))
+			result += list(list("name" = department, "crew" = crew_by_department[department]))
+	if(length(misc))
+		result += list(list("name" = "Miscellaneous", "crew" = misc))
+	return result
+
 /datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C)
 	set waitfor = FALSE
 	var/static/list/show_directions = list(SOUTH, WEST)

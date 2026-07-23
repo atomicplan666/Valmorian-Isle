@@ -195,12 +195,8 @@
 	popup.open(FALSE)
 
 /datum/preferences/proc/show_culinary_ui(mob/user)
-	var/list/dat = list()
-	dat += "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">"
-	dat += print_culinary_page(user)
-	var/datum/browser/popup = new(user, "culinary_customization", "<div align='center'>Culinary Preferences</div>", 345, 215)
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
+	var/datum/culinary_menu/menu = new(src)
+	menu.ui_interact(user)
 
 /datum/preferences/proc/apply_culinary_preferences(mob/living/carbon/human/character)
 	if(!culinary_preferences)

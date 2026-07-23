@@ -8,12 +8,12 @@
 /datum/preferences/proc/handle_body_markings_topic(mob/user, href_list)
 	switch(href_list["preference"])
 		if("use_preset")
-			var/action = alert(usr, "Are you sure you want to use a preset (This will clear your existing markings)?", "Markings Preset", "Yes", "No")
+			var/action = tgui_alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "Markings Preset", list("Yes", "No"))
 			if(action && action == "Yes")
 				var/list/candidates = marking_sets_for_species(pref_species)
 				if(length(candidates) == 0)
 					return
-				var/desired_set = input(user, "Choose your new body markings:", "Character Preference") as null|anything in candidates
+				var/desired_set = tgui_input_list(user, "Choose your new body markings:", "Character Preference", candidates)
 				if(desired_set)
 					var/datum/body_marking_set/BMS = GLOB.body_marking_sets[desired_set]
 					body_markings = assemble_body_markings_from_set(BMS, features, pref_species)
@@ -71,7 +71,7 @@
 					possible_candidates -= keyed_name
 			if(possible_candidates.len == 0)
 				return
-			var/desired_marking = input(user, "Choose your new marking to add:", "Character Preference") as null|anything in possible_candidates
+			var/desired_marking = tgui_input_list(user, "Choose your new marking to add:", "Character Preference", possible_candidates)
 			if(desired_marking)
 				var/datum/body_marking/BD = GLOB.body_markings[desired_marking]
 				if(!body_markings[zone])
@@ -95,7 +95,7 @@
 					possible_candidates -= keyed_name
 			if(possible_candidates.len == 0)
 				return
-			var/desired_marking = input(user, "Choose a marking to change the current one to:", "Character Preference") as null|anything in possible_candidates
+			var/desired_marking = tgui_input_list(user, "Choose a marking to change the current one to:", "Character Preference", possible_candidates)
 			if(desired_marking)
 				if(!body_markings[zone] || !body_markings[zone][changing_name])
 					return
@@ -192,12 +192,8 @@
 	return dat
 
 /datum/preferences/proc/ShowMarkings(mob/user)
-	var/list/dat = list()
-	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
-	dat += print_body_markings_page()
-	var/datum/browser/popup = new(user, "markings_cusotmization", "<div align='center'>Markings customization</div>", 650, 710)
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
+	var/datum/markings_menu/menu = new(src)
+	menu.ui_interact(user)
 
 /datum/preferences/proc/reset_body_marking_colors()
 	for(var/zone in body_markings)

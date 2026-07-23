@@ -104,6 +104,7 @@
 	if(!ui)
 		ui = new(user, src, "AlertModal")
 		ui.open()
+		ui.set_always_on_top()
 
 /datum/tgui_alert/ui_close(mob/user)
 	. = ..()

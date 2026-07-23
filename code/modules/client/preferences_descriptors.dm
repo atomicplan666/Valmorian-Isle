@@ -58,7 +58,7 @@
 			for(var/desc_type in choice.descriptors)
 				var/datum/mob_descriptor/descriptor = MOB_DESCRIPTOR(desc_type)
 				picklist[descriptor.name] = desc_type
-			var/picked_descriptor_name = input(user, "Describe my [lowertext(choice.name)]", "Describe myself") as null|anything in picklist
+			var/picked_descriptor_name = tgui_input_list(user, "Describe my [lowertext(choice.name)]", "Describe myself", picklist)
 
 			if(!picked_descriptor_name)
 				return
@@ -80,14 +80,14 @@
 			var/current_prefix_text = translation["[custom_entry.prefix_type]"]
 			if(!current_prefix_text)
 				current_prefix_text = is_article_only ? "a" : "Has a"
-			var/new_prefix_text = input(user, "Choose the article", "Describe myself", current_prefix_text) as null|anything in input_list
+			var/new_prefix_text = tgui_input_list(user, "Choose the article", "Describe myself", input_list)
 			if(!new_prefix_text)
 				return
 			custom_entry.prefix_type = input_list[new_prefix_text]
 		if("custom_descriptor_content")
 			var/index = text2num(href_list["index"])
 			var/datum/custom_descriptor_entry/custom_entry = custom_descriptors[index]
-			var/new_content = input(user, "Describe the feature", "Describe myself") as text|null
+			var/new_content = tgui_input_text(user, "Describe the feature", "Describe myself", custom_entry.content_text, CUSTOM_DESCRIPTOR_TEXT_LENGTH)
 			if(!new_content)
 				return
 			new_content = STRIP_HTML_SIMPLE(lowertext(new_content), CUSTOM_DESCRIPTOR_TEXT_LENGTH)
@@ -151,11 +151,8 @@
 	return dat
 
 /datum/preferences/proc/show_descriptors_ui(mob/user)
-	var/list/dat = list()
-	dat += print_descriptors_page()
-	var/datum/browser/popup = new(user, "descriptors_customization", "<div align='center'>Describe myself</div>", 350, 510)
-	popup.set_content(dat.Join())
-	popup.open(FALSE)
+	var/datum/descriptors_menu/menu = new(src)
+	menu.ui_interact(user)
 
 /datum/preferences/proc/has_descriptor_type_in_entries(descriptor_type)
 	if(length(descriptor_entries))

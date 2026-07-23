@@ -97,7 +97,12 @@ export function AlertModal(props) {
   }
 
   return (
-    <Window height={windowHeight} title={title} width={windowWidth}>
+    <Window
+      height={windowHeight}
+      title={title}
+      width={windowWidth}
+      theme="parchment"
+    >
       {!!timeout && <Loader value={timeout} />}
       <Window.Content onKeyDown={keyDownHandler}>
         <Section fill>

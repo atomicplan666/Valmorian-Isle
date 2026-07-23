@@ -75,7 +75,12 @@ export const TextInputModal = (props) => {
     }
   }
   return (
-    <Window title={title} width={windowWidth} height={windowHeight}>
+    <Window
+      title={title}
+      width={windowWidth}
+      height={windowHeight}
+      theme="parchment"
+    >
       {timeout && <Loader value={timeout} />}
       <Window.Content onKeyDown={handleKeyDown}>
         <Section fill>

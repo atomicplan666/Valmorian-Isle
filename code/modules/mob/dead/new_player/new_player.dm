@@ -107,6 +107,9 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 			return
 		if(is_pregame)
 			if(tready == PLAYER_READY_TO_PLAY)
+				if(!length(client.prefs.job_preferences) && client.prefs.joblessrole != BERANDOMJOB)
+					to_chat(src, span_boldwarning("You need to select a class before readying up."))
+					return
 				if(length(client.prefs.flavortext) < MINIMUM_FLAVOR_TEXT)
 					to_chat(src, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
 					return
@@ -182,32 +185,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
-		if(!SSticker?.IsRoundInProgress())
-			to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
-			return
-
-		if(!GLOB.enter_allowed)
-			to_chat(usr, span_notice("There is a lock on entering the game!"))
-			return
-
-		if(SSticker.queued_players.len && !(ckey(key) in GLOB.admin_datums))
-			if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
-				to_chat(usr, span_warning("Server is full."))
-				return
-
-		if(client && client.prefs.is_active_migrant())
-			to_chat(usr, span_boldwarning("You are in the migrant queue."))
-			return
-
-		if(length(client.prefs.flavortext) < MINIMUM_FLAVOR_TEXT)
-			to_chat(usr, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
-			return
-
-		if(length(client.prefs.ooc_notes) < MINIMUM_OOC_NOTES)
-			to_chat(src, span_boldwarning("You need at least a few words in your OOC notes in order to play."))
-			return
-
-		AttemptLateSpawn(href_list["SelectedJob"])
+		try_late_join(href_list["SelectedJob"])
 		return
 
 	if(!ready && href_list["preference"])
@@ -235,9 +213,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 /mob/dead/new_player/verb/do_rp_prompt()
 	set name = "Lore Primer"
 	set category = "IC.Memory"
-	var/datum/browser/popup = new(src, "Primer", "VALMORIA", 460, 550)
-	popup.set_content(build_lore_primer_content())
-	popup.open()
+	GLOB.lore_primer.ui_interact(src)
 
 /proc/get_job_unavailable_error_message(retval, jobtitle)
 	switch(retval)
@@ -475,124 +451,54 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(character.client)
 		character.client.update_ooc_verb_visibility()
 
+/// Shared guards for late joining, used by both the legacy href and the tgui menu.
+/mob/dead/new_player/proc/try_late_join(job_title)
+	if(!SSticker?.IsRoundInProgress())
+		to_chat(src, span_danger("The round is either not ready, or has already finished..."))
+		return
+
+	if(!GLOB.enter_allowed)
+		to_chat(src, span_notice("There is a lock on entering the game!"))
+		return
+
+	// Determine relevant population cap, mirroring Topic().
+	var/relevant_cap
+	var/hpc = CONFIG_GET(number/hard_popcap)
+	var/epc = CONFIG_GET(number/extreme_popcap)
+	if(hpc && epc)
+		relevant_cap = min(hpc, epc)
+	else
+		relevant_cap = max(hpc, epc)
+
+	if(SSticker.queued_players.len && !(ckey(key) in GLOB.admin_datums))
+		if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
+			to_chat(src, span_warning("Server is full."))
+			return
+
+	if(client && client.prefs.is_active_migrant())
+		to_chat(src, span_boldwarning("You are in the migrant queue."))
+		return
+
+	if(length(client.prefs.flavortext) < MINIMUM_FLAVOR_TEXT)
+		to_chat(src, span_boldwarning("You need a minimum of [MINIMUM_FLAVOR_TEXT] characters in your flavor text in order to play."))
+		return
+
+	if(length(client.prefs.ooc_notes) < MINIMUM_OOC_NOTES)
+		to_chat(src, span_boldwarning("You need at least a few words in your OOC notes in order to play."))
+		return
+
+	AttemptLateSpawn(job_title)
+
 /mob/dead/new_player/proc/LateChoices()
 	if(SSticker?.HasRoundStarted() && SSgamemode?.current_storyteller)
 		gnollslot_update()
 		update_scaling_slots()
 		enforce_storyteller_soft_antag_slots()
-	var/list/dat = list("<div class='notice' style='font-style: normal; font-size: 14px; margin-bottom: 2px; padding-bottom: 0px'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]</div>")
 	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
 		if(prioritized_job.current_positions >= prioritized_job.total_positions)
 			SSjob.prioritized_jobs -= prioritized_job
-	dat += "<table><tr><td valign='top'>"
-	var/column_counter = 0
-
-	if(has_world_trait(/datum/world_trait/skeleton_siege))
-		dat += "<fieldset style='width: 185px; border: 2px solid #df1919; display: inline'>"
-		dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Siege Skeleton'>BECOME AN EVIL SKELETON</a>"
-		dat += "</fieldset><br>"
-		column_counter++
-		if(column_counter > 0 && (column_counter % 4 == 0))
-			dat += "</td><td valign='top'>"
-	if(has_world_trait(/datum/world_trait/goblin_siege))
-		dat += "<fieldset style='width: 185px; border: 2px solid #df1919; display: inline'>"
-		dat += "<a class='job command' href='byond://?src=[REF(src)];SelectedJob=Goblin'>BECOME A GOBLIN</a>"
-		dat += "</fieldset><br>"
-		column_counter++
-		if(column_counter > 0 && (column_counter % 4 == 0))
-			dat += "</td><td valign='top'>"
-
-	var/list/omegalist = list()
-	omegalist += list(GLOB.noble_positions)
-	omegalist += list(GLOB.courtier_positions)
-	omegalist += list(GLOB.retinue_positions)
-	omegalist += list(GLOB.garrison_positions)
-	omegalist += list(GLOB.church_positions)
-	omegalist += list(GLOB.burgher_positions)
-	omegalist += list(GLOB.atc_positions)
-	omegalist += list(GLOB.peasant_positions)
-	omegalist += list(GLOB.sidefolk_positions)
-	omegalist += list(GLOB.wanderer_positions)
-	omegalist += list(GLOB.inquisition_positions)
-	omegalist += list(GLOB.antagonist_positions)
-
-	for(var/list/category in omegalist)
-		if(!SSjob.name_occupations[category[1]])
-
-			continue
-
-		var/list/available_jobs = list()
-		for(var/job in category)
-			var/datum/job/job_datum = SSjob.name_occupations[job]
-			if(!job_datum)
-				continue
-			// Make sure hiv+ jobs always appear on list, even if unavailable
-			var/is_job_available = (IsJobUnavailable(job_datum.title) == JOB_AVAILABLE)
-			if(job_datum.always_show_on_latechoices)
-				is_job_available = TRUE
-			if(is_job_available)
-				available_jobs += job
-
-		if (length(available_jobs))
-			var/cat_color = SSjob.name_occupations[category[1]].selection_color //use the color of the first job in the category (the department head) as the category color
-			var/cat_name = ""
-			switch (SSjob.name_occupations[category[1]].department_flag)
-				if (NOBLEMEN)
-					cat_name = "Ducal Family"
-				if (COURTIERS)
-					cat_name = "Courtiers"
-				if (RETINUE)
-					cat_name = "Retinue"
-				if (GARRISON)
-					cat_name = "Garrison"
-				if (CHURCHMEN)
-					cat_name = "Churchmen"
-				if (BURGHERS)
-					cat_name = "Burghers"
-				if (ATC)
-					cat_name = "Valmorian Trading Company"
-				if (PEASANTS)
-					cat_name = "Peasants"
-				if (SIDEFOLK)
-					cat_name = "Sidefolk"
-				if (WANDERERS)
-					cat_name = "Wanderers"
-				if (INQUISITION)
-					cat_name = "Inquisition"
-				if (ANTAGONIST)
-					cat_name = "Antagonists"
-
-			dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
-			dat += "<legend align='center' style='font-weight: bold; color: [cat_color]'>[cat_name]</legend>"
-
-			for(var/job in available_jobs)
-				var/datum/job/job_datum = SSjob.name_occupations[job]
-				var/do_elaborate = job_datum.has_limited_subclasses()
-				var/incompatible_subclasses = job_datum.prefs_subclass_compatibility(client)
-				var/incompatible_href = incompatible_subclasses ? "<a href='?src=[REF(job_datum)];jobadvincomp=1'><b><font color = '#df1919'>(!!)</font></b></a>" : ""
-				if(job_datum)
-					var/command_bold = FALSE
-					if(job in GLOB.leadership_positions)
-						command_bold = TRUE
-					var/used_name = job_datum.display_title || job_datum.title
-					if(client.prefs.pronouns == SHE_HER && job_datum.f_title)
-						used_name = job_datum.f_title
-					if(job_datum in SSjob.prioritized_jobs)
-						dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[used_name] ([job_datum.current_positions])</span></a>"
-					else
-						dat += "<font size = 3>[incompatible_href][do_elaborate ? "<a href='?src=[REF(job_datum)];jobsubclassinfo=1'><b><font color = '#6b6743'>(!)</font></b></a>" : ""]<a href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[command_bold ? "<b>" : ""][used_name] ([job_datum.current_positions]/[job_datum.total_positions])[command_bold ? "</b>" : ""]</a></font>"
-						dat += "<br>"
-
-			dat += "</fieldset><br>"
-			column_counter++
-			if(column_counter > 0 && (column_counter % 4 == 0))
-				dat += "</td><td valign='top'>"
-	dat += "</td></tr></table></center>"
-	dat += "</div></div>"
-	var/datum/browser/popup = new(src, "latechoices", "Choose Class", 720, 580)
-	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
-	popup.set_content(jointext(dat, ""))
-	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
+	var/datum/late_join_menu/menu = new(src)
+	menu.ui_interact(src)
 
 /mob/dead/new_player/proc/create_character(transfer_after)
 	spawning = 1
@@ -655,11 +561,7 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 		qdel(src)
 
 /mob/dead/new_player/proc/ViewManifest()
-	var/dat = "<html><body>"
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest(OOC = 1)
-
-	src << browse(dat, "window=manifest;size=387x420;can_close=1")
+	GLOB.crew_manifest_tgui.ui_interact(src)
 
 /mob/dead/new_player/Move()
 	return 0
@@ -668,6 +570,10 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 /mob/dead/new_player/proc/close_spawn_windows()
 
 	src << browse(null, "window=latechoices") //closes late choices window
+	// Close every lobby tgui (late join, character sheet, its submenus, prompts) -
+	// a new_player mob has no other tgui windows worth keeping.
+	for(var/datum/tgui/ui in tgui_open_uis)
+		ui.close()
 	src << browse(null, "window=playersetup") //closes the player setup window
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")

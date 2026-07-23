@@ -52,7 +52,7 @@ export const CheckboxInput = (props) => {
   };
 
   return (
-    <Window title={title} width={425} height={300}>
+    <Window title={title} width={425} height={300} theme="parchment">
       {!!timeout && <Loader value={timeout} />}
       <Window.Content>
         <Stack fill vertical g={0}>

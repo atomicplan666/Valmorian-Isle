@@ -23,6 +23,10 @@
 	anchored = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/locked = FALSE
+	/// Overlay added on top of the machine sprite; null for subtypes whose icon sheet lacks it.
+	var/merch_overlay_state = "vendor-merch"
+	/// Sprite shown when broken; null for subtypes whose icon sheet lacks it.
+	var/broken_icon_state = "goldvendor0"
 	var/budget = 0
 	var/upgrade_flags
 	var/current_cat = ""
@@ -144,6 +148,8 @@
 	motto = "Hissss..." //Its a cat, sire.
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "vheslie"
+	merch_overlay_state = null
+	broken_icon_state = null
 	lockid = "Vheslie"
 	profit_id = list("Bathmaster") //Hilarious (not you can unlock this)
 	categories = list(
@@ -214,7 +220,8 @@
 		set_light(0)
 		return
 	set_light(1, 1, 1, l_color = "#1b7bf1")
-	add_overlay(mutable_appearance(icon, "vendor-merch"))
+	if(merch_overlay_state)
+		add_overlay(mutable_appearance(icon, merch_overlay_state))
 
 
 /obj/structure/roguemachine/goldface/attackby(obj/item/P, mob/user, params)
@@ -1070,7 +1077,8 @@
 	budget2change(budget, custom_turf = T)
 	set_light(0)
 	update_icon()
-	icon_state = "goldvendor0"
+	if(broken_icon_state)
+		icon_state = broken_icon_state
 
 /obj/structure/roguemachine/goldface/Destroy()
 	set_light(0)
