@@ -43,6 +43,15 @@
 		if(eyes_entry.heterochromia)
 			dat += "<br>Second Color: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=second_eye_color''><span class='color_holder_box' style='background-color:[eyes_entry.second_color]'></span></a>"
 
+/datum/customizer_choice/organ/eyes/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	. = ..()
+	var/datum/customizer_entry/organ/eyes/eyes_entry = entry
+	. += list(list("label" = "Eye Color", "task" = "eye_color", "kind" = "color", "value" = eyes_entry.eye_color))
+	if(allows_heterochromia)
+		. += list(list("label" = "Heterochromia", "task" = "heterochromia", "kind" = "button", "value" = eyes_entry.heterochromia ? "Yes" : "No"))
+		if(eyes_entry.heterochromia)
+			. += list(list("label" = "Second Color", "task" = "second_eye_color", "kind" = "color", "value" = eyes_entry.second_color))
+
 /datum/customizer_choice/organ/eyes/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/eyes/eyes_entry = entry

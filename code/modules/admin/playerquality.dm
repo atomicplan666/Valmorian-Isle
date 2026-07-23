@@ -129,26 +129,66 @@
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
 		to_chat(usr, span_boldwarning("User does not exist."))
 		return
-	var/popup_window_data = "<center>[ckey]</center>"
-	popup_window_data += "<center>PQ: [get_playerquality(ckey, TRUE, TRUE)] ([get_playerquality(ckey, FALSE, TRUE)])</center>"
+	var/datum/pq_menu/menu = new(ckey)
+	menu.ui_interact(usr)
 
-//	dat += "<table width=100%><tr><td width=33%><div style='text-align:left'><a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]</div></td><td width=34%><center><a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]</center></td><td width=33%></td></tr></table>"
-	popup_window_data += "<center><a href='?_src_=holder;[HrefToken()];cursemenu=[ckey]'>CURSES</a></center>"
-	popup_window_data += "<table width=100%><tr><td width=33%><div style='text-align:left'>"
-	popup_window_data += "Commends: <a href='?_src_=holder;[HrefToken()];readcommends=[ckey]'>[get_commends(ckey)]</a></div></td>"
-	popup_window_data += "<td width=34%><center>Round Contributor Points: [get_roundpoints(ckey)]</center></td>"
-	popup_window_data += "<td width=33%><div style='text-align:right'>Rounds Survived: [get_roundsplayed(ckey)]</div></td></tr></table>"
-	var/list/listy = world.file2list("data/player_saves/[copytext(ckey,1,2)]/[ckey]/playerquality.txt")
-	if(!listy.len)
-		popup_window_data += span_info("No data on record. Create some.")
-	else
-		for(var/i = listy.len to 1 step -1)
-			var/ya = listy[i]
-			if(ya)
-				popup_window_data += "<span class='info'>[listy[i]]</span><br>"
-	var/datum/browser/noclose/popup = new(usr, "playerquality", "", 390, 320)
-	popup.set_content(popup_window_data)
-	popup.open()
+/// TGUI player quality panel - replaces the legacy "playerquality" browser popup
+/// (and inlines the admin-only "cursecheck"/"commendscheck" popups as sections).
+/datum/pq_menu
+	var/target_ckey
+
+/datum/pq_menu/New(target_ckey)
+	src.target_ckey = target_ckey
+
+/datum/pq_menu/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/pq_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PlayerQuality")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/pq_menu/ui_close(mob/user)
+	. = ..()
+	qdel(src)
+
+/datum/pq_menu/ui_data(mob/user)
+	var/list/data = list()
+	data["ckey"] = target_ckey
+	data["pq_text"] = get_playerquality(target_ckey, TRUE)
+	data["pq_num"] = get_playerquality(target_ckey)
+	data["commends"] = get_commends(target_ckey)
+	data["roundpoints"] = get_roundpoints(target_ckey)
+	data["roundsplayed"] = get_roundsplayed(target_ckey)
+
+	var/list/history = list()
+	var/list/listy = world.file2list("data/player_saves/[copytext(target_ckey,1,2)]/[target_ckey]/playerquality.txt")
+	for(var/i = listy.len to 1 step -1)
+		if(listy[i])
+			history += listy[i]
+	data["history"] = history
+
+	var/is_admin = !!user?.client?.holder
+	data["is_admin"] = is_admin
+	if(is_admin)
+		var/list/commend_rows = list()
+		var/json_file = file("data/player_saves/[copytext(target_ckey,1,2)]/[target_ckey]/commends.json")
+		if(fexists(json_file))
+			var/list/json = json_decode(file2text(json_file))
+			for(var/giver in json)
+				commend_rows += list(list("giver" = giver, "amount" = json[giver]))
+		data["commend_rows"] = commend_rows
+		var/list/curse_rows = list()
+		var/curse_file = file("data/player_saves/[copytext(target_ckey,1,2)]/[target_ckey]/curses.json")
+		var/list/cursed = list()
+		if(fexists(curse_file))
+			cursed = json_decode(file2text(curse_file))
+		for(var/curse in CURSE_MASTER_LIST)
+			curse_rows += list(list("name" = curse, "enabled" = (curse in cursed)))
+		data["curse_rows"] = curse_rows
+	return data
 
 /client/proc/adjust_pq()
 	set category = "Admin.Special"

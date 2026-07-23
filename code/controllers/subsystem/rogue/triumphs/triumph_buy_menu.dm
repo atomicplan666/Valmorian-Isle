@@ -1,209 +1,127 @@
+/// TGUI Triumph leaderboard - replaces the legacy "triumph_leaderboard" browser popup.
+GLOBAL_DATUM_INIT(triumph_leaderboard_menu, /datum/triumph_leaderboard_menu, new)
 
+/datum/triumph_leaderboard_menu/ui_state(mob/user)
+	return GLOB.always_state
 
+/datum/triumph_leaderboard_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TriumphLeaderboard")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/triumph_leaderboard_menu/ui_data(mob/user)
+	var/list/data = list()
+	data["season"] = GLOB.triumph_wipe_season
+	var/list/entries = list()
+	var/position_number = 0
+	for(var/key in SStriumphs.triumph_leaderboard)
+		position_number++
+		entries += list(list(
+			"key" = key,
+			"amount" = SStriumphs.triumph_leaderboard[key],
+		))
+		if(position_number >= SStriumphs.triumph_leaderboard_positions_tracked)
+			break
+	data["entries"] = entries
+	return data
+
+/// TGUI Triumph buy menu - replaces the legacy "triumph_buy_window" browser menu.
+/// One datum per client, tracked in SStriumphs.active_triumph_menus.
 /datum/triumph_buy_menu
-	//These are the menu datum vars
 	var/client/linked_client
-	var/triumph_quantity = 108 // The amount of triumphs we got
-
-	var/current_page = "1" // Current page of triumphs we are viewing and yes its a number in a string
-	var/current_category = TRIUMPH_CAT_ROUND_EFX //Current category we are viewing
-
-	var/page_count = 0
-
-/datum/triumph_buy_menu/New()
-	..()
 
 /datum/triumph_buy_menu/Destroy(force, ...)
+	SStgui.close_uis(src)
 	linked_client = null
-	. = ..()
-	
+	return ..()
 
 /datum/triumph_buy_menu/proc/triumph_menu_startup_slop()
-	var/datum/asset/thicc_assets = get_asset_datum(/datum/asset/simple/blackedstone_triumph_buy_menu_slop_layout)
-	thicc_assets.send(linked_client)
-
-	show_menu()
-
-
-// TRIUMPH BUY MENU SIDED PROC
-/datum/triumph_buy_menu/proc/show_menu()
 	if(!linked_client)
 		return
-	var/data = {"
-	<!DOCTYPE html>
-	<html lang='en'>
-	<html>
-		<head>
-			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-			<style>
-				@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=Nosifer&display=swap');
-				@import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
-			</style>
-			<link rel='stylesheet' type='text/css' href='slop_menustyle3.css'>
-		</head>
-	"}
+	ui_interact(linked_client.mob)
 
-	data += {"
-		<body>
-			<div id='top_container_div'>
-				<div id='triumph_quantity_div'>
-					I have [SStriumphs.get_triumphs(linked_client.ckey)] Triumphs
-				</div>
-			</div> 
-			<div style='width:100%;float:left'>
-		"}
-/*
-				<div id='triumph_close_div'>
-					<a id='triumph_close_button' href='?src=\ref[src];close_menu=1'>CLOSE MENU</a>
-				</div>
-*/
+/// Push fresh data to the open menu window (name kept from the legacy HTML menu,
+/// still called by SStriumphs.call_menu_refresh()).
+/datum/triumph_buy_menu/proc/show_menu()
+	SStgui.update_uis(src)
 
-	data += "<hr class='fadeout_line'>"
-	for(var/cat_key in SStriumphs.central_state_data)
-		if(cat_key == current_category)
-			data += "<a class='triumph_categories_selected' href='?src=\ref[src];select_a_category=[cat_key]'><span class='bigunder_back'><span class='bigunder'></span>[cat_key]</span></a>"
-			continue
-		data += "<a class='triumph_categories_normal' href='?src=\ref[src];select_a_category=[cat_key]'>[cat_key]</a>"
-	data += "<hr class='fadeout_line'>"
+/datum/triumph_buy_menu/ui_state(mob/user)
+	return GLOB.always_state
 
-	data += {"
-			</div>
-			<table>
-				<thead>
-					<tr>
-						<th class='triumph_text_head'>Description</th>
-						<th class='triumph_text_head'>Cost</th>
-						<th class='triumph_text_head_redeem'>Redeem</th>
-					</tr>
-				</thead>
-				<tbody>
-	"}
+/datum/triumph_buy_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TriumphBuyMenu")
+		ui.open()
 
-	
-	if(current_category == TRIUMPH_CAT_ACTIVE_DATUMS)
-		// Mostly so we can stop the filler message from not being displayed if someone has a non-visible triumph buy, and theres nothing else in.
-		var/found_one_blank_sloppy_toppy = FALSE 
-		if(SStriumphs.active_triumph_buy_queue.len)
-			for(var/datum/triumph_buy/auugh in SStriumphs.active_triumph_buy_queue)
-				if(!auugh.visible_on_active_menu) // If we aren't set to be able to be visible on the main menu
-					continue
-				data += {"
-					<tr class='triumph_text_row'>
-						<td class='triumph_text_desc'>[auugh.desc] | Bought by: [auugh.key_of_buyer]</td>
-						<td class='triumph_cost_wrapper'>[auugh.triumph_cost]</td>
-				"}
-				if(SSticker.HasRoundStarted() && auugh.pre_round_only)
-					data += "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[auugh];'><span class='strikethru_back'>ROUND STARTED</span></a></td>"
-				else
-					data += "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[auugh];'>UNBUY</a></td>"
-				
-				data += "</tr>"
-
-				found_one_blank_sloppy_toppy = TRUE // WE GOT ONE WOOHOO
-
-
-		if(!found_one_blank_sloppy_toppy) // We didn't find anything that could be visible, so cram in the mssage
-			data += {"
-				<tr class='triumph_text_row'>
-					<td class='triumph_text_desc'>CURRENTLY NOTHING</td>
-					<td class='triumph_cost_wrapper'>ACTIVELY</td>
-					<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];'>HERE</a></td>
-				</tr>
-			"}
-
-	else
-		for(var/datum/triumph_buy/current_check in SStriumphs.central_state_data[current_category]["[current_page]"])
-			data += {"
-				<tr class='triumph_text_row'>
-					<td class='triumph_text_desc'>[current_check.desc]</td>
-					<td class='triumph_cost_wrapper'>[current_check.triumph_cost]</td>
-				"}
-
-			var/string = "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'>BUY</a></td>"
-			if(SSticker.HasRoundStarted() && current_check.pre_round_only)
-				string = "<td class='triumph_buy_wrapper'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'><span class='strikethru_back'>CONFLICT</span></a></td>"
-			else
-				for(var/datum/triumph_buy/conflict_check in SStriumphs.active_triumph_buy_queue)
-					if(current_check.type in conflict_check.conflicts_with) // We are in an active datum's conflicts with
-						string = "<td class='triumph_filler_cells'><a class='triumph_text_buy' href='?src=\ref[src];handle_buy_button=\ref[current_check];'><span class='strikethru_back'>CONFLICT</span></a></td>"
-
-			data += string
-			data += "</tr>"
-
-
-
-	data += {"
-				</tbody>
-			</table>
-			"}
-	data += "<div class='triumph_footer'>"
-
-	for(var/i in 1 to SStriumphs.central_state_data[current_category].len)
-
-		if("[i]" == current_page)
-			data += "<a class='triumph_numbers_selected' href='?src=\ref[src];select_a_page=[i]'><span class='num_bigunder_back'><span class='num_bigunder'></span>[i]</span></a>"
-		else
-			data += "<a class='triumph_numbers_normal' href='?src=\ref[src];select_a_page=[i]'>[i]</a>"
-
-	data += "</div>"
-	data += {"
-		</body>
-	</html>
-	"}
-
-	linked_client << browse(data, "window=triumph_buy_window;size=500x760;can_close=1;can_minimize=0;can_maximize=0;can_resize=0;titlebar=1")
-
-	// We setup the href_list "close" call if they hit the x on the top right
-	for(var/i in 1 to 10)
-		if(!linked_client)
-			break
-		if(winexists(linked_client, "triumph_buy_window"))
-			winset(linked_client, "triumph_buy_window", "on-close=\".windowclose [REF(src)]\"")
-			break
-
-// TRIUMPH BUY MENU SIDED PROC
-/datum/triumph_buy_menu/Topic(href, list/href_list)
+/datum/triumph_buy_menu/ui_close(mob/user)
 	. = ..()
+	SStriumphs.remove_triumph_buy_menu(linked_client)
 
-	if(href_list["select_a_category"])
-		var/sent_category = href_list["select_a_category"]
-		if(SStriumphs.central_state_data[sent_category])
-			if(sent_category != current_category)
-				current_category = sent_category
-				show_menu()
+/datum/triumph_buy_menu/proc/item_state(datum/triumph_buy/item)
+	if(SSticker.HasRoundStarted() && item.pre_round_only)
+		return "round_started"
+	for(var/datum/triumph_buy/conflict_check in SStriumphs.active_triumph_buy_queue)
+		if(item.type in conflict_check.conflicts_with)
+			return "conflict"
+	return "buy"
 
-	if(href_list["select_a_page"])
-		var/sent_page = href_list["select_a_page"]
-		if(SStriumphs.central_state_data[current_category]["[sent_page]"])
-			if(sent_page != current_page)
-				current_page = sent_page
-				show_menu()
+/datum/triumph_buy_menu/ui_data(mob/user)
+	var/list/data = list()
+	data["triumphs"] = linked_client ? SStriumphs.get_triumphs(linked_client.ckey) : 0
+	var/list/categories = list()
+	var/list/items_by_category = list()
+	for(var/cat_key in SStriumphs.central_state_data)
+		categories += cat_key
+		var/list/items = list()
+		if(cat_key == TRIUMPH_CAT_ACTIVE_DATUMS)
+			for(var/datum/triumph_buy/active in SStriumphs.active_triumph_buy_queue)
+				if(!active.visible_on_active_menu)
+					continue
+				items += list(list(
+					"ref" = REF(active),
+					"desc" = active.desc,
+					"cost" = active.triumph_cost,
+					"buyer" = active.key_of_buyer,
+					"state" = (SSticker.HasRoundStarted() && active.pre_round_only) ? "round_started" : "unbuy",
+				))
+		else
+			for(var/page in SStriumphs.central_state_data[cat_key])
+				for(var/datum/triumph_buy/current_check in SStriumphs.central_state_data[cat_key][page])
+					items += list(list(
+						"ref" = REF(current_check),
+						"desc" = current_check.desc,
+						"cost" = current_check.triumph_cost,
+						"buyer" = null,
+						"state" = item_state(current_check),
+					))
+		items_by_category[cat_key] = items
+	data["categories"] = categories
+	data["items"] = items_by_category
+	return data
 
-	//This sends a reference to a datum, 
-	if(href_list["handle_buy_button"])
-		var/datum/triumph_buy/target_datum = locate(href_list["handle_buy_button"])
-		if(target_datum)
+/datum/triumph_buy_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	if(!linked_client)
+		return
+	switch(action)
+		if("buy")
+			var/datum/triumph_buy/target_datum = locate(params["ref"])
+			if(!istype(target_datum))
+				return TRUE
 			var/conflicting = FALSE
-
 			for(var/datum/triumph_buy/current_actives in SStriumphs.active_triumph_buy_queue)
 				if(target_datum.type in current_actives.conflicts_with)
 					conflicting = TRUE
-
 			if(SSticker.HasRoundStarted() && target_datum.pre_round_only)
 				conflicting = TRUE
-
 			if(!conflicting)
-				// Well we already made sure it wasn't going to conflict before we sent the path in, im sleepy and I hope this isn't REALLY fuckedu p when i look at it later
-				if(current_category == TRIUMPH_CAT_ACTIVE_DATUMS) // ACTIVE datums are ones already bought anyways
-					SStriumphs.attempt_to_unbuy_triumph_condition(linked_client, target_datum) // By unbuy, i mean you unbuy someone elses buy and thus we need a ref to it anyways
+				if(target_datum in SStriumphs.active_triumph_buy_queue)
+					SStriumphs.attempt_to_unbuy_triumph_condition(linked_client, target_datum)
 				else
-					SStriumphs.attempt_to_buy_triumph_condition(linked_client, target_datum) // regular buy, just send over the ref to the reference case
-			show_menu()
-
-	if(href_list["close"])
-		SStriumphs.remove_triumph_buy_menu(linked_client)
-
-	
+					SStriumphs.attempt_to_buy_triumph_condition(linked_client, target_datum)
+			return TRUE

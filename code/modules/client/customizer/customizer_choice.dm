@@ -83,6 +83,12 @@
 				var/named_index = (accessory.color_keys == 1) ? accessory.color_key_name : accessory.color_key_names[index]
 				dat += "<br>[named_index]: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=acc_color;color_index=[index]''><span class='color_holder_box' style='background-color:[color_list[index]]'></span></a>"
 
+/// Structured extra controls for the tgui customization menu, mirroring the
+/// subtype additions in generate_pref_choices(). Each control is a list of
+/// "label", "task" (customizer_task), "kind" ("button" or "color") and "value".
+/datum/customizer_choice/proc/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	return list()
+
 /datum/customizer_choice/proc/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	switch(href_list["customizer_task"])
 		if("choose_acc")

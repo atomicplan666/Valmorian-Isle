@@ -713,6 +713,23 @@
 			if(hair_entry.dye_gradient != /datum/hair_gradient/none)
 				dat += "<br>Dye Color: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=dye_gradient_color''><span class='color_holder_box' style='background-color:[hair_entry.dye_color]'></span></a>"
 
+/datum/customizer_choice/bodypart_feature/hair/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	. = ..()
+	if(!custom_hair_color)
+		return
+	var/datum/customizer_entry/hair/hair_entry = entry
+	. += list(list("label" = "Hair Color", "task" = "hair_color", "kind" = "color", "value" = hair_entry.hair_color))
+	if(natgrad)
+		var/datum/hair_gradient/gradient = HAIR_GRADIENT(hair_entry.natural_gradient)
+		. += list(list("label" = "Natural Gradient", "task" = "natural_gradient", "kind" = "button", "value" = gradient.name))
+		if(hair_entry.natural_gradient != /datum/hair_gradient/none)
+			. += list(list("label" = "Natural Color", "task" = "natural_gradient_color", "kind" = "color", "value" = hair_entry.natural_color))
+	if(dyegrad)
+		var/datum/hair_gradient/gradient = HAIR_GRADIENT(hair_entry.dye_gradient)
+		. += list(list("label" = "Dye Gradient", "task" = "dye_gradient", "kind" = "button", "value" = gradient.name))
+		if(hair_entry.dye_gradient != /datum/hair_gradient/none)
+			. += list(list("label" = "Dye Color", "task" = "dye_gradient_color", "kind" = "color", "value" = hair_entry.dye_color))
+
 /datum/customizer_choice/bodypart_feature/hair/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/hair/hair_entry = entry
@@ -807,6 +824,14 @@
 		dat += "<br><a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=custom_hair_editor'>Customise</a>"
 		if(hairmask_layers_any(hair_entry_masks(hair_entry)))
 			dat += " | <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=custom_hair_clear'>Clear</a>"
+
+/datum/customizer_choice/bodypart_feature/hair/head/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	. = ..()
+	if(custom_hair_color)
+		var/datum/customizer_entry/hair/hair_entry = entry
+		. += list(list("label" = null, "task" = "custom_hair_editor", "kind" = "button", "value" = "Customise"))
+		if(hairmask_layers_any(hair_entry_masks(hair_entry)))
+			. += list(list("label" = null, "task" = "custom_hair_clear", "kind" = "button", "value" = "Clear"))
 
 /datum/customizer_choice/bodypart_feature/hair/head/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	if(href_list["customizer_task"] == "custom_hair_editor")

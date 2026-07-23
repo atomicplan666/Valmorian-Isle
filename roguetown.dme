@@ -1738,6 +1738,7 @@
 #include "code\modules\client\client_defines.dm"
 #include "code\modules\client\client_procs.dm"
 #include "code\modules\client\culinary_menu.dm"
+#include "code\modules\client\customizer_menu.dm"
 #include "code\modules\client\darkmode.dm"
 #include "code\modules\client\descriptors_menu.dm"
 #include "code\modules\client\economic_chronicle.dm"

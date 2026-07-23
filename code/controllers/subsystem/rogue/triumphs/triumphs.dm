@@ -333,24 +333,11 @@ SUBSYSTEM_DEF(triumphs)
 /*
 	TRIUMPH LEADERBOARD STUFF
 */
-// Display leaderboard browser popup
+// Display leaderboard tgui window
 /datum/controller/subsystem/triumphs/proc/show_triumph_leaderboard(client/C)
-
-	var/webpagu = "<B>CHAMPIONS OF AZURE</B><br>"
-	webpagu += "Current Season: [GLOB.triumph_wipe_season]"
-	webpagu += "<hr><br>"
-
-	if(triumph_leaderboard.len)
-		var/position_number = 0
-		for(var/key in triumph_leaderboard)
-			position_number++
-			webpagu += "[position_number]. [key] - [triumph_leaderboard[key]]<br>"
-			if(position_number >= triumph_leaderboard_positions_tracked)
-				break
-	else
-		webpagu += "The hall of triumphs is quite empty, Yes?"
-
-	C << browse(webpagu, "window=triumph_leaderboard;size=300x500")
+	if(!C)
+		return
+	GLOB.triumph_leaderboard_menu.ui_interact(C.mob)
 
 // PREP THE BOARD
 /datum/controller/subsystem/triumphs/proc/prep_the_triumphs_leaderboard()

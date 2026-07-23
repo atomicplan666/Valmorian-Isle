@@ -34,6 +34,12 @@
 	dat += "<br>Penis size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=penis_size''>[find_key_by_value(PENIS_SIZES_BY_NAME, penis_entry.penis_size)]</a>"
 	dat += "<br>Functional: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=functional''>[penis_entry.functional ? "YES" : "NO"]</a>"
 
+/datum/customizer_choice/organ/penis/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	. = ..()
+	var/datum/customizer_entry/organ/penis/penis_entry = entry
+	. += list(list("label" = "Penis size", "task" = "penis_size", "kind" = "button", "value" = find_key_by_value(PENIS_SIZES_BY_NAME, penis_entry.penis_size)))
+	. += list(list("label" = "Functional", "task" = "functional", "kind" = "button", "value" = penis_entry.functional ? "YES" : "NO"))
+
 /datum/customizer_choice/organ/penis/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/penis/penis_entry = entry
@@ -210,6 +216,13 @@
 		dat += "<br>Ball size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=ball_size''>[find_key_by_value(TESTICLE_SIZES_BY_NAME, testicles_entry.ball_size)]</a>"
 	dat += "<br>Virile: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=virile''>[testicles_entry.virility ? "Virile" : "Sterile"]</a>"
 
+/datum/customizer_choice/organ/testicles/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	. = ..()
+	var/datum/customizer_entry/organ/testicles/testicles_entry = entry
+	if(can_customize_size)
+		. += list(list("label" = "Ball size", "task" = "ball_size", "kind" = "button", "value" = find_key_by_value(TESTICLE_SIZES_BY_NAME, testicles_entry.ball_size)))
+	. += list(list("label" = "Virile", "task" = "virile", "kind" = "button", "value" = testicles_entry.virility ? "Virile" : "Sterile"))
+
 /datum/customizer_choice/organ/testicles/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/testicles/testicles_entry = entry
@@ -293,6 +306,12 @@
 	dat += "<br>Breast size: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=breast_size''>[find_key_by_value(BREAST_SIZES_BY_NAME, breasts_entry.breast_size)]</a>"
 	dat += "<br>Lactation: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=lactating''>[breasts_entry.lactating ? "Enabled" : "Disabled"]</a>"
 
+/datum/customizer_choice/organ/breasts/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	. = ..()
+	var/datum/customizer_entry/organ/breasts/breasts_entry = entry
+	. += list(list("label" = "Breast size", "task" = "breast_size", "kind" = "button", "value" = find_key_by_value(BREAST_SIZES_BY_NAME, breasts_entry.breast_size)))
+	. += list(list("label" = "Lactation", "task" = "lactating", "kind" = "button", "value" = breasts_entry.lactating ? "Enabled" : "Disabled"))
+
 /datum/customizer_choice/organ/breasts/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
 	var/datum/customizer_entry/organ/breasts/breasts_entry = entry
@@ -358,6 +377,11 @@
 	..()
 	var/datum/customizer_entry/organ/vagina/vagina_entry = entry
 	dat += "<br>Fertile: <a href='?_src_=prefs;task=change_customizer;customizer=[customizer_type];customizer_task=fertile''>[vagina_entry.fertility ? "Fertile" : "Sterile"]</a>"
+
+/datum/customizer_choice/organ/vagina/get_extra_pref_controls(datum/preferences/prefs, datum/customizer_entry/entry)
+	. = ..()
+	var/datum/customizer_entry/organ/vagina/vagina_entry = entry
+	. += list(list("label" = "Fertile", "task" = "fertile", "kind" = "button", "value" = vagina_entry.fertility ? "Fertile" : "Sterile"))
 
 /datum/customizer_choice/organ/vagina/handle_topic(mob/user, list/href_list, datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	..()
