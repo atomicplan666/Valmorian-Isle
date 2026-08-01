@@ -243,6 +243,7 @@
 		"Slitted Kettle" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 		"Great Barbute" = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/great,
 		"Volfskulle Bascinet"		= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
+		"Patron Helm",
 		"None"
 	)
 
@@ -278,7 +279,6 @@
 		if(/datum/patron/divine/astrata)
 			cloak = /obj/item/clothing/cloak/tabard/devotee/astrata
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-			helmets += list("Old Astratan Helm" = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm)
 		if(/datum/patron/divine/noc)
 			cloak = /obj/item/clothing/cloak/tabard/devotee/noc
 			armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
@@ -320,6 +320,37 @@
 		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
 		if(helmchoice != "None")
 			head = helmets[helmchoice]
+		if(helmchoice == "Patron Helm")
+			if(/datum/patron/divine/astrata) // Tennite Helmets
+				if(H.mind)
+					var/astrahelmets = list("Old Astratan Helm","Astratan Buckethelm")
+					var/astrahelmet_choice = input(H, "Choose your HELMET.", "WALK IN HER LIGHT.") as anything in astrahelmets
+					switch(astrahelmet_choice)
+						if("Old Astratan Helm")
+							head = /obj/item/clothing/head/roguetown/helmet/heavy/astratahelm
+						if("Astratan Buckethelm")
+							head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan
+			if(/datum/patron/divine/noc)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
+			if(/datum/patron/divine/abyssor)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/abyssorgreathelm
+			if(/datum/patron/divine/dendor)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/dendorhelm
+			if(/datum/patron/divine/necra)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
+			if(/datum/patron/divine/malum)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/malum
+			if(/datum/patron/divine/eora)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/eoran
+			if(/datum/patron/divine/ravox)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+			if(/datum/patron/divine/xylix)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+			if(/datum/patron/divine/pestra)
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/pestran
+			else
+				head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+
 		// WEAPON CHOICE.
 		var/weapons = list("Longsword","Broadsword","Mace","Flail","Flail, Studded","Whip","Spear","Axe")
 		var/weapon_choice = input(H, "Choose your WEAPON.", "TAKE UP YOUR GOD'S ARMS.") as anything in weapons
