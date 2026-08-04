@@ -196,8 +196,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/otherZ = list()
 
 	#ifndef NO_DUNGEON
-	if(config.load_dungeon)
-		otherZ += load_map_config("_maps/map_files/otherz/dungeon.json")
+	otherZ += load_map_config("_maps/map_files/otherz/dungeon.json")
 	#endif
 
 	for(var/map_json in config.other_z)
