@@ -246,8 +246,8 @@
 	if(has_status_effect(/datum/status_effect/buff/clash) || has_status_effect(/datum/status_effect/debuff/clashcd) || has_status_effect(/datum/status_effect/buff/clash/limbguard))
 		return FALSE
 	if(!get_active_held_item())
-		if(get_skill_level(/datum/skill/combat/unarmed) < 3)
-			to_chat(src, span_warning("I'm not skilled enough in the art of unarmed combat to guard without a weapon!"))
+		if(get_skill_level(/datum/skill/combat/unarmed) < 1)
+			to_chat(src, span_warning("I'm not skilled in the art of unarmed combat to guard without a weapon!"))
 			return FALSE
 	if(r_grab || l_grab || length(grabbedby))
 		return FALSE
