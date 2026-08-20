@@ -1141,6 +1141,118 @@
 	. = ..()
 	update_icon()
 
+/obj/item/rogueweapon/halberd/glaive/blackpike
+	possible_item_intents = list(/datum/intent/spear/bash/polehammer, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/thrust/pike/skewer, /datum/intent/spear/thrust/pike ,/datum/intent/spear/cut, SPEAR_BASH)
+	name = "blacksteel pike"
+	desc = "A fine head of Blacksteel sits upon this long Pike. Able to pierce through most armor, this rare and feared weapon bristles with deadly potential."
+	icon_state = "blackpyke"
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/blacksteel
+	max_integrity = 225
+	max_blade_int = 250
+	wdefense = 9
+
+/obj/item/rogueweapon/halberd/glaive/blackpyke/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onback")
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
+
+//Normal Pikes
+
+/obj/item/rogueweapon/halberd/glaive/ironpike
+	possible_item_intents = list(/datum/intent/spear/thrust, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/thrust/pike/skewer, /datum/intent/spear/thrust/pike ,/datum/intent/spear/cut, SPEAR_BASH)
+	name = "iron pike"
+	desc = "A fine head of iron sits upon this long Pike. Able to pierce through most armor, this rare and feared weapon bristles with deadly potential."
+	icon_state = "ironpike"
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/iron
+	max_integrity = 200
+	max_blade_int = 200
+	wdefense = 9
+
+/obj/item/rogueweapon/halberd/glaive/ironpike/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onback")
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
+
+/obj/item/rogueweapon/halberd/glaive/steelpike
+	possible_item_intents = list(/datum/intent/spear/thrust, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/thrust/pike/skewer, /datum/intent/spear/thrust/pike ,/datum/intent/spear/cut, SPEAR_BASH)
+	name = "steel pike"
+	desc = "A fine head of steel sits upon this long Pike. Able to pierce through most armor, this rare and feared weapon bristles with deadly potential."
+	icon_state = "steelpike"
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/steel
+	max_integrity = 200
+	max_blade_int = 230
+	wdefense = 9
+
+/obj/item/rogueweapon/halberd/glaive/steelpike/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onback")
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
+/obj/item/rogueweapon/halberd/glaive/silverpike
+	possible_item_intents = list(/datum/intent/spear/thrust, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/thrust/pike/skewer, /datum/intent/spear/thrust/pike ,/datum/intent/spear/cut, SPEAR_BASH)
+	name = "silver pike"
+	desc = "A fine head of silver sits upon this long Pike. Able to pierce through most armor, this rare and feared weapon bristles with deadly potential."
+	icon_state = "silverpike"
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/silver
+	max_integrity = 200
+	max_blade_int = 250
+	wdefense = 9
+
+/obj/item/rogueweapon/halberd/glaive/silverpike/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.6,"sx" = -7,"sy" = 2,"nx" = 7,"ny" = 3,"wx" = -2,"wy" = 1,"ex" = 1,"ey" = 1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 30,"eturn" = -30,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.6,"sx" = 3,"sy" = 4,"nx" = -1,"ny" = 4,"wx" = -8,"wy" = 3,"ex" = 7,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 15,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
+			if("onback")
+				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
+
+/obj/item/rogueweapon/halberd/glaive/silverpike/silver/ComponentInitialize()
+	. = ..()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_NONE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = -3,\
+		added_blade_int = 50,\
+		added_int = 50,\
+		added_def = 3,\
+	)
+
 /obj/item/rogueweapon/halberd/bardiche/scythe
 	name = "summer scythe"
 	desc = "Summer's verdancy runs through the head of this scythe. All the more to sow."
