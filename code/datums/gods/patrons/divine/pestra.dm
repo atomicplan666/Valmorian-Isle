@@ -1,8 +1,7 @@
 /datum/patron/divine/pestra
 	name = "Pestra"
-	domain = "Goddess of Decay, Disease and Medicine"
-	desc = "Goddess that blessed many a saint with healing hands, Pestra taught man the arts of medicine and its benefits."
-	worshippers = "Physicians, Apothecaries, and the Sick"
+	domain = "Goddess of Healing, Herbalism, Charity, Elders, Purity, Cycles."
+	desc = "The Lady of Healing is known for her compassion and wisdom, applying her understanding of the natural world to restoring the sick and wounded to health. Should wounds need to be washed with wine and herbs or the black rot cut and burned away, Pestra's guidance in restoring the wounded remains invaluable."
 	mob_traits = list(TRAIT_EMPATH, TRAIT_ROT_EATER)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/diagnose				= CLERIC_ORI,

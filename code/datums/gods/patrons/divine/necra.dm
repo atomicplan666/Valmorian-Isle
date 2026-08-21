@@ -1,8 +1,7 @@
 /datum/patron/divine/necra
 	name = "Necra"
-	domain = "Goddess of Death and the Afterlife"
-	desc = "The Veiled Lady of the underworld, equally feared and respected by mortals. She taught mortals the inevitability of death and cares for them as they reach the afterlyfe."
-	worshippers = "Mourners, Gravekeepers, and the Dead"
+	domain = "Goddess of Death, Mourning, Secrets, Revelation, Reconciliation, Sagas"
+	desc = "The last embrace for the dead, Necra was agonized by the mystery of the mortal afterlife and asked Psydon to reveal what lay behind the veil, and was willing to surrender her voice to ease her conscience and the fears of the dying. Now she comforts the dead; listening to the story of their lives, their triumphs and regrets, and brings about their final reconciliation with the wounds of their soul with nothing more than an embrace."
 	mob_traits = list(TRAIT_SOUL_EXAMINE, TRAIT_NOSTINK)	//No stink is generic but they deal with dead bodies so.. makes sense, I suppose?
 	miracles = list(/datum/action/cooldown/spell/touch/orison						= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/necras_sight				= CLERIC_T0,

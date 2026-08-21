@@ -105,6 +105,8 @@
 	data["subspecies_name"] = pref_species?.sub_name
 	data["origin"] = "[virtue_origin]"
 	data["background"] = "[virtue_background]"
+	data["race_title"] = race_title
+	data["has_race_title"] = !!length(pref_species?.race_titles)
 	data["age"] = age
 	data["statpack"] = statpack?.name
 	data["statpack_virtuous"] = statpack?.virtuous

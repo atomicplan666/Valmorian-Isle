@@ -1,8 +1,7 @@
 /datum/patron/divine/ravox
 	name = "Ravox"
-	domain = "God of Justice, Glory, Battle"
-	desc = "Stalwart warrior, glorious justicar; legends say he came down to the Basin to repel the vile hordes of demons with his own hands, and that he seeks warriors for his divine army among mortals."
-	worshippers = "Warriors, Sellswords, and those who seek Justice"
+	domain = "God of Prowess, Glory, Justice, Honor, Warriors, Vigilance"
+	desc = "God of righteous war and Astrata's consort, the might of Ravox's sword is tempered by the benevolence of His Lady's mercy. Upholding the heavenly court of Astrata, His ever-vigilant gaze hangs over mortal warriors, judging against them not only for disloyalty, but also for obedience to the wicked. The crucible all adherents of Ravox face, what is True Justice."
 	mob_traits = list(TRAIT_SHARPER_BLADES)
 	traits_tier = list(TRAIT_BATTLEMASTER = CLERIC_T1, TRAIT_JUSTICARSIGHT = CLERIC_T3)
 	miracles = list(/datum/action/cooldown/spell/touch/orison				= CLERIC_ORI,
@@ -27,7 +26,7 @@
 
 	titles = list(
 		"Justiciar",
-		"Justicar", // it is misspelled ingame enough that we should probably accept this too 
+		"Justicar", // it is misspelled ingame enough that we should probably accept this too
 		"Ratake"
 	)
 
@@ -64,10 +63,10 @@
 
 	if(istype(target.rmb_intent, /datum/rmb_intent/strong))
 		bonus++
-	
+
 	if(istype(target.get_active_held_item(), /obj/item/rogueweapon))
 		bonus += 0.5
-	
+
 	if(target == user && target.blood_volume <= BLOOD_VOLUME_OKAY && COOLDOWN_FINISHED(src, lesser_heal_buff_cooldown))
 		user.emote("warcry")
 		user.blood_volume += BLOOD_VOLUME_SURVIVE / 3

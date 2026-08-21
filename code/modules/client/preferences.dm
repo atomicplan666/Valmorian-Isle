@@ -88,6 +88,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	//focused on skills + starting equipment, kept in its own free slot alongside (not instead of) the
 	//two normal virtue picks and the origin pick.
 	var/datum/virtue/virtue_background = new /datum/virtue/none
+	//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate species name, picked
+	//from pref_species.race_titles (e.g. Lamia -> "Naga"). "None" means show the plain species name.
+	var/race_title = "None"
 	var/age = AGE_ADULT						//age of character
 	var/origin = "Default"
 	var/accessory = "Nothing"
@@ -262,7 +265,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/examine_theme
 
 	/// Whether we can see the feint HUD bar.
-	var/feint_hud = FALSE 
+	var/feint_hud = FALSE
 
 	// Vocal bark prefs
 	var/bark_id = "mutedc3"
@@ -361,6 +364,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	randomize_all_customizer_accessories()
 	reset_descriptors()
 	virtue_origin = new pref_species.origin_default
+	//VALMORIAN: 2026-08-22 - race_title is a per-species pick (e.g. Lamia's "Naga"); switching race
+	//or subrace must clear it, same as virtue_origin above, or a stale tag from the old species could
+	//slip through copy_to()'s race_titles membership check by coincidence (e.g. two species that both
+	//happen to offer "Naga").
+	race_title = "None"
 	char_accent = "Species default"
 	taur_type = null
 	var/datum/charflaw/no_flaw = new /datum/charflaw/noflaw()
@@ -501,6 +509,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<BR>"
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.base_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 			dat += "<b>Subrace:</b> <a href='?_src_=prefs;preference=subspecies;task=input'>[pref_species.sub_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			if(length(pref_species.race_titles))
+				dat += "<b>Race Title:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[race_title]</a><BR>"
 			if(istype(virtue_origin, /datum/virtue/none))
 				virtue_origin = GLOB.virtues[/datum/virtue/origin/unknown]
 			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'>[virtue_origin]</a> <a href='?_src_=prefs;preference=originhelp;task=input'>❖</a><BR>"
@@ -517,7 +527,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<b>Race Bonus:</b> <a href='?_src_=prefs;preference=race_bonus_select;task=input'>[race_bonus_display ? "[race_bonus_display]" : "None"]</a><BR>"
 			else
 				race_bonus = null
-			
+
 			var/datum/language/selected_lang
 			var/lang_output = "None"
 			if(ispath(extra_language, /datum/language))
@@ -647,7 +657,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(istype(cf, /datum/charflaw/averse))
 					has_averse = TRUE
 					break
-			
+
 			if(has_averse)
 				if(!averse_chosen_faction)
 					averse_chosen_faction = "Inquisition"
@@ -1841,7 +1851,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ', . and ,.</font>")
 
-	
+
 				if("nickname")
 					var/new_name = tgui_input_text(user, "Choose your character's nickname (For Highlighting):", "NICKNAME",  encode = FALSE)
 					if(new_name)
@@ -1988,7 +1998,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						var/datum/faith/faith = faiths_named[faith_input]
 						to_chat(user, "<font color='yellow'>Faith: [faith.name]</font>")
 						to_chat(user, "Background: [faith.desc]")
-						to_chat(user, "<font color='red'>Likely Worshippers: [faith.worshippers]</font>")
 						selected_patron = GLOB.patronlist[faith.godhead] || GLOB.patronlist[pick(GLOB.patrons_by_faith[faith_input])]
 
 				if("patron")
@@ -2004,7 +2013,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						to_chat(user, "<font color='yellow'>Patron: [selected_patron]</font>")
 						to_chat(user, "<font color='#FFA500'>Domain: [selected_patron.domain]</font>")
 						to_chat(user, "Background: [selected_patron.desc]")
-						to_chat(user, "<font color='red'>Likely Worshippers: [selected_patron.worshippers]</font>")
 
 				if("combat_music") // if u change shit here look at /client/verb/combat_music() too
 					if(!combat_music_helptext_shown)
@@ -2753,6 +2761,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						virtue_background = virtue_chosen
 						to_chat(user, process_virtue_text(virtue_chosen))
 
+				//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate species name.
+				if("race_title")
+					var/list/choices = list("None")
+					choices += pref_species.race_titles
+					var/result = tgui_input_list(user, "What do they call your kind?", "RACE TITLE", choices)
+					if(result)
+						race_title = result
+
 				if("charflaw_averse_choice")
 					var/choice = tgui_input_list(user, "Who do you loathe?", "AVERSION", GLOB.averse_factions)
 					if(choice)
@@ -3240,6 +3256,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.age = age
 	character.dna.features = features.Copy()
 	character.gender = gender
+	validate_customizer_entries() // strip any customizer entries (e.g. a tail/ears feature) left over from a species this character no longer is
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 	character.dna.update_body_size()
 
@@ -3305,11 +3322,16 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 	character.statpack = statpack
 
+	//VALMORIAN: 2026-08-22 - only apply if still valid for the current species; a race change since
+	//picking (or a species with no race_titles at all) should just show the plain species name.
+	if(race_title && race_title != "None" && (race_title in pref_species.race_titles))
+		character.dna.species.race_title = race_title
+
 	character.flavortext = flavortext
 	character.ooc_notes = ooc_notes
 	character.nsfwflavortext = nsfwflavortext
 	character.erpprefs = erpprefs
-	
+
 	// Copy the cached version
 	character.flavortext_cached = flavortext_cached
 	character.ooc_notes_cached = ooc_notes_cached

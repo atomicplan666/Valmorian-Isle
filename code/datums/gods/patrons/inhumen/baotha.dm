@@ -1,8 +1,9 @@
 /datum/patron/inhumen/baotha
 	name = "Baotha"
-	domain = "Goddess of Hedonism, Addiction, Anguish, and Heartbreak"
-	desc = "The twin sister of Eora, fallen to disgrace. She brings comfort to those who can't find it elsewhere but the bottom of a bottle; and she tempts those who have lost much into her fold through offers of relief and pleasure, yet they soon find themselves unable to escape her grasp. Seen as a scorned lover by many, and followed by such."
-	worshippers = "Widows, Gamblers, Addicts, and Scorned Lovers"
+	domain = "Goddess of Hedonism and Corruption"
+	desc = "<br>How tiresome is the divine prattle of purity and propriety, given to us by immortal goddesses of unending beauty and eternal youth. It is easy enough to speak of waiting for the perfect love or cautioning against drunkenness when a spirit has eternity to wait and sips from an unending cup of heavenly plenty.\
+<br>But we are sparks! We flash in the darkness and cast our light for but an instant! We hunger and consume, kindle and burn, blaze whilst we can and warm our fleeting lives!\
+<br>We drink our wine before it becomes vinegar, we revel in our bodies before they wither and die! Our mistress will sustain our spark while we glitter in a lover's eye and forevermore our beauty is immortal in her memory!"
 	mob_traits = list(TRAIT_DEPRAVED, TRAIT_CICERONE)
 	miracles = list(/datum/action/cooldown/spell/touch/orison						= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/baothavice				= CLERIC_T0,
@@ -31,9 +32,9 @@
 		"Lady of Heartbreak",
 		"Scarlet Lady",
 		"Baosumi",
-		"Thorns", // Queen of thorns, Lady of thorns, etc etc. 
+		"Thorns", // Queen of thorns, Lady of thorns, etc etc.
 		"Belladoth",
-		"Beladoth" //SOMEONE WILL MISPELL IT, I JUST KNOW IT. 
+		"Beladoth" //SOMEONE WILL MISPELL IT, I JUST KNOW IT.
 	)
 
 /datum/patron/inhumen/baotha/can_pray(mob/living/follower)

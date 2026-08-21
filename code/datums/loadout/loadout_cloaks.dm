@@ -198,3 +198,9 @@
 	name = "Wicker Cloak"
 	path = /obj/item/clothing/cloak/wickercloak
 	sort_category = "Cloaks"
+
+/datum/loadout_item/apron
+	name = "Apron"
+	path = /obj/item/clothing/cloak/apron
+	sort_category = "Cloaks"
+

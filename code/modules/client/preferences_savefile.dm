@@ -490,6 +490,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["virtuetwo"] >> virtuetwo_type
 	S["virtue_origin"] >> origin_type
 	S["virtue_background"] >> background_type
+	S["race_title"] >> race_title
+	if(!race_title)
+		race_title = "None"
 	var/list/virtue_choices = list()
 	var/list/virtuetwo_choices = list()
 	var/virtone
@@ -1068,6 +1071,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["virtuetwochoices"] , virtuetwo.picked_choices)
 	WRITE_FILE(S["virtue_origin"], virtue_origin.type)
 	WRITE_FILE(S["virtue_background"], virtue_background.type)
+	WRITE_FILE(S["race_title"], race_title)
 	WRITE_FILE(S["race_bonus"], race_bonus)
 	WRITE_FILE(S["combat_music"], combat_music.type)
 	WRITE_FILE(S["body_size"] , features["body_size"])

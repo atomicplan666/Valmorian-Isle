@@ -214,3 +214,8 @@
 	name = "Saree"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/saree
 	sort_category = "Shirts"
+
+/datum/loadout_item/qaba
+	name = "Black Qaba"
+	path = /obj/item/clothing/suit/roguetown/shirt/robe/qaba
+	sort_category = "Shirts"

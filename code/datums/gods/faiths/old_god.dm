@@ -1,10 +1,8 @@
 /datum/faith/old_god
-	name = "Genesism"
-	desc = "   </br>''Before the TEN and the FOUR, there was ONE.'' </br>  \
-	</br>After the Comet Syon's impact, Psydon fell silent. Most had feared that He had undertaken the ultimate sacrifice to save this world from the Archdevil's rampage, and - in the midst of mourning - turned their prayers to lesser gods. Yet, throughout the centuries, there always remained those who kept faith in Psydon above all else: be it in one way, or another. </br>  \
-	</br>Amongst the countless denominations that're peppered across the world, the Orthodoxy is the most widely-practiced: a theocracy, formed within the ancient kingdom of Otava and made infamous through holy warfare. </br>  \
-	</br>The Orthodoxists believe that Psydon still lives, and is soon destined to return. Unanswered prayers and faltering miracles are merely tests of faith, nothing more. While the Pantheon's saints might be venerable, they are still His children: and as such, they remain wholly subservient to His divine authority. If those of the Ascendants refuse to convert, then they must be destroyed. </br>  \
-	</br>With the world's end upon the horizon, however, even Psydon's most faithful worshippers - no matter the denomination - are facing a crisis like no other. Such has driven many to take pilgrimage to the Comet Syon's final resting place, just off of Valmoria's coast. </br>  \
-	</br>Time is running out. Lowly fool, sacrificial hero, blessed idiot, holy lamb: will you endure as He had, in order to save this world from damnation? Or will you shepherd its end, so that something greater might rise from the ashes?"
-	worshippers = "Traditionalists, Spiritualists, Accelerationists, and the Hopeful "
+	name = "Psydonism"
+	desc = " <br> Omnipotent and omniscient yet speaking only through angels and prophets, PSYDON's enigmas confound mortal theologians to this day. Fractured in the current era across several schisms, the ancient scriptures that all agree upon were clear; PSYDON created form from nothingness, divided the Firmament from the Heavens, and imbued the Firmament with Lux. The Ten Divines were formed thereafter, created to govern His creation and granted powers over the Lux that remained. \
+	<br> Beyond this foundational truth comes questions of false prophets and errant scribes; the search for perfection in faith is a crucible to burn away falsehoods. It has become apparent that false prophets and heretics grow more common by the century, and precisely when PSYDON last gave a true message to a mortal mind is wholly unknown. \
+	<br> The chaos of recent centuries bring the old faith into question; not only are the Ascendants claiming godhead and mortals believing divine power could be usurped for all, but the Divines themselves, bereft of authoritative messages from PSYDON's angels, slowly turn from one another with frighteningly mortal fears. For if PSYDON could perish, what hope have they? \
+	<br> What is clear is that He has fallen silent, nothing more than a wordless whisper in the dark or a stirring of the heart at a poignant moment. \
+	<br> But those who believe, ENDURE."
 	godhead = /datum/patron/old_god

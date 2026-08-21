@@ -1,8 +1,7 @@
 /datum/patron/divine/eora
 	name = "Eora"
-	domain = "Goddess of Love, Life and Beauty"
-	desc = "Baotha's fairer half, made from blind, unconditional love. She is without a shred of hate in her heart and taught mankind that true love that even transcends Necra's grasp."
-	worshippers = "Lovers, the Romantically Inclined, and Doting Grandparents"
+	domain = "Goddess of Love, Natural Beauty, Singing, Family, Fidelity, Hospitality"
+	desc = "Eora rules over matters of the heart and seeks peace and joy for the lives of mortals, teaching that the greatest happiness comes from belonging to one another. Be it a hard-won romance or a fateful first kiss, an Eoran's ideal form of love guides their pursuit of someone to cherish, and so become closer to their Divine. As the goddess of hearth and hospitality, beauty and song; even to be the guest of an Eoran hostess is to already be at home."
 	mob_traits = list(TRAIT_EMPATH, TRAIT_EXTEROCEPTION, TRAIT_MARRIAGE_CAPABLE)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/eora_blessing			= CLERIC_T0,

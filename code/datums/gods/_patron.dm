@@ -15,8 +15,6 @@ GLOBAL_LIST_EMPTY(prayers)
 	var/domain = "Bad coding practices"
 	/// Description of the god
 	var/desc = "A god that ordains you to report this on GitHub - You shouldn't be seeing this, someone forgot to set the description of this patron."
-	/// String that represents who worships this guy
-	var/worshippers = "Shitty coders"
 	/// Faith this god belongs to
 	var/datum/faith/associated_faith = /datum/faith
 	/// Whether or not we are accessible in preferences
@@ -114,7 +112,7 @@ GLOBAL_LIST_EMPTY(prayers)
     for(var/title in (follower.patron.titles + patron_name))
         if(findtext(prayer, title))
             reward_prayer(follower)
-            return . 
+            return .
 
 /// The follower has somehow offended the patron and is now being punished.
 /datum/patron/proc/punish_prayer(mob/living/follower)

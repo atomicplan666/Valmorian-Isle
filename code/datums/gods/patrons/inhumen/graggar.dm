@@ -1,10 +1,9 @@
 /datum/patron/inhumen/graggar
 	name = "Graggar"
-	domain = "God of Conquest, War, Strategy, Bind-Breaking"
-	desc = "Slave orc turned deity, said by the Holy Ecclesial to have been blessed by Ravox himself. He took his blessings to wage a bloody war against his once-captors, and then continued his conquest in his own name. Some Graggarites might care for honor, however many do not- what matters are results, and victory at a reasonable cost."
-	worshippers = "Prisoners, Slaves, Militants, and the Cruel"
-	mob_traits = list(TRAIT_HORDE, TRAIT_ORGAN_EATER)
-	traits_tier = list(TRAIT_NASTY_EATER = CLERIC_T1)
+	domain = "God of Rule by Might, Grievance and Revenge"
+	desc = "<br>We are bound and shackled to the birthright of nobles, beaten and whipped by the arms of their lackeys. That authority and dominion be split in twain between mind and body is an abomination; the coward that commands us never wields the lash, and the coward that lashes never feels the sting of guilt. \
+<br>Might does not make right, it is right. Be no coward who commands another to fight on your behalf, stand in the vanguard of your host and lay ruin before you! \
+<br>As he ascended, we arise; not as cowards to sulk in darkness as the Matthian thief, but a bold challenge to the strength of arms and right to rule of the Ravoxian soldier. Storm their walls, sack their palaces, carve the hearts of their kings out upon the temple altar. Let the common thralls take up arms or let them cower; the world will be free of Tyranny when no man denies another the right to rebel."
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/datum/action/cooldown/spell/graggar/rush					= CLERIC_T0,
 					/datum/action/cooldown/spell/miracle/heal 					= CLERIC_T1,
@@ -47,16 +46,16 @@
 
 	for(var/obj/effect/decal/cleanable/blood/blood in oview(5, target))
 		bonus = min(bonus + 0.1, 2.5)
-	
+
 	if(!bonus)
 		return
-		
+
 	*situational_bonus = bonus
 	*conditional_buff = TRUE
 
 /datum/patron/inhumen/graggar/on_gain(mob/living/living)
 	. = ..()
-	
+
 	RegisterSignal(living, COMSIG_LIVING_DRINKED_LIMB_BLOOD, PROC_REF(on_drink_blood))
 
 /datum/patron/inhumen/graggar/proc/on_drink_blood(mob/living/drinker, mob/living/target)
@@ -66,7 +65,7 @@
 
 /datum/patron/inhumen/graggar/on_loss(mob/living/living)
 	. = ..()
-	
+
 	UnregisterSignal(living, COMSIG_LIVING_DRINKED_LIMB_BLOOD)
 
 // When bleeding, near blood on ground, zchurch, bad-cross, or ritual chalk

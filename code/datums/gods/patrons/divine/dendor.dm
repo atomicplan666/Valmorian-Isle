@@ -1,8 +1,7 @@
 /datum/patron/divine/dendor
 	name = "Dendor"
-	domain = "God of the Earth and Nature"
-	desc = "The God of Wilds, born from Abyssor's feverish dreams. Spilt forth life from the oceans to land in a wild craze, it's said that He had brought nature to nothingness; and with it, all the perils that followed."
-	worshippers = "Druids, Beasts, and Madmen"
+	domain = "God of the Instinct, Wilderness, Growth, Animals, Balance."
+	desc = "God of the wilderness and the wild things, Dendor is possessed of the animal impulse. In the form of speaking beasts and mad imaginings, Dendor speaks to his adherents from the thousands of minds of nature's form. To ask Dendor for guidance is to ask an animal mind; a hare will bid you to flee and run, a wolf will bid you tear the throats from your enemies, and the spider will teach you to hide, weave, wait and envenom. Such mixed messages make Dendor the mad god, but the animal world survives well enough with thoughtless instinct alone."
 	mob_traits = list(TRAIT_KNEESTINGER_IMMUNITY, TRAIT_LEECHIMMUNE)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/spiderspeak 			= CLERIC_T0,
@@ -27,7 +26,7 @@
 		"Denno"
 	)
 
-// In grove, bog, cross, or ritual chalk 
+// In grove, bog, cross, or ritual chalk
 // Yes, he is NOT calling the master cus he's unique. Whole bog is his prayer zone. Druids exist for a reason instead of in the church.
 /datum/patron/divine/dendor/can_pray(mob/living/follower)
 	. = ..()
@@ -47,7 +46,7 @@
 		return TRUE
 	to_chat(follower, span_danger("I must either be in Dendor's wilds, the Grove, near a wise tree, or near a Pantheon Cross for the Treefather to hear my prays..."))
 	return FALSE
-	
+
 /datum/patron/divine/dendor/on_gain(mob/living/H)
 	. = ..()
 	H.AddComponent(/datum/component/wise_tree_alert)
@@ -62,7 +61,7 @@
 )
 	*message_out = span_info("A rush of primal energy spirals about [target]!")
 	*message_self = span_notice("I'm infused with primal energies!")
-				
+
 	var/list/natural_stuff = list(/obj/structure/flora/roguegrass, /obj/structure/flora/roguetree, /obj/structure/flora/rogueshroom, /obj/structure/soil, /obj/structure/flora/newtree, /obj/structure/flora/tree, /obj/structure/glowshroom)
 	var/bonus = 0
 

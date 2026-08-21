@@ -621,6 +621,7 @@
 	H.adjust_blindness(-3)
 	var/weapons = list(
 		"Edict & Aegis (Sabre & Buckler)",
+		"'Deliverance'(Glaive)",
 		"Claymore",
 		"Great Mace",
 		"Battle Axe",
@@ -676,6 +677,10 @@
 		if("Lance")
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
 			r_hand = /obj/item/rogueweapon/spear/lance
+		if("'Deliverance'(Glaive)")
+			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
+			r_hand = /obj/item/rogueweapon/halberd/glaive/knightcaptain
+			backl = /obj/item/rogueweapon/scabbard/gwstrap
 	if(weapon_choice in list("Battle Axe", "Great Mace", "Longsword", "Flail", "Sabre", "Lance"))
 		var/secondary = list(
 			"Kite Shield",

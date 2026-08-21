@@ -1,12 +1,7 @@
 /datum/patron/old_god
 	name = "Psydon"
-	domain = "Otava, Naledi, Rockhill, and most of Psydonia's outermost fiefs."
-	desc = "  </br>''God. The manifestation of maximal good, and the father of all.'' \
-	</br>''He, who created reality for His children to frollick within.'' \
-	</br>''He, who breathed lyfe into the Pantheon to shepherd His virtues.'' \
-	</br>''He, who sacrificed His strength to strike down the Archdevil with the Comet Syon.'' \
-	</br>''He, who yet slumbers to this dae; and who may yet still return.''"
-	worshippers = "Commonfolk, Zealots, Heroes, Villains, and the Esoteric"
+	domain = "Omnipresent, Omnipotent, Omniscient."
+	desc = " PSYDON created the Firmament and infused it with Lux, giving it life. PSYDON then formed the Ten, making them Divine to reign over the Firmament. PSYDON made the Angels to be His messengers to the Ten, and spoke with them no longer. Mortal races arose, as PSYDON's children and the Ten's, receiving revelations by their prophets. Higher than the Ten, He ruled over the Divine and Mortal, distant and benevolent in the ancient ages of the world."
 	associated_faith = /datum/faith/old_god
 	mob_traits = list(TRAIT_PSYDONIAN_GRIT) //Assigned to all mobs with Psydon as the chosen patron. Gives a Willpower-scaling chance to resist succumbing to pain.
 	miracles = list(/datum/action/cooldown/spell/touch/orison		= CLERIC_ORI,

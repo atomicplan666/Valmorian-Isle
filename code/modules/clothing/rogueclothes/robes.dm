@@ -409,6 +409,19 @@
 	l_sleeve_status = SLEEVE_NOMOD
 	storage = FALSE
 
+/obj/item/clothing/suit/roguetown/shirt/robe/qaba
+	name = "qaba"
+	desc = "A slim, tight-fitting robe made of fine silks and fabrics. Somehow you feel more mobile in it than in the nude."
+	icon_state = "monkclothb"
+	item_state = "monkclothb"
+	color = null
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+
+/obj/item/clothing/suit/roguetown/shirt/robe/qaba/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
+
 /obj/item/clothing/suit/roguetown/shirt/robe/feld
 	name = "feldsher's robe"
 	desc = "Red to hide the blood."
@@ -456,5 +469,5 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	color = CLOTHING_WHITE
 
-	
-	
+
+
