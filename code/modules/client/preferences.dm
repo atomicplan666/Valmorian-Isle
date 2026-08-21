@@ -84,6 +84,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/virtue/virtue = new /datum/virtue/none // LETHALSTONE EDIT: the virtue we get for not picking a statpack
 	var/datum/virtue/virtuetwo = new /datum/virtue/none
 	var/datum/virtue/virtue_origin = new /datum/virtue/none
+	//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate species name, picked
+	//from pref_species.race_titles (e.g. Lamia -> "Naga"). "None" means show the plain species name.
+	var/race_title = "None"
 	var/age = AGE_ADULT						//age of character
 	var/origin = "Default"
 	var/accessory = "Nothing"
@@ -357,6 +360,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	randomize_all_customizer_accessories()
 	reset_descriptors()
 	virtue_origin = new pref_species.origin_default
+	//VALMORIAN: 2026-08-22 - race_title is a per-species pick (e.g. Lamia's "Naga"); switching race
+	//or subrace must clear it, same as virtue_origin above, or a stale tag from the old species could
+	//slip through copy_to()'s race_titles membership check by coincidence (e.g. two species that both
+	//happen to offer "Naga").
+	race_title = "None"
 	char_accent = "Species default"
 	taur_type = null
 	var/datum/charflaw/no_flaw = new /datum/charflaw/noflaw()
@@ -497,6 +505,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<BR>"
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.base_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 			dat += "<b>Subrace:</b> <a href='?_src_=prefs;preference=subspecies;task=input'>[pref_species.sub_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			if(length(pref_species.race_titles))
+				dat += "<b>Race Title:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[race_title]</a><BR>"
 			if(istype(virtue_origin, /datum/virtue/none))
 				virtue_origin = GLOB.virtues[/datum/virtue/origin/unknown]
 			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'>[virtue_origin]</a> <a href='?_src_=prefs;preference=originhelp;task=input'>❖</a><BR>"
@@ -2711,6 +2721,14 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						virtue_origin = virtue_chosen
 						to_chat(user, process_virtue_text(virtue_chosen))
 
+				//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate species name.
+				if("race_title")
+					var/list/choices = list("None")
+					choices += pref_species.race_titles
+					var/result = tgui_input_list(user, "What do they call your kind?", "RACE TITLE", choices)
+					if(result)
+						race_title = result
+
 				if("charflaw_averse_choice")
 					var/choice = tgui_input_list(user, "Who do you loathe?", "AVERSION", GLOB.averse_factions)
 					if(choice)
@@ -3263,6 +3281,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.vampire_headshot_link = vampire_headshot_link
 
 	character.statpack = statpack
+
+	//VALMORIAN: 2026-08-22 - only apply if still valid for the current species; a race change since
+	//picking (or a species with no race_titles at all) should just show the plain species name.
+	if(race_title && race_title != "None" && (race_title in pref_species.race_titles))
+		character.dna.species.race_title = race_title
 
 	character.flavortext = flavortext
 	character.ooc_notes = ooc_notes

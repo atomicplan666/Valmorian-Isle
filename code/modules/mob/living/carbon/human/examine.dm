@@ -28,7 +28,9 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 	var/obscure_name = FALSE
-	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[dna.species.name]</u></A> "
+	//VALMORIAN: 2026-08-22 - dna.species.race_title, if set, is the player's chosen race_titles pick
+	//(e.g. "Naga" instead of "Lamia"); see species.dm and preferences.dm's race_title Topic() case.
+	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[dna.species.race_title || dna.species.name]</u></A> "
 	var/origin_name = "<a href='?src=[REF(src)];origin_lore=1'><u>[dna.species.origin]</u></A>"
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	var/datum/antagonist/skeleton/skeleton = user.mind?.has_antag_datum(/datum/antagonist/skeleton)

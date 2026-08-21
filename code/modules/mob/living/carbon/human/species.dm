@@ -9,6 +9,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/name	// this is the fluff name. these will be left generic (such as 'Lizardperson' for the lizard race) so servers can change them to whatever
 	var/desc
 	var/desc_title
+	/// VALMORIAN: 2026-08-22, ported from Emerald Summit - a curated list of flavor-only alternate
+	/// names for this species (e.g. Lamia offering "Naga"), picked at chargen. Purely cosmetic:
+	/// unlike desc_title/base_name/sub_name it has no mechanical role, just a label the player
+	/// wears. Empty by default; opt a species in by populating this list.
+	var/list/race_titles = list()
+	/// The chosen race_titles entry, if any - set per-instance at spawn from the player's pick
+	/// (preferences.dm's race_title Topic() case), null otherwise. examine.dm shows this instead
+	/// of `name` when set.
+	var/race_title
 	var/list/mechanics_explanations // if this species has unique mechanics, explain each of them here. try to keep separate mechanics separated as individual list items
 	var/default_color = "#FFF"	// if alien colors are disabled, this is the color that will be used by that race
 	var/limbs_icon_m
