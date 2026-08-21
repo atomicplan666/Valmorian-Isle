@@ -7,6 +7,8 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/desc
 	/// Description for origins, allowed to be a bit wordy.
 	var/origin_desc
+	/// Description for backgrounds, allowed to be a bit wordy.
+	var/background_desc
 	/// Name for origins - used for the nation's name, not a denonym!
 	var/origin_name = "Unknown"
 	/// A list containing any traits we need to add to the mob.

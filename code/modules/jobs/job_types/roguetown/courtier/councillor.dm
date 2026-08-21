@@ -64,7 +64,7 @@
 	tutorial = "Whether born into wealth, or earned through working up from the bottom, you have quite the reserve of mammon at your disposal. Use your silver-tongue to acquire more, or buy more favour with the court. You may be the lowest rung of the ladder, but that rung still towers over everyone else in town."
 	outfit = /datum/outfit/job/roguetown/councillor/cofferer
 	category_tags = list(CTAG_COUNCILLOR)
-	virtue_limits = list(/datum/virtue/utility/skilled, /datum/virtue/utility/apprentice) // You are the only one with direct Steward access, and therefore should not be able to easily self cheese
+	virtue_limits = list(/datum/virtue/background/blacksmith, /datum/virtue/background/hunter, /datum/virtue/background/physician, /datum/virtue/background/artificer, /datum/virtue/background/forester, /datum/virtue/background/tailor, /datum/virtue/background/enchanter, /datum/virtue/background/mining) // You are the only one with direct Steward access, and therefore should not be able to easily self cheese
 	subclass_stats = list(
 		STATKEY_WIL = 2,
 		STATKEY_INT = 2,

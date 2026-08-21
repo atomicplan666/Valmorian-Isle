@@ -147,6 +147,7 @@ type Data = {
   species_name: string;
   subspecies_name: string;
   origin: string;
+  background: string;
   age: string;
   statpack: string;
   statpack_virtuous: BooleanLike;
@@ -1615,6 +1616,11 @@ export const CharacterSheet = (props) => {
                                   ❖
                                 </Button>
                               }
+                            />
+                            <PrefRow
+                              label="Background"
+                              value={data.background}
+                              pref="background"
                             />
                             {!!data.has_race_bonus && (
                               <PrefRow

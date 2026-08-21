@@ -84,6 +84,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/virtue/virtue = new /datum/virtue/none // LETHALSTONE EDIT: the virtue we get for not picking a statpack
 	var/datum/virtue/virtuetwo = new /datum/virtue/none
 	var/datum/virtue/virtue_origin = new /datum/virtue/none
+	//VALMORIAN: 2026-08-21 - ported from Emerald Summit PR #240. A background is a virtue-like pick
+	//focused on skills + starting equipment, kept in its own free slot alongside (not instead of) the
+	//two normal virtue picks and the origin pick.
+	var/datum/virtue/virtue_background = new /datum/virtue/none
 	var/age = AGE_ADULT						//age of character
 	var/origin = "Default"
 	var/accessory = "Nothing"
@@ -500,6 +504,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(istype(virtue_origin, /datum/virtue/none))
 				virtue_origin = GLOB.virtues[/datum/virtue/origin/unknown]
 			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'>[virtue_origin]</a> <a href='?_src_=prefs;preference=originhelp;task=input'>❖</a><BR>"
+			if(istype(virtue_background, /datum/virtue/none))
+				virtue_background = GLOB.virtues[/datum/virtue/background/none]
+			dat += "<b>Background:</b> <a href='?_src_=prefs;preference=background;task=input'>[virtue_background]</a><BR>"
 			if(length(pref_species.custom_selection))
 				var/race_bonus_display
 				if(race_bonus)
@@ -1064,6 +1071,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					restricted_list.Add(virtue.name)
 				if(virtuetwo?.type in job.virtue_restrictions)
 					restricted_list.Add(virtuetwo.name)
+				if(virtue_origin?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_origin.name)
+				if(virtue_background?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_background.name)
 				for(var/datum/charflaw/cf in charflaws)
 					if(cf.type in job.vice_restrictions)
 						restricted_list.Add(cf.name)
@@ -1077,6 +1088,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					restricted_list.Add(virtue.name)
 				if(virtuetwo?.type in job.virtue_restrictions)
 					restricted_list.Add(virtuetwo.name)
+				if(virtue_origin?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_origin.name)
+				if(virtue_background?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_background.name)
 				if(length(restricted_list))
 					var/restrict_text = english_list(restricted_list)
 					HTML += "<font color='#a59461'>[used_name] (Disallowed by Virtue: [restrict_text])</font></td> <td> </td></tr>"
@@ -2621,6 +2636,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 								continue
 						if (istype(V, /datum/virtue/origin))
 							continue
+						if (istype(V, /datum/virtue/background))
+							continue
 						if(V.unlisted)
 							continue
 						if (istype(V, /datum/virtue/heretic) && !istype(selected_patron, /datum/patron/inhumen))
@@ -2656,6 +2673,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							if(!V.stackable)
 								continue
 						if (istype(V, /datum/virtue/origin))
+							continue
+						if (istype(V, /datum/virtue/background))
 							continue
 						if(V.unlisted)
 							continue
@@ -2711,6 +2730,27 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					if (result)
 						var/datum/virtue/virtue_chosen = virtue_choices[result]
 						virtue_origin = virtue_chosen
+						to_chat(user, process_virtue_text(virtue_chosen))
+
+				if("background")
+					var/list/virtue_choices = list()
+					for (var/path as anything in GLOB.virtues)
+						var/datum/virtue/V = GLOB.virtues[path]
+						if (!V.name)
+							continue
+						if (V.name == virtue_background.name)
+							continue
+						if (!istype(V, /datum/virtue/background))
+							continue
+						if (V.restricted == TRUE)
+							if((pref_species.type in V.races))
+								continue
+						virtue_choices[V.name] = V
+					var/result = tgui_input_list(user, "What was your lyfe before?", "BACKGROUND (LOADOUTS PLACED WITHIN THY STASH)", virtue_choices)
+
+					if (result)
+						var/datum/virtue/virtue_chosen = virtue_choices[result]
+						virtue_background = virtue_chosen
 						to_chat(user, process_virtue_text(virtue_chosen))
 
 				if("charflaw_averse_choice")
@@ -3431,9 +3471,13 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	var/dat
 	if(V.desc)
 		dat += "<font size = 3>[span_purple(V.desc)]</font><br>"
+	if(V.background_desc)
+		dat += "<font size = 3>[span_purple(V.background_desc)]</font><br>"
 	if(length(V.added_skills))
 		if(istype(V, /datum/virtue/origin))
 			dat += "<font color = '#a3e2ff'><font size = 3>This Origin adds the following skills: <br>"
+		else if(istype(V, /datum/virtue/background))
+			dat += "<font color = '#a3e2ff'><font size = 3>This Background adds the following skills: <br>"
 		else
 			dat += "<font color = '#a3e2ff'><font size = 3>This Virtue adds the following skills: <br>"
 		for(var/list/L in V.added_skills)
@@ -3448,6 +3492,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	if(length(V.added_traits))
 		if(istype(V, /datum/virtue/origin))
 			dat += "<font color = '#a3e2ff'><font size = 3>This Origin grants the following traits: <br>"
+		else if(istype(V, /datum/virtue/background))
+			dat += "<font color = '#a3ffe0'><font size = 3>This Background grants the following traits: <br>"
 		else
 			dat += "<font color = '#a3ffe0'><font size = 3>This Virtue grants the following traits: <br>"
 		for(var/TR in V.added_traits)
@@ -3456,6 +3502,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	if(length(V.added_stashed_items))
 		if(istype(V, /datum/virtue/origin))
 			dat += "<font color = '#a3e2ff'><font size = 3>This Origin adds the following items to your stash: <br>"
+		else if(istype(V, /datum/virtue/background))
+			dat += "<font color = '#eeffa3'><font size = 3>This Background adds the following items to your stash: <br>"
 		else
 			dat += "<font color = '#eeffa3'><font size = 3>This Virtue adds the following items to your stash: <br>"
 		for(var/I in V.added_stashed_items)

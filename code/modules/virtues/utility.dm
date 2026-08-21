@@ -146,46 +146,7 @@
 	to_chat(recipient, span_notice("Though you failed to become a knight, your training in equipment maintenance and repair remains useful."))
 	to_chat(recipient, span_notice("You can retrieve your hammer and polishing tools from a tree, statue, or clock."))
 
-/datum/virtue/utility/intellectual
-	name = "Intellectual"
-	desc = "I've spent my life surrounded by various books or sophisticated foreigners, be it through travel or other fortunes beset on my life. I've picked up several tongues and wits, and keep a journal closeby. I can tell people's exact prowess."
-	custom_text = "Maximizes Assess benefits with a bonus of the target's Stats. Allows the choice of up to 6 languages to learn."
-	added_traits = list(TRAIT_INTELLECTUAL)
-	added_skills = list(list(/datum/skill/misc/reading, 3, 6))
-	added_stashed_items = list(
-		"Quill" = /obj/item/natural/feather,
-		"Scroll #1" = /obj/item/paper/scroll,
-		"Scroll #2" = /obj/item/paper/scroll,
-		"Book Crafting Kit" = /obj/item/book_crafting_kit,
-		"Unfinished Skillbook" = /obj/item/skillbook/unfinished
-	)
-	max_choices = 6
-	choice_costs = list(0, 0, 0, 2, 3, 4)
-	extra_choices = list(
-		"Elvish" = /datum/language/elvish,
-		"Dwarvish" = /datum/language/dwarvish,
-		"Orcish" = /datum/language/orcish,
-		"Infernal" = /datum/language/hellspeak,
-		"Draconic" = /datum/language/draconic,
-		"Celestial" = /datum/language/celestial,
-		"Ranesheni" = /datum/language/raneshi,
-		"Grenzelhoftian" = /datum/language/grenzelhoftian,
-		"Kazengunese" = /datum/language/kazengunese,
-		"Lingyuese" = /datum/language/lingyuese,
-		"Undercommon" = /datum/language/undercommon,
-		"Otavan" = /datum/language/otavan,
-		"Etruscan" = /datum/language/etruscan,
-		"Gronnic" = /datum/language/gronnic,
-		"Aavnic" = /datum/language/aavnic
-	)
-
-/datum/virtue/utility/intellectual/apply_to_human(mob/living/carbon/human/recipient)
-	addtimer(CALLBACK(src, .proc/linguist_apply, recipient), 50)
-
-/datum/virtue/utility/intellectual/proc/linguist_apply(mob/living/carbon/human/recipient)
-	if(check_triumphs(recipient))
-		for(var/lang in picked_choices)
-			recipient.grant_language(extra_choices[lang])
+//VALMORIAN: 2026-08-21 - Intellectual retired and moved to background.dm (background/linguist).
 
 /datum/virtue/utility/hollow
 	name = "Hollow"
@@ -207,22 +168,21 @@
 	desc = "Raw, toxic or spoiled food doesn't bother my superior digestive system."
 	added_traits = list(TRAIT_NASTY_EATER)
 
+//VALMORIAN: 2026-08-21 - "Light Steps", "Sneak Skill" and "Lockpick Skill"/"Stashed Lockpick Ring"
+//choices retired and moved to background/light_steps (Skulker/Larcenous), which covers the same
+//ground with an equipment-choice loadout. Darksight and Second Voice have no background equivalent
+//and stay here.
 /datum/virtue/utility/prowler
 	name = "Prowler"
 	desc = "I've learned to stalk the shadows, in step and in sight. My hands had also been honed to be deft."
-	max_choices = 3	//Tentative, feels more fun to limit yourself to a set out of these rather than all of them. (Used to be 6)
-	choice_costs = list(0, 0, 0)
+	max_choices = 2
+	choice_costs = list(0, 0)
 	stackable = TRUE	//It's OK to take Virtuous and get everything here.
 	choice_tooltips = list(
-		"Light Steps" = "My steps are light and swift. I make less noise while sneaking and wearing armor, and can sneak much quicker.",
 		"Second Voice" = "I am able to change my voice at will (Grants a button in 'Virtue' tab to change voice color)."
 	)
 	extra_choices = list(
 		"Darksight" = TRAIT_DARKVISION,
-		"Light Steps" = TRAIT_LIGHT_STEP,
-		"Stashed Lockpick Ring" = /obj/item/lockpickring/mundane,
-		"Sneak Skill (+2, Up to Legendary)" = /datum/skill/misc/sneaking,
-		"Lockpick Skill (+3, Up to Legendary)" = /datum/skill/misc/lockpicking,
 		"Second Voice"
 		)
 
@@ -237,54 +197,13 @@
 						to_chat(recipient, "Your eyes have become permanently colorblind.")
 					else if(recipient.charflaws.len)
 						add_verb(recipient, /mob/living/carbon/human/proc/toggleblindness)
-			else if(ispath(extra_choices[choice], /datum/skill))
-				if(extra_choices[choice] == /datum/skill/misc/sneaking)
-					recipient.adjust_skillrank(extra_choices[choice], SKILL_LEVEL_APPRENTICE, silent = TRUE)
-				else if(extra_choices[choice] == /datum/skill/misc/lockpicking)
-					recipient.adjust_skillrank(extra_choices[choice], SKILL_LEVEL_JOURNEYMAN, silent = TRUE)
-			else if(ispath(extra_choices[choice], /obj/item))
-				var/obj/item/I = extra_choices[choice]
-				recipient.mind?.special_items[capitalize(I::name)] = extra_choices[choice]
 			else if(choice == "Second Voice")
 				add_verb(recipient, /mob/living/carbon/human/proc/changevoice)
 				add_verb(recipient, /mob/living/carbon/human/proc/swapvoice)
 				recipient.AddComponent(/datum/component/voice_handler)
 
-/datum/virtue/utility/performer
-	name = "Performer"
-	desc = "Music, artistry and the act of showmanship carried me through life. I've hidden a favorite instrument of mine, know how to please anyone I touch, and how to crack the eggs of hecklers."
-	custom_text = "Comes with a stashed instrument of your choice. You choose the instrument after spawning in."
-	added_traits = list(TRAIT_NUTCRACKER, TRAIT_GOODLOVER)
-	added_skills = list(list(/datum/skill/misc/music, 4, 4))
-	max_choices = 3
-	choice_costs = list(0, 2, 2)
-	extra_choices = list(
-		"Guitar" = /obj/item/rogue/instrument/guitar,
-		"Lute" = /obj/item/rogue/instrument/lute,
-		"Hurdy Gurdy" = /obj/item/rogue/instrument/hurdygurdy,
-		"Harp" = /obj/item/rogue/instrument/harp,
-		"Flute" = /obj/item/rogue/instrument/flute,
-		"Accordion" = /obj/item/rogue/instrument/accord,
-		"Shamisen" = /obj/item/rogue/instrument/shamisen,
-		"Drum" = /obj/item/rogue/instrument/drum,
-		"Viola" = /obj/item/rogue/instrument/viola,
-		"Vocal Talisman" = /obj/item/rogue/instrument/vocals,
-		"Psyaltery" = /obj/item/rogue/instrument/psyaltery
-	)
-
-/datum/virtue/utility/performer/apply_to_human(mob/living/carbon/human/recipient)
-	if(triumph_check(recipient))
-		for(var/choice in picked_choices)
-			if(ispath(extra_choices[choice], /obj/item))
-				recipient.mind?.special_items[choice] = extra_choices[choice]
-
-/datum/virtue/utility/granary
-	name = "Cunning Provisioner"
-	added_traits = list(TRAIT_HOMESTEAD_EXPERT)
-	desc = "You've worked in or around the docks enough to steal away a sack of supplies that no one would surely miss, just in case. You've picked up on some cooking and fishing tips in your spare time, as well."
-	added_stashed_items = list("Bag of Food" = /obj/item/storage/roguebag/food)
-	added_skills = list(list(/datum/skill/craft/cooking, 3, 6),
-						list(/datum/skill/labor/fishing, 2, 6))
+//VALMORIAN: 2026-08-21 - Performer and Cunning Provisioner retired and moved to background.dm
+//(background/performer, background/granary).
 
 /datum/virtue/utility/homesteader
 	name = "Pilgrim (-3 TRI)"
@@ -323,12 +242,7 @@
 	added_traits = list(TRAIT_KEENEARS)
 	custom_text = "You can identify known people who speak even when they are out of sight. You can hear people speaking normally above and below you, regardless of obstacles in the way. You can hear whispers from one tile further."
 
-/datum/virtue/utility/tracker
-	name = "Sleuth"
-	desc = "You realised long ago that the ability to find a man is as helpful to aid the law as it is to evade it."
-	added_skills = list(list(/datum/skill/misc/tracking, 3, 6))
-	added_traits = list(TRAIT_SLEUTH)
-	custom_text = "- Upon right clicking a track, you will Mark the person who made them <i>(Expert skill required, not exclusive to this Virtue)</i>.\n- Further tracks found will be automatically highlighted as theirs, along with the person themselves, if they are not sneaking or invisible at the time.\n- Reduces the cooldown for tracking, allows track examining right away, and movement no longer cancels tracking."
+//VALMORIAN: 2026-08-21 - Sleuth retired and moved to background.dm (background/tracker).
 
 /datum/virtue/utility/bronzelimbs
 	name = "Bronze Limbs"

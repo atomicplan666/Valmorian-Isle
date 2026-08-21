@@ -485,9 +485,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/virtue_type
 	var/virtuetwo_type
 	var/origin_type
+	var/background_type
 	S["virtue"] >> virtue_type
 	S["virtuetwo"] >> virtuetwo_type
 	S["virtue_origin"] >> origin_type
+	S["virtue_background"] >> background_type
 	var/list/virtue_choices = list()
 	var/list/virtuetwo_choices = list()
 	var/virtone
@@ -534,6 +536,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		virtue_origin = new origin_type
 	else
 		virtue_origin = new /datum/virtue/none
+
+	if(background_type)
+		virtue_background = new background_type
+	else
+		virtue_background = new /datum/virtue/none
 
 /datum/preferences/proc/_load_gear_list(savefile/S)
 	S["gear_list"] >> gear_list
@@ -1060,6 +1067,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["virtuetwo"], virtuetwo.type)
 	WRITE_FILE(S["virtuetwochoices"] , virtuetwo.picked_choices)
 	WRITE_FILE(S["virtue_origin"], virtue_origin.type)
+	WRITE_FILE(S["virtue_background"], virtue_background.type)
 	WRITE_FILE(S["race_bonus"], race_bonus)
 	WRITE_FILE(S["combat_music"], combat_music.type)
 	WRITE_FILE(S["body_size"] , features["body_size"])
