@@ -1,8 +1,7 @@
 /datum/patron/divine/astrata
 	name = "Astrata"
-	domain = "Goddess of the Sun, Dae, and Order"
-	desc = "The Tyrant of the Ten, sister and rival to Noc - and the eldest of them all. Her radiance keeps the evils at bay during the dae. Nite, however, is a different tale."
-	worshippers = "Zealots, Farmers, and the Noble-Hearted"
+	domain = "Goddess of the Sun, Order, Nobility, Benevolence, Chivalry, Tyranny."
+	desc = "First of the Divines, Astrata's birthright as firstborn of PSYDON is the mandate of all nobles. Seeing the world cold and without order, she formed of her own Lux the Sun and set its course across the heavens. All mortals rose and labored as she bid them, and when she retires from her heavenly Court all mortals are released to their slumbers."
 	mob_traits = list(TRAIT_APRICITY)
 	miracles = list(/datum/action/cooldown/spell/touch/orison				= CLERIC_ORI,
 					/datum/action/cooldown/spell/miracle/ignition/astrata	= CLERIC_T0,

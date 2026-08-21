@@ -121,6 +121,7 @@ Balloon Alert / Floating Text defines
 
 #define RACES_CONSTRUCT \
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 
 #define RACES_OOZE \
 	/datum/species/ooze,\
@@ -161,6 +162,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/dullahan,\
 	/datum/species/dwarf/gnome,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/ooze,\
 
 // All but elves, dark elves, sun elves, half-elves and humans (second-class citizens). Used for Black Oaken Grovewalkers (Adventurer, auxiliaries).
@@ -185,6 +187,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/dullahan,\
 	/datum/species/dwarf/gnome,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/ooze,\
 
 // All but elves, dark elves and half-elves. Used for Black Oaken Vanguard and Ranger (Mercenary). Sun elves are intentionally not allowed.
@@ -211,6 +214,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/dullahan,\
 	/datum/species/dwarf/gnome,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/ooze,\
 
 // All but elves and dark elves. Used for Black Oaken Stalker (Wretch). Sun elves are intentionally not allowed.
@@ -238,6 +242,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/dullahan,\
 	/datum/species/dwarf/gnome,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/ooze,\
 
 // All but dwarves.
@@ -266,6 +271,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/dullahan,\
 	/datum/species/dwarf/gnome,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/ooze,\
 
 // All but Dwarves, Gnomes, Kobolds, D. Elves, Oozes, Moths & Anthrosmall
@@ -313,6 +319,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/dullahan,\
 	/datum/species/dwarf/gnome,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/ooze,\
 
 
@@ -368,6 +375,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/dullahan,\
 	/datum/species/dwarf/gnome,\
 	/datum/species/taur,\
@@ -397,6 +405,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/dullahan,\
 	/datum/species/taur,\
 	/datum/species/lamia,\
@@ -419,6 +428,7 @@ Balloon Alert / Floating Text defines
 	/datum/species/anthromorph,\
 	/datum/species/demihuman,\
 	/datum/species/construct/metal,\
+	/datum/species/construct/porcelain,\
 	/datum/species/dullahan,\
 	/datum/species/taur,\
 	/datum/species/lamia,\

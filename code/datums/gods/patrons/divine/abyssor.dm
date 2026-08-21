@@ -1,8 +1,7 @@
 /datum/patron/divine/abyssor
 	name = "Abyssor"
-	domain = "God of the Sea, Dreams, and The Unknown"
-	desc = "The strongest of the Ten; when awakened, the world flooded for a thousand daes and a thousand nights before He was put to slumber. Resting fitfully did Dendor split from his skull like a gaping wound, blessing the primodal men with the first taste of water - and in their dreams, the first nightmares."
-	worshippers = "Sailors, Seapeople, and Sages"
+	domain = "God of Stars, Storms, Waters, Sailors, Explorers, Heroism."
+	desc = "The great Navigator of the stars and seas, Abyssor's lance of lighting drives the sea-beasts from the ships of faithful mariners. Bidding his followers to forsake the familiar for the terrible beauty of unexplored lands, he calls the adventurous to slay the fell creatures of forsaken shores."
 	mob_traits = list(TRAIT_ABYSSOR_SWIM, TRAIT_SEA_DRINKER)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/aquatic_compulsion	= CLERIC_T0,

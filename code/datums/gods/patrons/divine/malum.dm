@@ -1,8 +1,7 @@
 /datum/patron/divine/malum
 	name = "Malum"
-	domain = "God of Fire, Destruction and Rebirth"
-	desc = "Opinionless god of the crafts. He teaches that great works for killing or saving are great works, either way. The well-oiled guillotine and the well-sharpened axe are tools, and there is no good and evil to their craft."
-	worshippers = "Smiths, Miners, Engineers"
+	domain = "God of Crafts, Duty, Mountains, Civilization, Earthquakes, Oaths."
+	desc = "Forge-master and gem-smith, Malum reshapes creation to his will with the vision of a grand architect. Creating dwarves and ogres, dragons and dorpels, Malum's all-consuming passion for his Great Work possesses him still after thousands of years. The gilded chambers of his mansion were sealed long ago against the rebellion of his dragons, yet earthquakes signal his hammer-blows in his great, all-consuming pursuit of forging the perfect jewel."
 	mob_traits = list(TRAIT_FORGEBLESSED)
 	miracles = list(/datum/action/cooldown/spell/touch/orison				= CLERIC_ORI,
 					/datum/action/cooldown/spell/miracle/ignition/malum		= CLERIC_T0,
@@ -26,7 +25,7 @@
 	storyteller = /datum/storyteller/malum
 
 	titles = list(
-		"Forgefather", 
+		"Forgefather",
 		"Maker",
 		"Mamuke"
 		)

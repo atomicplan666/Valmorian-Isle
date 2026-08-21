@@ -1,8 +1,7 @@
 /datum/patron/divine/undivided
 	name = "Undivided"
 	domain = "The Divine, Lyfe, Death, Existence"
-	desc = "Ten Eternal, Divine Pantheon United, Bulwark against the Darkness. The Ten dilligently watch over their flock granting them potent boons, but not every man catches the attention of merely one. Take lessons from all from them all, for they are your masters and mentors."
-	worshippers = "Commonfolk, Grenzelhoftians, Clergymen of the Holy See, and Pragmatists of the Ten"
+	desc = "As Psydon created the Ten to rule over the domains of mortal affairs, it is only right to pay each of the Divines their due. A prayer to Astrata at dawn and a prayer to Noc at dusk, a pinch of incense to Malum to bless a new forge or a sprig of herbs dropped in the hearth's embers to Eora's name; the sensible soul recognizes each power of the universe in the moments they influence mortal affairs. Even Psydon, be He departed or merely in uncertain silence, deserves His moment of respect when passing by the grand ruins of ages past."
 	mob_traits = list(TRAIT_UNDIVIDED)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/datum/action/cooldown/spell/miracle/ignition/undivided		= CLERIC_T0,

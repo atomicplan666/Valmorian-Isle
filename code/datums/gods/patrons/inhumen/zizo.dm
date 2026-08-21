@@ -1,8 +1,9 @@
 /datum/patron/inhumen/zizo
 	name = "Zizo"
-	domain = "Progress, Undeath, Hubris, Left Hand Magicks"
-	desc = "A once-mortal snow elf turned god. Her hubris in thinking she could harvest lux from the planet itself led to the elimination of her entire race. Her works are still used to this dae in some cases."
-	worshippers = "Necromancers, Researchers, Warlocks, and the Undead"
+	domain = "Goddess of The Occult, Ruthlessness and Dominance"
+	desc = "<br>Psydon gave us death. We know not if it is a punishment or a reward; Necra keeps her secret. But we know that it is an end, a limit put upon mortals, a shallow draught of water given to us before we are cast into life's desert to wither and die.\
+<br>She has found the wellsprings. No longer will our souls be lost to Necra, they are ours and ours alone.\
+<br>We follow her path between the hidden fountains, forming one deathless oasis in the world after the next. Soon all of the Firmament shall be without death; those who fall in this vessel of flesh rising again as vessels of bone until we too, as our mistress, create a vessel of pure spirit."
 	mob_traits = list(TRAIT_CABAL, TRAIT_ZIZOSIGHT)
 	miracles = list(/datum/action/cooldown/spell/touch/orison							= CLERIC_ORI,
 					/datum/action/cooldown/spell/zizo/snuff_lights						= CLERIC_T0,
@@ -14,7 +15,7 @@
 					/datum/action/cooldown/spell/tame_undead/zizo						= CLERIC_T3,
 					/datum/action/cooldown/spell/zizo/rituos 							= CLERIC_T3,
 					/obj/effect/proc_holder/spell/invoked/resurrect/zizo				= CLERIC_T3,
-					/datum/action/cooldown/spell/lacrima/zizo							= CLERIC_T4,	
+					/datum/action/cooldown/spell/lacrima/zizo							= CLERIC_T4,
 	)
 	confess_lines = list(
 		"PRAISE ZIZO!",

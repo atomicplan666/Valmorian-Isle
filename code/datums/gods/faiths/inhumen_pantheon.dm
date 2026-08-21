@@ -1,7 +1,7 @@
 /datum/faith/inhumen
 	name = "Ascendents"
-	desc = "The Holy Ecclesial is a series of sects formed by a violent schism with the Holy See that split the church in twain. \n\
-		The Holy Ecclesial accepts the Four Ascendents as True Divinity, proof that Mortals can ascend past their limits. \
-		So close to the seat of the Holy See, worship of the Four is considered heretical, and they are denounced as the INHUMEN. But we laugh, and spit in their face."
-	worshippers = "Progressivists, Cultists, and Apostates of the Pantheon"
+	desc = "<br>Psydon poured Lux from his hands like an adulterer spilling it into the mouths of whores, caring not that the Divines became drunk on their undeserved power. \
+<br>What meager drops fell upon this mortal clay stirred us to thought and speech; to question, why? By what noble design do we shatter into potsherds under the heel of callous potters, broken bodies ground into so much tear-soaked dust to form another generation of misshapen, dying forms? \
+<br>We will prick the heels of the gods that trod upon us, drink from the fount of Godhead and usurp them.\
+<br>As above, so below."
 	godhead = /datum/patron/inhumen/zizo

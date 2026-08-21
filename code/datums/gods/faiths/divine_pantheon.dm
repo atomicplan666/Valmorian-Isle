@@ -1,8 +1,4 @@
 /datum/faith/divine
 	name = "Divine Pantheon"
-	desc = "The TEN, holy and eternal. The most accepted religion in Valmoria. The TEN became active in the lives of mortals after Psydon sent the Comet Syon to defeat the rampaging Archdevil and vanished from the world. \n \n\
-		The <b>Holy See</b>, recently rocked by a violent schism, controls dioceses across the world. \
-		The splinter church, the <b>Holy Ecclesial</b>, recognize the heretical 'Ascendants' - better known as INHUMEN GODS - as True Divinity. \
-		But it is only through faith of the TRUE DIVINE that hope can be found in this world."
-	worshippers = "Commonfolk, the Faithful, the Anointed, and the Denizens of Valmoria"
+	desc = "The Ten Divines, created by Psydon to aid His governance of the mundane and mortal, persist despite Psydon's absence. As such, worship of those who yet act directly is only pragmatic. No power now reigns over the Divines as before, and some devotees see an opportunity to reshape the world in their patron's image, or unified under Astrata in the Temple of the Ten."
 	godhead = /datum/patron/divine/astrata

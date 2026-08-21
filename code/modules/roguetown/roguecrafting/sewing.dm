@@ -2471,3 +2471,12 @@
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 	sellprice = 5
+
+/datum/crafting_recipe/roguetown/sewing/qaba
+	name = "black qaba"
+	result = list(/obj/item/clothing/suit/roguetown/shirt/robe/qaba)
+	reqs = list(/obj/item/natural/cloth = 5,
+	            /obj/item/natural/fibers = 4)
+	tools = list(/obj/item/needle)
+	craftdiff = 3
+	sellprice = 13

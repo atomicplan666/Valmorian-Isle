@@ -17,7 +17,7 @@
 
 /datum/anvil_recipe/weapons/bronze
 	abstract_type = /datum/anvil_recipe/weapons/bronze
-	craftdiff = SKILL_LEVEL_NOVICE //Situationally better than iron, but far more limited in terms of recipes and availability. 
+	craftdiff = SKILL_LEVEL_NOVICE //Situationally better than iron, but far more limited in terms of recipes and availability.
 
 /datum/anvil_recipe/weapons/iron
 	abstract_type = /datum/anvil_recipe/weapons/iron
@@ -1763,6 +1763,97 @@
 	additional_items = list(/obj/item/ingot/steelholy, /obj/item/ingot/steelholy, /obj/item/clothing/neck/roguetown/psicross/malum)
 	created_item = /obj/item/rogueweapon/greatsword/grenz/flamberge/malum
 	display_category = ITEM_CAT_WEAPONS_SWORDS
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/abyssor_katar
+	name = "Barotrauma"
+	req_bar = /obj/item/ingot/steelholy
+	created_item = /obj/item/rogueweapon/katar/abyssor
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/astrata_exe
+	name = "Solar Judgement (+1 H. Steel)"
+	req_bar = /obj/item/ingot/steelholy
+	additional_items = list(/obj/item/ingot/steelholy)
+	created_item = /obj/item/rogueweapon/sword/long/exe/astrata
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/noc_kopesh
+	name = "Moonlight Kopesh"
+	req_bar = /obj/item/ingot/steelholy
+	created_item = /obj/item/rogueweapon/sword/sabre/nockhopesh
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/necra_flail
+	name = "Swift Journey"
+	req_bar = /obj/item/ingot/steelholy
+	created_item = /obj/item/rogueweapon/flail/sflail/necraflail
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/pestra_dagger
+	name = "Plaguebringer Sickles"
+	req_bar = /obj/item/ingot/steelholy
+	created_item = /obj/item/rogueweapon/huntingknife/idagger/steel/pestrasickle
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/dendor_scythe
+	name = "Summer Scythe (+1 H. Steel, +1 Small Log)"
+	req_bar = /obj/item/ingot/steelholy
+	additional_items = list(/obj/item/ingot/steelholy, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/halberd/bardiche/scythe
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/xylix_whip
+	name = "Cackle Lash"
+	req_bar = /obj/item/ingot/steelholy
+	created_item = /obj/item/rogueweapon/whip/xylix
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/ravox_mace
+	name = "Duel Settler (+1 H. Steel)"
+	req_bar = /obj/item/ingot/steelholy
+	additional_items = list(/obj/item/ingot/steelholy)
+	created_item = /obj/item/rogueweapon/mace/goden/steel/ravox
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/eora_knuckles
+	name = "Close Caress"
+	req_bar = /obj/item/ingot/steelholy
+	created_item = /obj/item/clothing/gloves/roguetown/knuckles/eora
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/solarspear
+	name = "Solar Spear (+1 H. Steel)"
+	req_bar = /obj/item/ingot/steelholy
+	additional_items = list(/obj/item/ingot/steelholy)
+	created_item = /obj/item/rogueweapon/spear/holysteel
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/judgementedge
+	name = "Judgement Edge"
+	req_bar = /obj/item/ingot/steelholy
+	created_item = /obj/item/rogueweapon/sword/holysteel
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/ranesh_strata
+	name = "Astratan Scimitar (+1 Gold bar)"
+	req_bar = /obj/item/ingot/steelholy
+	additional_items = list(/obj/item/ingot/gold)
+	created_item = /obj/item/rogueweapon/sword/sabre/shamshir/ranesh_stratan
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/gloryglaive
+	name = "Gloryous Glaive (+1 H. Steel, +1 Small log)"
+	req_bar = /obj/item/ingot/steelholy
+	additional_items = list(/obj/item/ingot/steelholy, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/halberd/glaive/ravox
+	i_type = "Weapons"
+
+/datum/anvil_recipe/weapons/holy/dendorwarstaff
+	name = "Dendorite Warstaff (+1 Small log)"
+	req_bar = /obj/item/ingot/steelholy
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/woodstaff/quarterstaff/steel/dendor
 	i_type = "Weapons"
 
 // BLESSED SILVER

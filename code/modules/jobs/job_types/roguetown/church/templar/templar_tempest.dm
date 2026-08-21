@@ -101,10 +101,10 @@
 				var/helms = list("Skull Helm", "Hood Helm")
 				var/helmchoice = input(H, "Choose your headwear", "TAKE UP NOGGIN PROTECTION") as anything in helms
 				switch(helmchoice)
-				if("Skull Helm")
-					head = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
-				if("Hood Helm")
-					head = /obj/item/clothing/head/roguetown/helmet/heavy/necran
+					if("Skull Helm")
+						head = /obj/item/clothing/head/roguetown/helmet/heavy/necrahelm
+					if("Hood Helm")
+						head = /obj/item/clothing/head/roguetown/helmet/heavy/necran
 			cloak = /obj/item/clothing/cloak/templar/necran
 		if(/datum/patron/divine/pestra)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra

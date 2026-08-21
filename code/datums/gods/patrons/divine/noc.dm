@@ -1,8 +1,7 @@
 /datum/patron/divine/noc
 	name = "Noc"
-	domain = "God of the Moon, Nite, Knowledge and Arcyne"
-	desc = "The Nite-Scholar, brother and rival to Astrata. His wisdom paves the way in the moonlight. Tales of esoteric magicka at the destination are sung - in the words of decaying scripts."
-	worshippers = "Wizards, Alchemists, and Scholars"
+	domain = "God of the Moon, Knowledge, Alchemy, Arcane, Protection, Mysteries."
+	desc = "Second of the Divines and twin brother of Astrata, Noc is as darkness to light. So that mortals be free yet to act in secrecy without the Sun's gaze he made the Moon, waxing and waning as mortals count the months between Summer and Winter. Ushering scholars through their quest for knowledge, he reveals the mysteries of the universe to those who earn wisdom."
 	mob_traits = list(TRAIT_NIGHT_OWL)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/datum/action/cooldown/spell/noc/nitevision					= CLERIC_T0,

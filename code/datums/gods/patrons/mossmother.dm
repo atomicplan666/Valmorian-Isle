@@ -2,7 +2,6 @@
 	name = "The Mossmother"
 	domain = "Hags, Primordial Evyls, Poisoned Boons, and Eternal Lyfe"
 	desc = "The mother of all hags. Murmured by hags to have been defeated in times long past, but her spirit carries on in the soil. Old grievances will be settled."
-	worshippers = "Hags"
 	associated_faith = /datum/faith/mossmother
 	preference_accessible = FALSE
 	profane_words = list("cock","dick","fuck","shit","pussy","cuck","cunt","asshole", "pintle", "vheslyn") //Same as Inhuman list
