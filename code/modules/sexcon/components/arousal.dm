@@ -184,14 +184,16 @@
 	if(!action)
 		mob.visible_message(span_love("[mob] makes a mess!"))
 		var/turf/turf = get_turf(parent)
-		new /obj/effect/decal/cleanable/coom(turf)
+		for(var/i in 1 to get_load_bursts())
+			new /obj/effect/decal/cleanable/coom(turf)
 		after_ejaculation(action, climaxer, partner)
 	else
 		var/return_message = action.handle_climax_message(climaxer, partner)
 		if(!return_message)
 			mob.visible_message(span_love("[mob] makes a mess!"))
 			var/turf/turf = get_turf(parent)
-			new /obj/effect/decal/cleanable/coom(turf)
+			for(var/i in 1 to get_load_bursts())
+				new /obj/effect/decal/cleanable/coom(turf)
 			after_ejaculation(action, climaxer, partner)
 		else
 			handle_climax(return_message, climaxer, partner, action)
@@ -222,6 +224,41 @@
 		volume += 1
 
 	return volume
+
+///Number of cum bursts (extra floor puddles) per climax, scaled by semen volume - ES's get_load_bursts(), reworked for VI's floor-decal mess instead of a spurt animation.
+/datum/component/arousal/proc/get_load_bursts()
+	switch(get_semen_volume())
+		if(4)
+			return 2
+		if(5 to INFINITY)
+			return 3
+		else
+			return 1
+
+///How many climaxes worth of charge we can hold, scaled by testicle size, CON, the GOODLOVER/BIGGUY traits, and gnoll species - ES's get_max_loads(), "cum con".
+/datum/component/arousal/proc/get_max_loads()
+	var/mob/living/mob = parent
+	var/con = mob.STACON
+	var/minimum_loads = 3
+	var/obj/item/organ/testicles/testes = mob.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(testes)
+		switch(testes.ball_size)
+			if(MIN_TESTICLES_SIZE)
+				minimum_loads = 2
+			if(MAX_TESTICLES_SIZE)
+				minimum_loads = 4
+	var/loads = minimum_loads + floor(clamp((con - 10) * 2, 0, 99) / 2)
+	if(HAS_TRAIT(mob, TRAIT_GOODLOVER))
+		loads *= 1.5
+	if(HAS_TRAIT(mob, TRAIT_BIGGUY))
+		loads *= 1.5
+	if(is_species(mob, /datum/species/gnoll))
+		loads *= 1.5
+	return floor(loads)
+
+///Max charge based on the dynamic load count above, replacing the old flat SEX_MAX_CHARGE.
+/datum/component/arousal/proc/get_max_charge()
+	return get_max_loads() * CHARGE_FOR_CLIMAX
 
 /datum/component/arousal/proc/can_ejaculate()
 	var/mob/living/mob = parent
@@ -283,24 +320,80 @@
 		parent.emote("groan", forced = TRUE)
 
 /datum/component/arousal/proc/handle_climax(climax_type, mob/living/carbon/human/climaxer, mob/living/carbon/human/partner, action)
+	var/bursts = get_load_bursts()
 
 	switch(climax_type)
 		if("onto")
 			log_combat(climaxer, partner, "Came onto [partner]")
 			playsound(partner, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 			var/turf/turf = get_turf(partner)
-			new /obj/effect/decal/cleanable/coom(turf)
+			for(var/i in 1 to bursts)
+				new /obj/effect/decal/cleanable/coom(turf)
+			apply_cum_onto(partner, istype(action, /datum/sex_action/oral/crotch_nuzzle))
 		if("into")
 			log_combat(climaxer, partner, "Came inside [partner]")
 			playsound(partner, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
+			apply_cum_into(climaxer, partner, get_climax_zone(action))
 		if("self")
 			log_combat(climaxer, climaxer, "Ejaculated")
 			climaxer.visible_message(span_love("[climaxer] makes a mess!"))
 			playsound(climaxer, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 			var/turf/turf = get_turf(partner)
-			new /obj/effect/decal/cleanable/coom(turf)
+			for(var/i in 1 to bursts)
+				new /obj/effect/decal/cleanable/coom(turf)
 
 	after_ejaculation(action, climaxer, partner)
+
+//VALMORIAN: the mess/examine-text system, ported from ES's cum_onto()/cum_into(). ES's sexcon knew
+//the exact orifice a climax landed in; VI's per-action sexcon2 also knows this (see each action's
+//handle_climax_message) but discards it down to "into"/"onto"/"self" before reaching this proc - so
+//get_climax_zone() below recovers it via istype family instead of touching every action file.
+
+///Applies (or refreshes) the face/body cum status effect for a splash landing outside an orifice.
+/datum/component/arousal/proc/apply_cum_onto(mob/living/carbon/human/splashed, on_face)
+	if(!splashed)
+		return
+	var/effect_type = on_face ? /datum/status_effect/facial : /datum/status_effect/facial/external
+	var/datum/status_effect/facial/existing = splashed.has_status_effect(effect_type)
+	if(existing)
+		existing.refresh_cum()
+	else
+		splashed.apply_status_effect(effect_type)
+
+///Applies the internal creampie status effect + drip + reagent for a climax landing inside an orifice.
+/datum/component/arousal/proc/apply_cum_into(mob/living/carbon/human/climaxer, mob/living/carbon/human/splashed, zone)
+	if(!splashed || !zone)
+		return
+	var/oral = (zone == SEX_PART_MOUTH)
+	var/effect_type = oral ? /datum/status_effect/facial : /datum/status_effect/facial/internal
+	var/datum/status_effect/facial/existing = splashed.has_status_effect(effect_type)
+	if(existing)
+		existing.refresh_cum()
+	else
+		splashed.apply_status_effect(effect_type)
+	if(splashed.reagents)
+		if(climaxer.getorganslot(ORGAN_SLOT_PENIS))
+			splashed.reagents.add_reagent(/datum/reagent/erpjuice/cum, get_semen_volume())
+		else
+			splashed.reagents.add_reagent(/datum/reagent/erpjuice/femcum, 2)
+	if(!oral)
+		var/obj/item/organ/testicles/testes = climaxer.getorganslot(ORGAN_SLOT_TESTICLES)
+		apply_creampie_drip(splashed, zone, testes?.ball_size > DEFAULT_TESTICLES_SIZE)
+
+///Buckets a sex_action by which orifice a creampie lands in. Ambiguous/ES-less cases (knot_grinding,
+//VI-only tailmaw penetration) default to the most common bucket rather than inventing a new one.
+/datum/component/arousal/proc/get_climax_zone(datum/sex_action/action)
+	if(!action)
+		return SEX_PART_MOUTH
+	if(istype(action, /datum/sex_action/oral/blowjob) || istype(action, /datum/sex_action/force_blowjob) || istype(action, /datum/sex_action/sex/throat) || istype(action, /datum/sex_action/oral/cunnilingus) || istype(action, /datum/sex_action/tailmaw_blowjob) || istype(action, /datum/sex_action/tailmaw_cunnilingus))
+		return SEX_PART_MOUTH
+	if(istype(action, /datum/sex_action/sex/double_penetration))
+		return (SEX_PART_CUNT | SEX_PART_ANUS)
+	if(istype(action, /datum/sex_action/sex/anal) || istype(action, /datum/sex_action/sex/anal_ride) || istype(action, /datum/sex_action/sex/other/anal))
+		return SEX_PART_ANUS
+	if(istype(action, /datum/sex_action/sex/slit))
+		return SEX_PART_SLIT_SHEATH
+	return SEX_PART_CUNT
 
 /datum/component/arousal/proc/after_ejaculation(datum/sex_action/action, mob/living/carbon/human/climaxer, mob/living/carbon/human/partner)
 	SEND_SIGNAL(climaxer, COMSIG_SEX_SET_AROUSAL, 20)
@@ -384,7 +477,7 @@
 
 /datum/component/arousal/proc/set_charge(amount)
 	var/empty = (charge < CHARGE_FOR_CLIMAX)
-	charge = clamp(amount, 0, SEX_MAX_CHARGE)
+	charge = clamp(amount, 0, get_max_charge())
 	var/after_empty = (charge < CHARGE_FOR_CLIMAX)
 	if(empty && !after_empty)
 		to_chat(parent, span_notice("I feel like I'm not so spent anymore"))

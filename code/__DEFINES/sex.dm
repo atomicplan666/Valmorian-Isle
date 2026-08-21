@@ -143,6 +143,13 @@ GLOBAL_LIST_EMPTY(locked_sex_objects)
 #define ORGAN_SLOT_VAGINA "vagina"
 #define ORGAN_SLOT_ANUS "anus"///this is a fake organ used for sex_lock
 
+//VALMORIAN: from ES's sexcon_defines.dm - which orifice a creampie/drip is in, for examine text + apply_creampie_drip()'s OR-in-new-orifice logic.
+#define SEX_PART_NULL 0
+#define SEX_PART_CUNT (1<<0)
+#define SEX_PART_ANUS (1<<1)
+#define SEX_PART_MOUTH (1<<2)
+#define SEX_PART_SLIT_SHEATH (1<<3)
+
 #define BREAST_SIZE_FLAT 0
 #define BREAST_SIZE_VERY_SMALL 1
 #define BREAST_SIZE_SMALL 2
