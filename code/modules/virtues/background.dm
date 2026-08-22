@@ -225,12 +225,15 @@
 			if(H.mind)
 				H.mind.special_items = list("Equipment Bag" = /obj/item/storage/roguebag/huntertan)
 
-//VALMORIAN: kept VI's richer version (up to 6 languages, own item stash) instead of ES's simpler
-//3-language pick; added ES's +1 INT since VI's didn't have it.
+//VALMORIAN: 2026-08-22 live-fix - the max_choices/extra_choices machinery only has picker UI and
+//savefile persistence for the virtue/virtuetwo slots ("subvirtue"/"subvirtue_two" in process_link;
+//S["virtuechoices"]/S["virtuetwochoices"]), so a background built on it could never actually have
+//its picks made - Intellectual granted zero languages. Reworked to ES PR #240's spawn-time prompt
+//(3 free picks), the same pattern as every other background's equipment prompt.
 /datum/virtue/background/linguist
 	name = "Intellectual"
 	desc = "I've spent my life surrounded by various books or sophisticated foreigners, be it through travel or other fortunes beset on my life. I've picked up several tongues and wits, and keep a journal closeby. I can tell people's exact prowess."
-	custom_text = "Maximizes Assess benefits with a bonus of the target's Stats. Allows the choice of up to 6 languages to learn. +1 INT."
+	custom_text = "Maximizes Assess benefits with a bonus of the target's Stats. Allows the choice of 3 languages to learn upon joining. +1 INT."
 	added_traits = list(TRAIT_INTELLECTUAL)
 	added_skills = list(list(/datum/skill/misc/reading, 3, 6))
 	added_stashed_items = list(
@@ -240,9 +243,13 @@
 		"Book Crafting Kit" = /obj/item/book_crafting_kit,
 		"Unfinished Skillbook" = /obj/item/skillbook/unfinished
 	)
-	max_choices = 6
-	choice_costs = list(0, 0, 0, 2, 3, 4)
-	extra_choices = list(
+
+/datum/virtue/background/linguist/apply_to_human(mob/living/carbon/human/recipient)
+	recipient.change_stat("intelligence", 1)
+	addtimer(CALLBACK(src, PROC_REF(linguist_apply), recipient), 5 SECONDS)
+
+/datum/virtue/background/linguist/proc/linguist_apply(mob/living/carbon/human/recipient)
+	var/static/list/selectable_languages = list(
 		"Elvish" = /datum/language/elvish,
 		"Dwarvish" = /datum/language/dwarvish,
 		"Orcish" = /datum/language/orcish,
@@ -259,15 +266,22 @@
 		"Gronnic" = /datum/language/gronnic,
 		"Aavnic" = /datum/language/aavnic
 	)
-
-/datum/virtue/background/linguist/apply_to_human(mob/living/carbon/human/recipient)
-	recipient.change_stat("intelligence", 1)
-	addtimer(CALLBACK(src, PROC_REF(linguist_apply), recipient), 5 SECONDS)
-
-/datum/virtue/background/linguist/proc/linguist_apply(mob/living/carbon/human/recipient)
-	if(check_triumphs(recipient))
-		for(var/lang in picked_choices)
-			recipient.grant_language(extra_choices[lang])
+	var/list/choices = list()
+	for(var/language_name in selectable_languages)
+		if(recipient.has_language(selectable_languages[language_name]))
+			continue
+		choices[language_name] = selectable_languages[language_name]
+	var/count = 3
+	for(var/i in 1 to 3)
+		if(!length(choices))
+			break
+		var/chosen_language = tgui_input_list(recipient, "Choose your extra spoken language.", "BACKGROUND: [count] LEFT", choices)
+		if(!chosen_language)
+			break
+		recipient.grant_language(choices[chosen_language])
+		choices -= chosen_language
+		to_chat(recipient, span_info("I recall my knowledge of [chosen_language]..."))
+		count--
 
 /datum/virtue/background/light_steps
 	name = "Light Steps"
@@ -332,16 +346,21 @@
 	if(H.mind)
 		H.mind.special_items = list("Mining Backpack" = /obj/item/storage/backpack/rogue/backpack/minerbag)
 
-//VALMORIAN: kept VI's richer version (max 3 instruments, paid stacking) instead of ES's single free pick.
+//VALMORIAN: 2026-08-22 live-fix - same problem as Intellectual above: the pick machinery has no
+//UI or persistence outside the virtue/virtuetwo slots, so Performer granted zero instruments.
+//Reworked to ES PR #240's spawn-time prompt (one free instrument from the curated list).
 /datum/virtue/background/performer
 	name = "Performer"
 	desc = "Music, artistry and the act of showmanship carried me through life. I've hidden a favorite instrument of mine, know how to please anyone I touch, and how to crack the eggs of hecklers."
 	custom_text = "Comes with a stashed instrument of your choice. You choose the instrument after spawning in."
 	added_traits = list(TRAIT_NUTCRACKER, TRAIT_GOODLOVER)
 	added_skills = list(list(/datum/skill/misc/music, 4, 4))
-	max_choices = 3
-	choice_costs = list(0, 2, 2)
-	extra_choices = list(
+
+/datum/virtue/background/performer/apply_to_human(mob/living/carbon/human/recipient)
+	addtimer(CALLBACK(src, PROC_REF(performer_apply), recipient), 5 SECONDS)
+
+/datum/virtue/background/performer/proc/performer_apply(mob/living/carbon/human/recipient)
+	var/static/list/instruments = list(
 		"Guitar" = /obj/item/rogue/instrument/guitar,
 		"Lute" = /obj/item/rogue/instrument/lute,
 		"Hurdy Gurdy" = /obj/item/rogue/instrument/hurdygurdy,
@@ -354,12 +373,9 @@
 		"Vocal Talisman" = /obj/item/rogue/instrument/vocals,
 		"Psyaltery" = /obj/item/rogue/instrument/psyaltery
 	)
-
-/datum/virtue/background/performer/apply_to_human(mob/living/carbon/human/recipient)
-	if(check_triumphs(recipient))
-		for(var/choice in picked_choices)
-			if(ispath(extra_choices[choice], /obj/item))
-				recipient.mind?.special_items[choice] = extra_choices[choice]
+	var/chosen_name = tgui_input_list(recipient, "What instrument did I stash?", "STASH", instruments)
+	if(chosen_name)
+		recipient.mind?.special_items[chosen_name] = instruments[chosen_name]
 
 //VALMORIAN: kept VI's extra grants from the old Skilled Apprentice choice (expert traits + the
 //secular diagnose spell) on top of ES's equipment-choice structure.
