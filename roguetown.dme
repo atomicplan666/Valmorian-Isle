@@ -3549,6 +3549,7 @@
 #include "code\modules\virtues\items.dm"
 #include "code\modules\virtues\movement.dm"
 #include "code\modules\virtues\origin.dm"
+#include "code\modules\virtues\retired.dm"
 #include "code\modules\virtues\saddleborn.dm"
 #include "code\modules\virtues\size.dm"
 #include "code\modules\virtues\thief.dm"
