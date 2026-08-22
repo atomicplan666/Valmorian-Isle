@@ -39,6 +39,9 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/softcap = FALSE
 	/// Whether a virtue should show up in regular selection
 	var/unlisted = FALSE
+	/// Retired virtues (see retired.dm): kept compiling so old saves still resolve, hidden from
+	/// pickers via unlisted, and flagged here so _load_virtue() can tell the player to re-pick.
+	var/retired = FALSE
 	/// Whether the virtue is only available as a second virtue choice (so only available to virtuous / fated)
 	var/virtuous_only = FALSE
 

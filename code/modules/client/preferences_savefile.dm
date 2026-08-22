@@ -542,6 +542,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	virtue.on_load()
 	virtuetwo.on_load()
 
+	//Retired stubs (retired.dm) resolve and display, but grant nothing - tell the player so the
+	//"(Retired)" label on their virtue button doesn't sit there silently forever.
+	if(parent)
+		if(virtue.retired)
+			to_chat(parent, span_boldwarning("This character's Virtue '[virtue.name]' has been retired and no longer grants anything - pick a replacement in character setup. Its old role may now be available as a Background."))
+		if(virtuetwo.retired)
+			to_chat(parent, span_boldwarning("This character's Second Virtue '[virtuetwo.name]' has been retired and no longer grants anything - pick a replacement in character setup."))
+
 	if(origin_type)
 		virtue_origin = new origin_type
 	else
