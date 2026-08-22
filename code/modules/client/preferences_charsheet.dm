@@ -52,7 +52,9 @@
 	)
 	var/tricost = 0
 	if(length(V.extra_choices) && length(V.picked_choices))
-		for(var/i in 1 to length(V.picked_choices))
+		//min() guard: picked_choices is sanitized on load, but a runtime here kills the whole
+		//ui_data() build and blanks every virtue panel, so never trust the lengths to agree.
+		for(var/i in 1 to min(length(V.picked_choices), length(V.choice_costs)))
 			tricost += V.choice_costs[i]
 	data["tri_cost"] = tricost
 	if(length(V.picked_choices))

@@ -528,9 +528,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	if(length(virtue_choices))
 		virtue.picked_choices = virtue_choices.Copy()
-	
+
 	if(length(virtuetwo_choices))
 		virtuetwo.picked_choices = virtuetwo_choices.Copy()
+
+	//Unconditional - also cleans picks grafted via the deprecated whole-datum path above, and
+	//stale picks left on a retired (name = null) stub. See sanitize_picked_choices() for why
+	//skipping this crashes ui_data()/ShowChoices/triumph_check() after a virtue's choice lists
+	//shrink between saves.
+	virtue.sanitize_picked_choices()
+	virtuetwo.sanitize_picked_choices()
 
 	virtue.on_load()
 	virtuetwo.on_load()
