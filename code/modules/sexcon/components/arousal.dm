@@ -295,20 +295,6 @@
 		return
 	ejaculate_container(milker.get_active_held_item())
 
-//ES's handle_container_ejaculation - the self-milking half. Passive threshold, because the mob is
-//working itself off rather than being wrung out by someone else.
-/datum/component/arousal/proc/handle_container_ejaculation()
-	var/mob/living/carbon/human/mob = parent
-	if(!istype(mob))
-		return
-	if(arousal < PASSIVE_EJAC_THRESHOLD)
-		return
-	if(is_spent())
-		return
-	if(!can_ejaculate())
-		return
-	ejaculate_container(mob.get_active_held_item())
-
 /datum/component/arousal/proc/ejaculate_special()
 	var/mob/living/mob = parent
 	after_ejaculation_special(mob)
@@ -320,6 +306,17 @@
 		parent.emote("groan", forced = TRUE)
 
 /datum/component/arousal/proc/handle_climax(climax_type, mob/living/carbon/human/climaxer, mob/living/carbon/human/partner, action)
+	// The container actions climax through here like everything else - try_ejaculate() fires the
+	// moment arousal crosses the passive threshold, so waiting for an explicit milking call after
+	// the fact never worked (the generic path had already spent the climax on the floor). The
+	// container is always in the hand of whoever is doing the milking: the session user.
+	if(climax_type == "container")
+		var/obj/item/reagent_containers/glass/container = climaxer?.get_active_held_item()
+		if(istype(container))
+			ejaculate_container(container)
+			return
+		climax_type = "self" //Container vanished mid-act - plain mess instead.
+
 	var/bursts = get_load_bursts()
 
 	switch(climax_type)
