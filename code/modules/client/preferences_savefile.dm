@@ -485,9 +485,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/virtue_type
 	var/virtuetwo_type
 	var/origin_type
+	var/background_type
 	S["virtue"] >> virtue_type
 	S["virtuetwo"] >> virtuetwo_type
 	S["virtue_origin"] >> origin_type
+	S["virtue_background"] >> background_type
+	S["race_title"] >> race_title
+	if(!race_title)
+		race_title = "None"
 	var/list/virtue_choices = list()
 	var/list/virtuetwo_choices = list()
 	var/virtone
@@ -523,17 +528,37 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	if(length(virtue_choices))
 		virtue.picked_choices = virtue_choices.Copy()
-	
+
 	if(length(virtuetwo_choices))
 		virtuetwo.picked_choices = virtuetwo_choices.Copy()
 
+	//Unconditional - also cleans picks grafted via the deprecated whole-datum path above, and
+	//stale picks left on a retired (name = null) stub. See sanitize_picked_choices() for why
+	//skipping this crashes ui_data()/ShowChoices/triumph_check() after a virtue's choice lists
+	//shrink between saves.
+	virtue.sanitize_picked_choices()
+	virtuetwo.sanitize_picked_choices()
+
 	virtue.on_load()
 	virtuetwo.on_load()
+
+	//Retired stubs (retired.dm) resolve and display, but grant nothing - tell the player so the
+	//"(Retired)" label on their virtue button doesn't sit there silently forever.
+	if(parent)
+		if(virtue.retired)
+			to_chat(parent, span_boldwarning("This character's Virtue '[virtue.name]' has been retired and no longer grants anything - pick a replacement in character setup. Its old role may now be available as a Background."))
+		if(virtuetwo.retired)
+			to_chat(parent, span_boldwarning("This character's Second Virtue '[virtuetwo.name]' has been retired and no longer grants anything - pick a replacement in character setup."))
 
 	if(origin_type)
 		virtue_origin = new origin_type
 	else
 		virtue_origin = new /datum/virtue/none
+
+	if(background_type)
+		virtue_background = new background_type
+	else
+		virtue_background = new /datum/virtue/none
 
 /datum/preferences/proc/_load_gear_list(savefile/S)
 	S["gear_list"] >> gear_list
@@ -1053,6 +1078,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["virtuetwo"], virtuetwo.type)
 	WRITE_FILE(S["virtuetwochoices"] , virtuetwo.picked_choices)
 	WRITE_FILE(S["virtue_origin"], virtue_origin.type)
+	WRITE_FILE(S["virtue_background"], virtue_background.type)
+	WRITE_FILE(S["race_title"], race_title)
 	WRITE_FILE(S["race_bonus"], race_bonus)
 	WRITE_FILE(S["combat_music"], combat_music.type)
 	WRITE_FILE(S["body_size"] , features["body_size"])

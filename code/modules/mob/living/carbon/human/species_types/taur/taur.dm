@@ -18,6 +18,8 @@
 	base_name = "Taur"
 	sub_name = "Taur"
 	desc_title = "Taur"
+	//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate names, see species.dm.
+	race_titles = list("Centaur", "Taur", "Saiga", "Satyr", "Beastlegs")
 	desc = "<b>Taur</b><br>\
 	The taur-kin are those beastvolk whose lower halves are wholly bestial - a humanoid torso rising from \
 	the body of a hoofed beast. No two taur tribes agree on which beast is the truest, and so they have \

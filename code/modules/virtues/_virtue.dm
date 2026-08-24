@@ -7,6 +7,8 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/desc
 	/// Description for origins, allowed to be a bit wordy.
 	var/origin_desc
+	/// Description for backgrounds, allowed to be a bit wordy.
+	var/background_desc
 	/// Name for origins - used for the nation's name, not a denonym!
 	var/origin_name = "Unknown"
 	/// A list containing any traits we need to add to the mob.
@@ -37,6 +39,9 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/softcap = FALSE
 	/// Whether a virtue should show up in regular selection
 	var/unlisted = FALSE
+	/// Retired virtues (see retired.dm): kept compiling so old saves still resolve, hidden from
+	/// pickers via unlisted, and flagged here so _load_virtue() can tell the player to re-pick.
+	var/retired = FALSE
 	/// Whether the virtue is only available as a second virtue choice (so only available to virtuous / fated)
 	var/virtuous_only = FALSE
 
@@ -74,6 +79,22 @@ GLOBAL_LIST_EMPTY(virtues)
 
 /datum/virtue/proc/on_load()
 	return
+
+///Drops saved picked_choices entries this virtue no longer offers, and truncates the rest to what
+///max_choices/choice_costs can actually index. Saves store picks by name string, so any reshaping
+///of a virtue's choice lists (e.g. Prowler's 2026-08-22 trim from 3 picks to 2) otherwise leaves
+///stale lists that out-of-bounds every `choice_costs[i]` walk - which runtimes ui_data() and blanks
+///the whole tgui virtue section, crashes the legacy menu render, and breaks triumph_check() at
+///spawn. Called from _load_virtue() right after the saved picks are grafted on.
+/datum/virtue/proc/sanitize_picked_choices()
+	if(!length(picked_choices))
+		return
+	for(var/choice in picked_choices.Copy())
+		if(!(choice in extra_choices))
+			picked_choices -= choice
+	var/cap = min(max_choices, length(choice_costs))
+	if(length(picked_choices) > cap)
+		picked_choices.Cut(cap + 1)
 
 /datum/virtue/proc/triumph_check(mob/living/carbon/human/recipient)
 	if(length(extra_choices))

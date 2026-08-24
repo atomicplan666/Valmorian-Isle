@@ -107,6 +107,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	var/datum/virtue/virtue_type = player.prefs.virtue
 	var/datum/virtue/virtuetwo_type = player.prefs.virtuetwo
 	var/datum/virtue/origin_type = player.prefs.virtue_origin
+	var/datum/virtue/background_type = player.prefs.virtue_background
 	var/language_type = player.prefs.extra_language
 	if(virtue_type)
 		if(virtue_check(virtue_type, heretic, species))
@@ -131,6 +132,11 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 				to_chat(character, "Incorrect Origin parameters! Resetting to default.")
 				origin_type = new character.dna.species.origin_default
 				apply_virtue(character, origin_type)
+	if(background_type)
+		if(background_check(background_type, species))
+			apply_virtue(character, background_type)
+		else
+			to_chat(character, "Incorrect Background parameters! It will not be applied.")
 
 /proc/origin_check(var/datum/virtue/V, datum/species/species)
 	if(!species || !V)
@@ -143,6 +149,18 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 				return FALSE
 		if(istype(V,/datum/virtue/origin/racial))
 			if(!(species.type in V.races))
+				return FALSE
+		return TRUE
+	return FALSE
+
+/proc/background_check(var/datum/virtue/V, datum/species/species)
+	if(!species || !V)
+		return
+	if(V)
+		if(!istype(V,/datum/virtue/background))
+			return FALSE
+		if(V.restricted == TRUE)
+			if((species.type in V.races))
 				return FALSE
 		return TRUE
 	return FALSE

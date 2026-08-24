@@ -147,6 +147,9 @@ type Data = {
   species_name: string;
   subspecies_name: string;
   origin: string;
+  background: string;
+  race_title: string;
+  has_race_title: BooleanLike;
   age: string;
   statpack: string;
   statpack_virtuous: BooleanLike;
@@ -1598,6 +1601,13 @@ export const CharacterSheet = (props) => {
                               value={data.subspecies_name}
                               pref="subspecies"
                             />
+                            {!!data.has_race_title && (
+                              <PrefRow
+                                label="Race Title"
+                                value={data.race_title}
+                                pref="race_title"
+                              />
+                            )}
                             <PrefRow
                               label="Origin"
                               value={data.origin}
@@ -1615,6 +1625,11 @@ export const CharacterSheet = (props) => {
                                   ❖
                                 </Button>
                               }
+                            />
+                            <PrefRow
+                              label="Background"
+                              value={data.background}
+                              pref="background"
                             />
                             {!!data.has_race_bonus && (
                               <PrefRow

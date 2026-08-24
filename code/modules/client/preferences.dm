@@ -84,6 +84,13 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/virtue/virtue = new /datum/virtue/none // LETHALSTONE EDIT: the virtue we get for not picking a statpack
 	var/datum/virtue/virtuetwo = new /datum/virtue/none
 	var/datum/virtue/virtue_origin = new /datum/virtue/none
+	//VALMORIAN: 2026-08-21 - ported from Emerald Summit PR #240. A background is a virtue-like pick
+	//focused on skills + starting equipment, kept in its own free slot alongside (not instead of) the
+	//two normal virtue picks and the origin pick.
+	var/datum/virtue/virtue_background = new /datum/virtue/none
+	//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate species name, picked
+	//from pref_species.race_titles (e.g. Lamia -> "Naga"). "None" means show the plain species name.
+	var/race_title = "None"
 	var/age = AGE_ADULT						//age of character
 	var/origin = "Default"
 	var/accessory = "Nothing"
@@ -357,6 +364,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	randomize_all_customizer_accessories()
 	reset_descriptors()
 	virtue_origin = new pref_species.origin_default
+	//VALMORIAN: 2026-08-22 - race_title is a per-species pick (e.g. Lamia's "Naga"); switching race
+	//or subrace must clear it, same as virtue_origin above, or a stale tag from the old species could
+	//slip through copy_to()'s race_titles membership check by coincidence (e.g. two species that both
+	//happen to offer "Naga").
+	race_title = "None"
 	char_accent = "Species default"
 	taur_type = null
 	var/datum/charflaw/no_flaw = new /datum/charflaw/noflaw()
@@ -497,9 +509,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<BR>"
 			dat += "<b>Race:</b> <a href='?_src_=prefs;preference=species;task=input'>[pref_species.base_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
 			dat += "<b>Subrace:</b> <a href='?_src_=prefs;preference=subspecies;task=input'>[pref_species.sub_name]</a>[spec_check(user) ? "" : " (!)"]<BR>"
+			if(length(pref_species.race_titles))
+				dat += "<b>Race Title:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[race_title]</a><BR>"
 			if(istype(virtue_origin, /datum/virtue/none))
 				virtue_origin = GLOB.virtues[/datum/virtue/origin/unknown]
 			dat += "<b>Origin:</b> <a href='?_src_=prefs;preference=origin;task=input'>[virtue_origin]</a> <a href='?_src_=prefs;preference=originhelp;task=input'>❖</a><BR>"
+			if(istype(virtue_background, /datum/virtue/none))
+				virtue_background = GLOB.virtues[/datum/virtue/background/none]
+			dat += "<b>Background:</b> <a href='?_src_=prefs;preference=background;task=input'>[virtue_background]</a><BR>"
 			if(length(pref_species.custom_selection))
 				var/race_bonus_display
 				if(race_bonus)
@@ -1064,6 +1081,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					restricted_list.Add(virtue.name)
 				if(virtuetwo?.type in job.virtue_restrictions)
 					restricted_list.Add(virtuetwo.name)
+				if(virtue_origin?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_origin.name)
+				if(virtue_background?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_background.name)
 				for(var/datum/charflaw/cf in charflaws)
 					if(cf.type in job.vice_restrictions)
 						restricted_list.Add(cf.name)
@@ -1077,6 +1098,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					restricted_list.Add(virtue.name)
 				if(virtuetwo?.type in job.virtue_restrictions)
 					restricted_list.Add(virtuetwo.name)
+				if(virtue_origin?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_origin.name)
+				if(virtue_background?.type in job.virtue_restrictions)
+					restricted_list.Add(virtue_background.name)
 				if(length(restricted_list))
 					var/restrict_text = english_list(restricted_list)
 					HTML += "<font color='#a59461'>[used_name] (Disallowed by Virtue: [restrict_text])</font></td> <td> </td></tr>"
@@ -2619,6 +2644,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 								continue
 						if (istype(V, /datum/virtue/origin))
 							continue
+						if (istype(V, /datum/virtue/background))
+							continue
 						if(V.unlisted)
 							continue
 						if (istype(V, /datum/virtue/heretic) && !istype(selected_patron, /datum/patron/inhumen))
@@ -2654,6 +2681,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							if(!V.stackable)
 								continue
 						if (istype(V, /datum/virtue/origin))
+							continue
+						if (istype(V, /datum/virtue/background))
 							continue
 						if(V.unlisted)
 							continue
@@ -2710,6 +2739,35 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						var/datum/virtue/virtue_chosen = virtue_choices[result]
 						virtue_origin = virtue_chosen
 						to_chat(user, process_virtue_text(virtue_chosen))
+
+				if("background")
+					var/list/virtue_choices = list()
+					for (var/path as anything in GLOB.virtues)
+						var/datum/virtue/V = GLOB.virtues[path]
+						if (!V.name)
+							continue
+						if (V.name == virtue_background.name)
+							continue
+						if (!istype(V, /datum/virtue/background))
+							continue
+						if (V.restricted == TRUE)
+							if((pref_species.type in V.races))
+								continue
+						virtue_choices[V.name] = V
+					var/result = tgui_input_list(user, "What was your lyfe before?", "BACKGROUND (LOADOUTS PLACED WITHIN THY STASH)", virtue_choices)
+
+					if (result)
+						var/datum/virtue/virtue_chosen = virtue_choices[result]
+						virtue_background = virtue_chosen
+						to_chat(user, process_virtue_text(virtue_chosen))
+
+				//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate species name.
+				if("race_title")
+					var/list/choices = list("None")
+					choices += pref_species.race_titles
+					var/result = tgui_input_list(user, "What do they call your kind?", "RACE TITLE", choices)
+					if(result)
+						race_title = result
 
 				if("charflaw_averse_choice")
 					var/choice = tgui_input_list(user, "Who do you loathe?", "AVERSION", GLOB.averse_factions)
@@ -3265,6 +3323,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 	character.statpack = statpack
 
+	//VALMORIAN: 2026-08-22 - only apply if still valid for the current species; a race change since
+	//picking (or a species with no race_titles at all) should just show the plain species name.
+	if(race_title && race_title != "None" && (race_title in pref_species.race_titles))
+		character.dna.species.race_title = race_title
+
 	character.flavortext = flavortext
 	character.ooc_notes = ooc_notes
 	character.nsfwflavortext = nsfwflavortext
@@ -3431,9 +3494,13 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	var/dat
 	if(V.desc)
 		dat += "<font size = 3>[span_purple(V.desc)]</font><br>"
+	if(V.background_desc)
+		dat += "<font size = 3>[span_purple(V.background_desc)]</font><br>"
 	if(length(V.added_skills))
 		if(istype(V, /datum/virtue/origin))
 			dat += "<font color = '#a3e2ff'><font size = 3>This Origin adds the following skills: <br>"
+		else if(istype(V, /datum/virtue/background))
+			dat += "<font color = '#a3e2ff'><font size = 3>This Background adds the following skills: <br>"
 		else
 			dat += "<font color = '#a3e2ff'><font size = 3>This Virtue adds the following skills: <br>"
 		for(var/list/L in V.added_skills)
@@ -3448,6 +3515,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	if(length(V.added_traits))
 		if(istype(V, /datum/virtue/origin))
 			dat += "<font color = '#a3e2ff'><font size = 3>This Origin grants the following traits: <br>"
+		else if(istype(V, /datum/virtue/background))
+			dat += "<font color = '#a3ffe0'><font size = 3>This Background grants the following traits: <br>"
 		else
 			dat += "<font color = '#a3ffe0'><font size = 3>This Virtue grants the following traits: <br>"
 		for(var/TR in V.added_traits)
@@ -3456,6 +3525,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	if(length(V.added_stashed_items))
 		if(istype(V, /datum/virtue/origin))
 			dat += "<font color = '#a3e2ff'><font size = 3>This Origin adds the following items to your stash: <br>"
+		else if(istype(V, /datum/virtue/background))
+			dat += "<font color = '#eeffa3'><font size = 3>This Background adds the following items to your stash: <br>"
 		else
 			dat += "<font color = '#eeffa3'><font size = 3>This Virtue adds the following items to your stash: <br>"
 		for(var/I in V.added_stashed_items)

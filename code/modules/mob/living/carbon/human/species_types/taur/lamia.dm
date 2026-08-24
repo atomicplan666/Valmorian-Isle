@@ -18,6 +18,8 @@
 	base_name = "Taur"
 	sub_name = "Lamia"
 	desc_title = "Lamia"
+	//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate names, see species.dm.
+	race_titles = list("Eelfolk", "Gorgon", "Merfolk", "Mermaid", "Merman", "Naga", "Siren")
 	desc = "<b>Lamia</b><br>\
 	The monstrous spawn of Abyssor, snake and humen conjoined together, the deepkin and merfolk. \
 	Sirens, mermaids, nagas and many others fall into 'lamia' categorization. While one could consider them to be of Dendor's, he had no hand in their creation. \

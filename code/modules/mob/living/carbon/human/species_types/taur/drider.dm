@@ -17,6 +17,8 @@
 	base_name = "Taur"
 	sub_name = "Drider"
 	desc_title = "Drider"
+	//VALMORIAN: 2026-08-22, ported from Emerald Summit - flavor-only alternate names, see species.dm.
+	race_titles = list("Drider", "Arachne", "Webweaver", "Spinneret", "Spider-kin")
 	desc = "<b>Drider</b><br>\
 	A humanoid torso rising from the body of a great spider. Driders are reclusive weavers of the deep \
 	woods, caverns and ruins, scuttling across walls and webs with unsettling ease. Shunned for their \
