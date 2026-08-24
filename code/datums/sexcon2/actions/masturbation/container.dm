@@ -49,8 +49,10 @@
 
 	do_onomatopoeia(user)
 
+	//Crossing the climax threshold inside this call triggers try_ejaculate() immediately, which
+	//routes through handle_climax_message() below - so the climax lands in the container, not on
+	//the floor. Anything called after this line would run a climax too late.
 	sex_session.perform_sex_action(user, 2, 0, TRUE)
 
-	//Not handle_passive_ejaculation() - the whole point is that the climax goes into the container.
-	var/datum/component/arousal/arousal_comp = user.GetComponent(/datum/component/arousal)
-	arousal_comp?.handle_container_ejaculation()
+/datum/sex_action/masturbate/container/handle_climax_message(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	return "container"

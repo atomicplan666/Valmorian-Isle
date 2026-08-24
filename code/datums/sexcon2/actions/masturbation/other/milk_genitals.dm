@@ -53,8 +53,11 @@
 	var/datum/sex_session/sex_session = get_sex_session(user, target)
 	playsound(user, 'sound/misc/mat/fingering.ogg', 30, TRUE, -2, ignore_walls = FALSE)
 
+	//Crossing the climax threshold inside this call triggers try_ejaculate() immediately, which
+	//routes through handle_climax_message() below - so the climax lands in the container, not on
+	//the floor. The old post-hoc handle_cock_milking() call waited for the ACTIVE threshold, which
+	//the passive auto-climax made unreachable.
 	sex_session.perform_sex_action(target, 2, 4, TRUE)
 
-	//Not handle_passive_ejaculation() - the whole point is that the climax goes into the container.
-	var/datum/component/arousal/arousal_comp = target.GetComponent(/datum/component/arousal)
-	arousal_comp?.handle_cock_milking(user)
+/datum/sex_action/masturbate/other/milk_genitals/handle_climax_message(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	return "container"

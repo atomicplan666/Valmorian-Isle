@@ -886,6 +886,44 @@
 					astratan_tooltip = SPAN_TOOLTIP("One of Astrata's [issunelf(src) ? "chosen" : "followers"]", astratan_symbol)
 		. += span_info("[pronoun] [wording] [origin]. [astratan_tooltip]")	//"He hails from [X / Nowhere]" || "His [word] originates from [X]" || "His [word] is implacable..."
 
+		//VALMORIAN: cum mess examine text, ported from Emerald Summit's sexcon.dm - see modular/emerald_summit/code/cum_mess.dm.
+		var/datum/status_effect/facial/facial = has_status_effect(/datum/status_effect/facial)
+		var/datum/status_effect/facial/external/external = has_status_effect(/datum/status_effect/facial/external)
+		var/datum/status_effect/facial/internal/creampie = null
+		var/datum/status_effect/creampie_leak/drip = null
+		if(observer_privilege || get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
+			creampie = has_status_effect(/datum/status_effect/facial/internal)
+			drip = has_status_effect(/datum/status_effect/creampie_leak/long) || has_status_effect(/datum/status_effect/creampie_leak)
+		var/any_cum_effect = facial || external || creampie
+		if(any_cum_effect || drip)
+			var/show_detail = (user == src) || observer_privilege
+			if(!show_detail && isliving(user))
+				var/mob/living/viewer = user
+				show_detail = (viewer.STAPER >= 8 && viewer.STAINT >= 5)
+			if(!show_detail)
+				if(any_cum_effect)
+					. += span_warning("[m1] covered in something glossy!")
+			else
+				if(external)
+					. += span_notice("[capitalize(m2)] body is [!external.has_dried_up ? "covered in cum" : "covered in dried cum"]!")
+				if(facial)
+					. += span_notice("[capitalize(m2)] face is [!facial.has_dried_up ? "glazed with cum" : "plastered with dried cum"]!")
+				if(creampie && !drip)
+					. += span_notice("[capitalize(m2)] crotch is [!creampie.has_dried_up ? "a cummy mess" : "stained with dried cum"]!")
+				if(drip)
+					var/is_long = istype(drip, /datum/status_effect/creampie_leak/long)
+					switch(drip.orifice)
+						if(SEX_PART_CUNT)
+							. += span_notice("[m1] [is_long ? "gushing cum from [m2] sex" : "trickling cum from [m2] sex"]!")
+						if(SEX_PART_ANUS)
+							. += span_notice("[m1] [is_long ? "leaking heavily from [m2] ass" : "leaking cum from [m2] ass"]!")
+						if(SEX_PART_SLIT_SHEATH)
+							. += span_notice("[m1] [is_long ? "leaking heavily from [m2] slit" : "trickling cum from [m2] slit"]!")
+						if(SEX_PART_CUNT|SEX_PART_ANUS)
+							. += span_notice("[m1] [is_long ? "leaking heavily from both [m2] holes" : "dripping cum from both [m2] holes"]!")
+						else
+							. += span_notice("[m1] [is_long ? "leaking a heavy load" : "dripping cum from [m2] nethers"]!")
+
 		if(HAS_TRAIT(src, TRAIT_WITCH))
 			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_WITCH))
 				. += span_warning("A witch! Their presence brings an unsettling aura.")
