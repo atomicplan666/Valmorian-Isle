@@ -15,6 +15,7 @@
 		/datum/language/dwarvish,
 		/datum/language/elvish,
 		/datum/language/celestial,
+		/datum/language/enochian,
 		/datum/language/raneshi,
 		/datum/language/hellspeak,
 		/datum/language/beast,
