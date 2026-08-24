@@ -27,7 +27,7 @@
 
 /obj/item/clothing/mask/rogue/exoticsilkmask
 	name = "exotic silk mask"
-	icon_state = "exoticsilkmask"
+	icon_state = "silkmask"
 	flags_inv = HIDEFACE|HIDEFACIALHAIR
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
