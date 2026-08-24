@@ -403,5 +403,12 @@
 		/datum/sprite_accessory/tail/forked_long,
 		/datum/sprite_accessory/tail/haven,
 		/datum/sprite_accessory/tail/swallow,
+		/datum/sprite_accessory/tail/batl,
+		/datum/sprite_accessory/tail/bats,
+		/datum/sprite_accessory/tail/lizard/smooth,
+		/datum/sprite_accessory/tail/lizard/dtiger,
+		/datum/sprite_accessory/tail/lizard/ltiger,
+		/datum/sprite_accessory/tail/lizard/spikes,
+		/datum/sprite_accessory/tail/haven,
 		//datum/sprite_accessory/tail/pinecone, //VALMORIAN: ES-only — VI has no pinecone tail sprite accessory
 	)

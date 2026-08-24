@@ -87,6 +87,7 @@
 		/datum/customizer/organ/ears/harpy,
 		/datum/customizer/organ/tail/harpy,
 		/datum/customizer/organ/wings/harpy,
+		/datum/customizer/organ/horns/humanoid/zardman, // since it defaults disabled.
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
