@@ -692,6 +692,12 @@
 	display_category = ITEM_CAT_WEAPONS_MACES
 	craftdiff = 4
 
+/datum/anvil_recipe/weapons/iron/ironpike
+	name = "iron pike (+2 Small Log)"
+	req_bar = /obj/item/ingot/iron
+	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/halberd/glaive/ironpike
+
 /// STEEL WEAPONS
 /datum/anvil_recipe/weapons/steel/dagger
 	name = "Dagger, Steel"
@@ -1032,6 +1038,13 @@
 	created_item = /obj/item/rogueweapon/mace/maul/grand
 	display_category = ITEM_CAT_WEAPONS_MACES
 
+/datum/anvil_recipe/weapons/steel/steelpike
+	name = "steel pike (+2 Small Log)"
+	req_bar = /obj/item/ingot/steel
+	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/halberd/glaive/steelpike
+	craftdiff = 4
+
 // DECORATED
 
 /datum/anvil_recipe/weapons/decorated/sword
@@ -1340,6 +1353,13 @@
 	additional_items = list(/obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/scythe/silver
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
+
+/datum/anvil_recipe/weapons/silver/pike
+	name = "Silver pike (+1 Small Log)"
+	req_bar = /obj/item/ingot/silver
+	additional_items = list(/obj/item/grown/log/tree/small)
+	created_item = /obj/item/rogueweapon/halberd/glaive/silverpike
+	craftdiff = 4
 
 // SHIELDS
 
@@ -2360,6 +2380,13 @@
 	additional_items = list(/obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small)
 	created_item = /obj/item/rogueweapon/spear/blacksteel
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
+
+/datum/anvil_recipe/weapons/blackpike
+	name = "Blacksteel Pike (+1 Blacksteel, +1 Golden Ingot"
+	req_bar = /obj/item/ingot/blacksteel
+	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/gold)
+	created_item = /obj/item/rogueweapon/halberd/glaive/blackpike
+	craftdiff = 5
 
 // AVANTYNE
 

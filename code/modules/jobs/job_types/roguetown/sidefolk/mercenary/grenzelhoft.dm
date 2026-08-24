@@ -2,7 +2,7 @@
 	name = "Doppelsoldner"
 	tutorial = "You are a Doppelsoldner - \"Double-pay Mercenary\" - an experienced frontline swordsman trained by the Zenitstadt fencing guild."
 	allowed_sexes = list(MALE, FEMALE)
-	
+
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft
 	class_select_category = CLASS_CAT_GRENZELHOFT
 	category_tags = list(CTAG_MERCENARY)
@@ -70,7 +70,7 @@
 	name = "Halberdier"
 	tutorial = "You're an experienced soldier skilled in the use of polearms and axes. Your equals make up the bulk of the mercenary guild's forces."
 	allowed_sexes = list(MALE, FEMALE)
-	
+
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_halberdier
 	class_select_category = CLASS_CAT_GRENZELHOFT
 	category_tags = list(CTAG_MERCENARY)
@@ -106,13 +106,15 @@
 	backl = /obj/item/rogueweapon/scabbard/gwstrap
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/blacksteel
 	if(H.mind)
-		var/weapons = list("Halberd", "Partizan")
+		var/weapons = list("Halberd", "Partizan", "Pike")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		switch(weapon_choice)
 			if("Halberd")
 				r_hand = /obj/item/rogueweapon/halberd
 			if("Partizan")
 				r_hand = /obj/item/rogueweapon/spear/partizan
+			if("Pike")
+				r_hand = /obj/item/rogueweapon/halberd/glaive/steelpike
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/clothing/neck/roguetown/gorget
@@ -136,7 +138,7 @@
 	name = "Armbrustschutze"
 	tutorial = "You're a proved marksman with a crossbow, and learned how to set up camp and defenses in the wild. The guild needs you."
 	allowed_sexes = list(MALE, FEMALE)
-	
+
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_crossbowman
 	class_select_category = CLASS_CAT_GRENZELHOFT
 	category_tags = list(CTAG_MERCENARY)
@@ -215,7 +217,7 @@
 	name = "Gefechtsgelehrter"
 	tutorial = "You are a Gefechtsgelehrter - \"Combat Scholar\" - A proud magos from the Celestial Academy of Magos, who's skills in Siege Magic and Arcyne Physics are unmatched."
 	allowed_sexes = list(MALE, FEMALE)
-	
+
 	outfit = /datum/outfit/job/roguetown/mercenary/grenzelhoft_mage
 	class_select_category = CLASS_CAT_GRENZELHOFT
 	category_tags = list(CTAG_MERCENARY)

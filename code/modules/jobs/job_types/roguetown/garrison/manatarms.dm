@@ -92,7 +92,7 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Warhammer & Shield","Axe & Shield","Sword & Shield","Halberd & Sword","Greataxe & Sword")
+		var/weapons = list("Warhammer & Shield","Axe & Shield","Sword & Shield","Halberd & Sword","Greataxe & Sword","Pike")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -114,6 +114,11 @@
 			if("Greataxe & Sword")
 				l_hand = /obj/item/rogueweapon/sword
 				r_hand = /obj/item/rogueweapon/greataxe
+				backl = /obj/item/rogueweapon/scabbard/gwstrap
+				beltr = /obj/item/rogueweapon/scabbard/sword
+			if("Pike")
+				l_hand = /obj/item/rogueweapon/halberd/glaive/steelpike
+				r_hand = /obj/item/rogueweapon/sword
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				beltr = /obj/item/rogueweapon/scabbard/sword
 	backpack_contents = list(
