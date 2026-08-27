@@ -353,6 +353,7 @@
 			if("Spear")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
+				beltr = /obj/item/rogueweapon/shield/buckler
 				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
 					r_hand = /obj/item/rogueweapon/spear/psyspear/old
 				else
@@ -360,23 +361,36 @@
 			if("Axe")
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut
-		var/oaths = list("Cleric - Medicine Training + Supplies","Crusader - Unique Longsword + Surcoat","None")
+		var/oaths = list("Cleric - Medicine Training + Supplies","Crusader - Silver Weapon","None")
 		var/oath_choice = input(H, "Choose your OATH.", "PROFESS YOUR BLESSINGS.") as anything in oaths
 		switch(oath_choice)
 			if("Cleric - Medicine Training + Supplies")
 				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_APPRENTICE, TRUE)
 				l_hand = /obj/item/needle/thorn/cleric //Unique to the Cleric. Far worse than a traditional iron needle, but better than a regular thorn needle - with 10 uses, instead of 5 (or 20, in the former's case).
 				beltl = /obj/item/reagent_containers/glass/bottle/rogue/healthpot //No cloth, but a basic potion of lifeblood - similar to the Sorcerer's manna potion. Take the 'Physician's Apprentice' virtue for that, uncapped skills, and more.
-			if("Crusader - Unique Longsword + Surcoat")
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE) 
-				beltl = /obj/item/rogueweapon/sword/long/cleric //Essentially, a silver longsword without the ability to sunder antagonists. Should it deal lesser sunder to mindless unholy foes, later? Perhaps.
-				switch(H.patron?.type)
-					if(/datum/patron/old_god)
-						l_hand = /obj/item/clothing/cloak/tabard/stabard/crusader/t
-					if(/datum/patron/divine/astrata)
-						l_hand = /obj/item/clothing/cloak/tabard/stabard/crusader/t/astrata
-					else
-						l_hand = /obj/item/clothing/cloak/tabard/stabard/crusader/t/undivided
+			if("Crusader - Silver Weapon")
+					var/crusaderweapon = list("Silver Longsword","Silver Mace","Silver Flail","Silver Spear","Silver Axe","Silver Whip")
+					var/crusaderweapon_choice = input(H, "Choose your silver weapon, Holy Crusader!") as anything in crusaderweapon
+					switch(crusaderweapon_choice)
+						if("Silver Longsword")
+							H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+							l_hand = /obj/item/rogueweapon/sword/long/silver //Turns the Paladin into a pre-Exorcist version of the Monster Hunter. Differences are +1 CON / -1 INT, access to minor miracles, and more limb coverage.
+							beltl = /obj/item/rogueweapon/scabbard/sword //Better than that piece of unique shit that used to replace it, but now with a wider silver arsenal!
+						if("Silver Mace")
+							H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
+							beltl = /obj/item/rogueweapon/mace/steel/silver
+						if("Silver Flail")
+							H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
+							beltl = /obj/item/rogueweapon/flail/sflail/silver
+						if("Silver Spear")
+							H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
+							l_hand = /obj/item/rogueweapon/spear/silver
+						if("Silver Axe")
+							H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
+							l_hand = /obj/item/rogueweapon/stoneaxe/woodcut/silver
+						if("Silver Whip")
+							H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
+							l_hand = /obj/item/rogueweapon/whip/silver // Die, monster! You don't belong in this world!
 			if("None")
 				id = /obj/item/clothing/ring/silver/cleric //Minor restoration of the old silver ring that Clerics could get. Worth less than the other two alternatives, but offers a choice for those who want to remain unspecialized.
 
